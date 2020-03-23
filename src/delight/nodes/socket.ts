@@ -16,7 +16,8 @@ export class Socket<T extends IDelightType> {
         public name: string,
         public type: SocketType,
         public value: T,
-        public adjustable = true
+        public adjustable = true,
+        public header = true
     ) {
         this.createDOM()
     }
@@ -41,11 +42,14 @@ export class Socket<T extends IDelightType> {
         const socket = document.createElement("div")
         socket.classList.add("socket")
         socket.classList.add(this.value.typeId)
+        socket.classList.toggle("hiddenHeader", !this.header)
 
         if (this.type === SocketType.input)
             socket.classList.add("input")
         else if (this.type === SocketType.output)
             socket.classList.add("output")
+        else if (this.type === SocketType.option)
+            socket.classList.add("option")
 
         socket.classList.toggle("editable", this.adjustable && !this._connected)
         socket.classList.toggle("connected", this._connected)

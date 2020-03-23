@@ -95,7 +95,9 @@
 
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_AT_RULE_IMPORT_0___ = __webpack_require__(/*! -!../../../node_modules/css-loader/dist/cjs.js!./colors.scss */ "./node_modules/css-loader/dist/cjs.js!./src/delight/styles/colors.scss");
 exports = ___CSS_LOADER_API_IMPORT___(false);
+exports.i(___CSS_LOADER_AT_RULE_IMPORT_0___);
 // Module
 exports.push([module.i, "body {\n  font-family: \"Inter\";\n  user-select: none; }\n\ncanvas.connections {\n  position: absolute;\n  left: 0;\n  top: 0;\n  pointer-events: none; }\n\ndiv.nodeGrid {\n  position: fixed;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background: #333; }\n", ""]);
 // Exports
@@ -115,7 +117,25 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: #666d;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: #666;\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
+exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: var(--node-general);\n  padding-bottom: 8px;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.comment {\n    background: var(--node-comment); }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    margin-bottom: 4px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: var(--socket-general);\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket.option div.plug {\n      display: none; }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 4px 0px; }\n    div.node div.socket.hiddenHeader p {\n      display: none; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/comment.scss":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/comment.scss ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "div.socket.comment div.type div.content {\n  min-width: 1em;\n  color: #fff;\n  font-family: monospace;\n  padding: 2px;\n  border-radius: 4px;\n  outline: none; }\n  div.socket.comment div.type div.content:focus {\n    background: #0002; }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -133,7 +153,43 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.socket.number {\n  --socket-color: #3db55e !important; }\n  div.socket.number div.type.number {\n    position: relative; }\n    div.socket.number div.type.number input {\n      width: 100%;\n      opacity: 0; }\n    div.socket.number div.type.number div.display {\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: #666;\n      border-radius: 4px;\n      box-shadow: inset 0px 0px 0px 2px #0003;\n      overflow: hidden;\n      pointer-events: none; }\n      div.socket.number div.type.number div.display div.progress {\n        height: 100%;\n        background: #0006; }\n      div.socket.number div.type.number div.display span {\n        position: absolute;\n        left: 50%;\n        top: 50%;\n        color: #fff;\n        font-size: 9pt;\n        text-shadow: 0px 1px 0px #0003;\n        transform: translate(-50%, -50%); }\n", ""]);
+exports.push([module.i, "div.socket.number {\n  --socket-color: var(--socket-number) !important; }\n  div.socket.number div.type {\n    position: relative; }\n    div.socket.number div.type input {\n      width: 100%;\n      opacity: 0; }\n    div.socket.number div.type div.display {\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: #666;\n      border-radius: 4px;\n      box-shadow: inset 0px 0px 0px 2px #0003;\n      overflow: hidden;\n      pointer-events: none; }\n      div.socket.number div.type div.display div.progress {\n        height: 100%;\n        background: #0006; }\n      div.socket.number div.type div.display span {\n        position: absolute;\n        left: 50%;\n        top: 50%;\n        color: #fff;\n        font-size: 9pt;\n        text-shadow: 0px 1px 0px #0003;\n        transform: translate(-50%, -50%); }\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/select.scss":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/select.scss ***!
+  \***************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "div.socket.select div.type {\n  position: relative; }\n  div.socket.select div.type select {\n    width: calc(100%);\n    background: #333;\n    color: #fff;\n    font-family: \"Inter\";\n    font-size: 9pt;\n    outline: none;\n    border: none;\n    padding: 4px 8px;\n    border-radius: 4px;\n    box-shadow: inset 0px 0px 0px 2px #0003; }\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/delight/styles/colors.scss":
+/*!******************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/delight/styles/colors.scss ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ":root {\r\n    --node-general: #666d;\r\n    --node-comment: #555137dd;\r\n\r\n    --socket-general: #666;\r\n    --socket-number: #3db55e;\r\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -779,6 +835,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nodes_node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes/node */ "./src/delight/nodes/node.ts");
 /* harmony import */ var _nodes_socket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/socket */ "./src/delight/nodes/socket.ts");
 /* harmony import */ var _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/types/number */ "./src/delight/nodes/types/number.ts");
+/* harmony import */ var _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/library/misc/comment */ "./src/delight/nodes/library/misc/comment.ts");
+/* harmony import */ var _nodes_types_select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/types/select */ "./src/delight/nodes/types/select.ts");
 // Basic bitch testing for now
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -834,33 +892,54 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 // A node that adds 1 to the input
 var TestNode = /** @class */ (function (_super) {
     __extends(TestNode, _super);
     function TestNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.id = "gen.testNode";
-        _this.name = "Add 1, lol";
+        _this.name = "Plus minus";
         _this.category = _nodes_node__WEBPACK_IMPORTED_MODULE_2__["NodeCategory"].general;
+        _this.options = [
+            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "operation", "Operation", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].option, new _nodes_types_select__WEBPACK_IMPORTED_MODULE_6__["SelectType"]([
+                {
+                    id: "add",
+                    name: "Add 1"
+                },
+                {
+                    id: "subtract",
+                    name: "Subtract 1"
+                }
+            ], "add"), true, false)
+        ];
         _this.inputs = [
             new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "num", "Number", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].input, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__["NumberType"](0, 0, 10, 1))
         ];
         _this.outputs = [
-            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "newNum", "Number + 1", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].output, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__["NumberType"](1), false // Not adjustable by the user
+            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "newNum", "Result", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].output, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__["NumberType"](1), false // Not adjustable by the user
             )
         ];
         return _this;
     }
     TestNode.prototype.process = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var num, outSocket;
+            var operation, num, outSocket, newNum;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getInput("num", this.context)];
+                    case 0:
+                        operation = this.getOption("operation");
+                        return [4 /*yield*/, this.getInput("num", this.context)];
                     case 1:
                         num = _a.sent();
                         outSocket = this.getOutputSocket("newNum");
-                        outSocket.value.value = num.value + 1;
+                        newNum = num.value;
+                        if (operation.value === "add")
+                            newNum++;
+                        else if (operation.value === "subtract")
+                            newNum--;
+                        outSocket.value.value = newNum;
                         return [2 /*return*/];
                 }
             });
@@ -876,12 +955,17 @@ numInput.value.value = 4;
 ctx.addNode(n1);
 var n2 = new TestNode(ctx);
 ctx.addNode(n2);
+var n3 = new _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_5__["CommentNode"](ctx);
+ctx.addNode(n3);
 n1.createDOM();
 n1.setPosition(16, 16);
 ctx.nodeContainer.appendChild(n1.domElement);
 n2.createDOM();
 n2.setPosition(200, 16);
 ctx.nodeContainer.appendChild(n2.domElement);
+n3.createDOM();
+n3.setPosition(16, 300);
+ctx.nodeContainer.appendChild(n3.domElement);
 ctx.updateConnectionsCanvas();
 var glob = window;
 glob.evaluate = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -951,6 +1035,54 @@ var PartialNodeConnection = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/delight/nodes/library/misc/comment.ts":
+/*!***************************************************!*\
+  !*** ./src/delight/nodes/library/misc/comment.ts ***!
+  \***************************************************/
+/*! exports provided: CommentNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentNode", function() { return CommentNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_comment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/comment */ "./src/delight/nodes/types/comment.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var CommentNode = /** @class */ (function (_super) {
+    __extends(CommentNode, _super);
+    function CommentNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.id = "gen.testNode";
+        _this.name = "Comment";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].comment;
+        _this.options = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "comment", "Comment", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_comment__WEBPACK_IMPORTED_MODULE_2__["CommentType"]("Your comment here", true), true, false)
+        ];
+        return _this;
+    }
+    return CommentNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
 /***/ "./src/delight/nodes/node.ts":
 /*!***********************************!*\
   !*** ./src/delight/nodes/node.ts ***!
@@ -1003,7 +1135,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var NodeCategory;
 (function (NodeCategory) {
-    NodeCategory[NodeCategory["general"] = 0] = "general";
+    NodeCategory["general"] = "general";
+    NodeCategory["comment"] = "comment";
 })(NodeCategory || (NodeCategory = {}));
 var DelightNode = /** @class */ (function () {
     function DelightNode(context) {
@@ -1035,6 +1168,9 @@ var DelightNode = /** @class */ (function () {
     DelightNode.prototype.getOutputSocket = function (id) {
         return this.outputs.find(function (s) { return s.id === id; });
     };
+    DelightNode.prototype.getOptionSocket = function (id) {
+        return this.options.find(function (s) { return s.id === id; });
+    };
     DelightNode.prototype.getInput = function (id, ctx) {
         return __awaiter(this, void 0, void 0, function () {
             var socket, connValue;
@@ -1054,6 +1190,12 @@ var DelightNode = /** @class */ (function () {
             });
         });
     };
+    DelightNode.prototype.getOption = function (id) {
+        var socket = this.getOptionSocket(id);
+        if (!socket)
+            throw "what the fuck";
+        return socket.value;
+    };
     DelightNode.prototype.process = function () {
         return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
             return [2 /*return*/];
@@ -1062,7 +1204,7 @@ var DelightNode = /** @class */ (function () {
     DelightNode.prototype.createDOM = function () {
         var _this = this;
         var node = document.createElement("div");
-        node.classList.add("node");
+        node.classList.add("node", this.category);
         var header = document.createElement("header");
         header.classList.add("nodeHeader");
         var icon = document.createElement("img");
@@ -1072,6 +1214,12 @@ var DelightNode = /** @class */ (function () {
         name.textContent = this.name;
         header.appendChild(name);
         node.appendChild(header);
+        var options = document.createElement("div");
+        options.classList.add("options");
+        this.options.forEach(function (option) {
+            options.appendChild(option.domElement);
+        });
+        node.appendChild(options);
         var inputs = document.createElement("div");
         inputs.classList.add("inputs");
         this.inputs.forEach(function (input) {
@@ -1112,14 +1260,16 @@ var SocketType;
     SocketType[SocketType["option"] = 2] = "option";
 })(SocketType || (SocketType = {}));
 var Socket = /** @class */ (function () {
-    function Socket(node, id, name, type, value, adjustable) {
+    function Socket(node, id, name, type, value, adjustable, header) {
         if (adjustable === void 0) { adjustable = true; }
+        if (header === void 0) { header = true; }
         this.node = node;
         this.id = id;
         this.name = name;
         this.type = type;
         this.value = value;
         this.adjustable = adjustable;
+        this.header = header;
         this._connected = false;
         this.createDOM();
     }
@@ -1139,10 +1289,13 @@ var Socket = /** @class */ (function () {
         var socket = document.createElement("div");
         socket.classList.add("socket");
         socket.classList.add(this.value.typeId);
+        socket.classList.toggle("hiddenHeader", !this.header);
         if (this.type === SocketType.input)
             socket.classList.add("input");
         else if (this.type === SocketType.output)
             socket.classList.add("output");
+        else if (this.type === SocketType.option)
+            socket.classList.add("option");
         socket.classList.toggle("editable", this.adjustable && !this._connected);
         socket.classList.toggle("connected", this._connected);
         var plug = document.createElement("div");
@@ -1155,6 +1308,71 @@ var Socket = /** @class */ (function () {
         this.domElement = socket;
     };
     return Socket;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/delight/nodes/types/comment.ts":
+/*!********************************************!*\
+  !*** ./src/delight/nodes/types/comment.ts ***!
+  \********************************************/
+/*! exports provided: CommentType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentType", function() { return CommentType; });
+/* harmony import */ var _styles_types_comment_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../styles/types/comment.scss */ "./src/delight/styles/types/comment.scss");
+/* harmony import */ var _styles_types_comment_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_types_comment_scss__WEBPACK_IMPORTED_MODULE_0__);
+
+var CommentType = /** @class */ (function () {
+    function CommentType(_value, editable) {
+        if (_value === void 0) { _value = ""; }
+        if (editable === void 0) { editable = false; }
+        this._value = _value;
+        this.editable = editable;
+        this.typeId = "comment";
+        this.createDOM();
+    }
+    Object.defineProperty(CommentType.prototype, "value", {
+        get: function () {
+            return this._value;
+        },
+        set: function (v) {
+            this._value = v;
+            this.updateDOM();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CommentType.prototype.deserialize = function (data) {
+        this.value = data;
+    };
+    CommentType.prototype.serialize = function () {
+        return this.value;
+    };
+    CommentType.prototype.updateDOM = function () {
+        var content = this.domElement.querySelector("div.content");
+        content.textContent = this._value;
+    };
+    CommentType.prototype.createDOM = function () {
+        var _this = this;
+        var div = document.createElement("div");
+        div.classList.add("type", this.typeId);
+        var content = document.createElement("div");
+        content.classList.add("content");
+        if (this.editable)
+            content.contentEditable = "plaintext-only";
+        content.addEventListener("input", function () {
+            _this.value = content.textContent;
+        });
+        div.appendChild(content);
+        this.domElement = div;
+        this.updateDOM();
+    };
+    return CommentType;
 }());
 
 
@@ -1244,6 +1462,85 @@ var NumberType = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/delight/nodes/types/select.ts":
+/*!*******************************************!*\
+  !*** ./src/delight/nodes/types/select.ts ***!
+  \*******************************************/
+/*! exports provided: SelectType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectType", function() { return SelectType; });
+/* harmony import */ var _styles_types_select_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../styles/types/select.scss */ "./src/delight/styles/types/select.scss");
+/* harmony import */ var _styles_types_select_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_types_select_scss__WEBPACK_IMPORTED_MODULE_0__);
+
+var SelectType = /** @class */ (function () {
+    function SelectType(options, _value) {
+        if (options === void 0) { options = []; }
+        if (_value === void 0) { _value = ""; }
+        this.options = options;
+        this._value = _value;
+        this.typeId = "select";
+        this.createDOM();
+    }
+    Object.defineProperty(SelectType.prototype, "value", {
+        get: function () {
+            return this._value;
+        },
+        set: function (v) {
+            this._value = v;
+            this.updateDOM();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    SelectType.prototype.deserialize = function (data) {
+        this.value = data;
+    };
+    SelectType.prototype.serialize = function () {
+        return this.value;
+    };
+    SelectType.prototype.selectOptionToDOM = function (opt) {
+        var _this = this;
+        if ("header" in opt) {
+            var group_1 = document.createElement("optgroup");
+            group_1.label = opt.header;
+            opt.items.forEach(function (item) { return group_1.appendChild(_this.selectOptionToDOM(item)); });
+            return group_1;
+        }
+        else {
+            var option = document.createElement("option");
+            option.textContent = opt.name;
+            option.value = opt.id;
+            return option;
+        }
+    };
+    SelectType.prototype.updateDOM = function () {
+        var select = this.domElement.querySelector("select");
+        select.value = this._value;
+    };
+    SelectType.prototype.createDOM = function () {
+        var _this = this;
+        var div = document.createElement("div");
+        div.classList.add("type", this.typeId);
+        var select = document.createElement("select");
+        this.options.forEach(function (item) { return select.appendChild(_this.selectOptionToDOM(item)); });
+        select.value = this._value;
+        select.addEventListener("input", function () {
+            _this.value = select.value;
+        });
+        div.appendChild(select);
+        this.domElement = div;
+        this.updateDOM();
+    };
+    return SelectType;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/delight/styles/layout.scss":
 /*!****************************************!*\
   !*** ./src/delight/styles/layout.scss ***!
@@ -1306,6 +1603,37 @@ module.exports = exported;
 
 /***/ }),
 
+/***/ "./src/delight/styles/types/comment.scss":
+/*!***********************************************!*\
+  !*** ./src/delight/styles/types/comment.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./comment.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/comment.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
 /***/ "./src/delight/styles/types/number.scss":
 /*!**********************************************!*\
   !*** ./src/delight/styles/types/number.scss ***!
@@ -1315,6 +1643,37 @@ module.exports = exported;
 
 var api = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./number.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/number.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+
+/***/ "./src/delight/styles/types/select.scss":
+/*!**********************************************!*\
+  !*** ./src/delight/styles/types/select.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./select.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/delight/styles/types/select.scss");
 
             content = content.__esModule ? content.default : content;
 

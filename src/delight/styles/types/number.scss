@@ -1,7 +1,7 @@
 div.socket.number {
-    --socket-color: #3db55e !important;
+    --socket-color: var(--socket-number) !important;
 
-    div.type.number {
+    div.type {
         position: relative;
 
         input {

@@ -5,7 +5,8 @@ import { IDelightType } from "./types/type"
 import "../styles/node.scss"
 
 export enum NodeCategory {
-    general
+    general = "general",
+    comment = "comment"
 }
 
 export class DelightNode {
@@ -54,6 +55,10 @@ export class DelightNode {
     getOutputSocket(id: string): Socket<IDelightType> {
         return this.outputs.find(s => s.id === id)
     }
+
+    getOptionSocket(id: string): Socket<IDelightType> {
+        return this.options.find(s => s.id === id)
+    }
     
     async getInput(id: string, ctx: Context): Promise<IDelightType> {
         const socket = this.getInputSocket(id)
@@ -65,11 +70,18 @@ export class DelightNode {
         return socket.value
     }
 
+    getOption(id: string): IDelightType {
+        const socket = this.getOptionSocket(id)
+        if (!socket) throw "what the fuck"
+
+        return socket.value
+    }
+
     async process(): Promise<void> {}
 
     createDOM() {
         const node = document.createElement("div")
-        node.classList.add("node")
+        node.classList.add("node", this.category)
 
         const header = document.createElement("header")
         header.classList.add("nodeHeader")
@@ -83,6 +95,15 @@ export class DelightNode {
         header.appendChild(name)
 
         node.appendChild(header)
+
+        const options = document.createElement("div")
+        options.classList.add("options")
+
+        this.options.forEach(option => {
+            options.appendChild(option.domElement)
+        })
+
+        node.appendChild(options)
 
         const inputs = document.createElement("div")
         inputs.classList.add("inputs")

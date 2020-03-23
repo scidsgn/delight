@@ -1,0 +1,19 @@
+div.socket.comment {
+    div.type {
+        div.content {
+            min-width: 1em;
+
+            color: #fff;
+
+            font-family: monospace;
+
+            padding: 2px;
+            border-radius: 4px;
+            outline: none;
+
+            &:focus {
+                background: #0002;
+            }
+        }
+    }
+}

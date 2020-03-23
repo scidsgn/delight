@@ -1,0 +1,21 @@
+div.socket.select {
+    div.type {
+        position: relative;
+
+        select {
+            width: calc(100%);
+
+            background: #333;
+            color: #fff;
+
+            font-family: "Inter";
+            font-size: 9pt;
+            
+            outline: none;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: inset 0px 0px 0px 2px #0003;
+        }
+    }
+}
