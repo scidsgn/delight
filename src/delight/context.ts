@@ -1,7 +1,16 @@
-import { DelightNode } from "./nodes/node";
+import { DelightNode, DelightNodeConstructor } from "./nodes/node";
 import { NodeConnection, PartialNodeConnection } from "./nodes/connection";
 import { Socket, SocketType } from "./nodes/socket";
 import { IDelightType } from "./nodes/types/type";
+import { RazerOutputNode } from "./nodes/library/razer/output"
+
+const availableNodes: {
+    [prop: string]: DelightNodeConstructor[]
+} = {
+    "Razer Chroma": [
+        RazerOutputNode
+    ]
+}
 
 export class Context {
     public nodes: DelightNode[] = []

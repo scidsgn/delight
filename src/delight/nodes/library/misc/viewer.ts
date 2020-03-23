@@ -5,6 +5,7 @@ import { CommentType } from "../../types/comment"
 import { NumberType } from "../../types/number"
 import { BoundedNumberType } from "../../types/boundedNumber"
 import { ButtonType } from "../../types/button"
+import { ColorType } from "../../types/color"
 
 export class ViewerNode extends DelightNode {
     public static id = "misc.viewer"
@@ -49,16 +50,24 @@ export class ViewerNode extends DelightNode {
         const value = await this.getInput("value")
         let outStr = ""
 
-        if (value instanceof NullType) {
+        if (
+            value instanceof NullType
+        ) {
             outStr = "null"
         } else if (
             value instanceof NumberType ||
             value instanceof BoundedNumberType
         ) {
             outStr = value.value.toString()
+        } else if (
+            value instanceof ColorType
+        ) {
+            outStr = `R: ${value.value.r}\nG: ${value.value.g}\nB: ${value.value.b}\nBGR: ${value.value.toBGRInt()}`
         }
 
         const option = this.getOption("display") as CommentType
         option.value = outStr
+
+        this.context.updateConnectionsCanvas()
     }
 }

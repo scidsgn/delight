@@ -131,7 +131,8 @@ div.node {
             margin-top: 4px;
         }
 
-        &:not(.editable) > *:last-child {
+        &:not(.adjustable) > *:last-child,
+        &.input.connected > *:last-child {
             display: none;
         }
     }

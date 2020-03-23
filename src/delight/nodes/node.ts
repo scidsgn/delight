@@ -132,3 +132,7 @@ export class DelightNode {
         this.domElement = node
     }
 }
+
+export interface DelightNodeConstructor {
+    new(ctx: Context): DelightNode
+}

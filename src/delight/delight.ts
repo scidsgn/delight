@@ -6,6 +6,7 @@ import { CommentNode } from "./nodes/library/misc/comment"
 import { Socket } from "./nodes/socket"
 import { BoundedNumberType } from "./nodes/types/boundedNumber"
 import { ViewerNode } from "./nodes/library/misc/viewer"
+import { ColorValueNode } from "./nodes/library/value/color"
 
 const ctx = new Context()
 ctx.setupEvents()
@@ -22,6 +23,9 @@ ctx.addNode(n3)
 const n4 = new ViewerNode(ctx)
 ctx.addNode(n4)
 
+const n5 = new ColorValueNode(ctx)
+ctx.addNode(n5)
+
 n1.createDOM()
 n1.setPosition(16, 16)
 ctx.nodeContainer.appendChild(n1.domElement)
@@ -37,6 +41,10 @@ ctx.nodeContainer.appendChild(n3.domElement)
 n4.createDOM()
 n4.setPosition(200, 300)
 ctx.nodeContainer.appendChild(n4.domElement)
+
+n5.createDOM()
+n5.setPosition(400, 300)
+ctx.nodeContainer.appendChild(n5.domElement)
 
 ctx.updateConnectionsCanvas()
 

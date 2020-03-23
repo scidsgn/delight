@@ -19,11 +19,21 @@ export class Color {
         return `#${rgb.join("")}`
     }
 
+    toBGRInt() {
+        const rgb = [
+            this.r, this.g, this.b
+        ].map(
+            x => Math.max(Math.min(255 * x, 255), 0)
+        )
+
+        return rgb[0] | (rgb[1] << 8) | (rgb[2] << 16)
+    }
+
     static fromHex(hex: string) {
         const rgb = [
-            hex.substring(1, 2),
-            hex.substring(3, 2),
-            hex.substring(5, 2),
+            hex.substring(1, 3),
+            hex.substring(3, 5),
+            hex.substring(5, 7),
         ].map(str => parseInt(str, 16) / 255)
 
         return new Color(

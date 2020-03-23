@@ -117,7 +117,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: var(--node-general);\n  padding-bottom: 8px;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.comment {\n    background: var(--node-comment); }\n  div.node.math {\n    background: var(--node-math); }\n  div.node.razer {\n    background: var(--node-razer); }\n    div.node.razer > header {\n      background: rgba(0, 245, 0, 0.315); }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px var(--selected), 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    margin-bottom: 4px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: var(--socket-general);\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket.output p {\n      text-align: right; }\n    div.node div.socket.option div.plug {\n      display: none; }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket.hiddenHeader p {\n      display: none; }\n    div.node div.socket > *:last-child {\n      margin-top: 4px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
+exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: var(--node-general);\n  padding-bottom: 8px;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.comment {\n    background: var(--node-comment); }\n  div.node.math {\n    background: var(--node-math); }\n  div.node.razer {\n    background: var(--node-razer); }\n    div.node.razer > header {\n      background: rgba(0, 245, 0, 0.315); }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px var(--selected), 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    margin-bottom: 4px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: var(--socket-general);\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket.output p {\n      text-align: right; }\n    div.node div.socket.option div.plug {\n      display: none; }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket.hiddenHeader p {\n      display: none; }\n    div.node div.socket > *:last-child {\n      margin-top: 4px; }\n    div.node div.socket:not(.adjustable) > *:last-child,\n    div.node div.socket.input.connected > *:last-child {\n      display: none; }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -629,6 +629,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return Context; });
 /* harmony import */ var _nodes_connection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nodes/connection */ "./src/delight/nodes/connection.ts");
 /* harmony import */ var _nodes_socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nodes/socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes/library/razer/output */ "./src/delight/nodes/library/razer/output.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -667,6 +668,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
+
+var availableNodes = {
+    "Razer Chroma": [
+        _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_2__["RazerOutputNode"]
+    ]
+};
 var Context = /** @class */ (function () {
     function Context() {
         this.nodes = [];
@@ -873,6 +880,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/library/math/arithmetic */ "./src/delight/nodes/library/math/arithmetic.ts");
 /* harmony import */ var _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/library/misc/comment */ "./src/delight/nodes/library/misc/comment.ts");
 /* harmony import */ var _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/library/misc/viewer */ "./src/delight/nodes/library/misc/viewer.ts");
+/* harmony import */ var _nodes_library_value_color__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/library/value/color */ "./src/delight/nodes/library/value/color.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -915,6 +923,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var ctx = new _context__WEBPACK_IMPORTED_MODULE_2__["Context"]();
 ctx.setupEvents();
 var n1 = new _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"](ctx);
@@ -925,6 +934,8 @@ var n3 = new _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_4__["CommentNo
 ctx.addNode(n3);
 var n4 = new _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_5__["ViewerNode"](ctx);
 ctx.addNode(n4);
+var n5 = new _nodes_library_value_color__WEBPACK_IMPORTED_MODULE_6__["ColorValueNode"](ctx);
+ctx.addNode(n5);
 n1.createDOM();
 n1.setPosition(16, 16);
 ctx.nodeContainer.appendChild(n1.domElement);
@@ -937,6 +948,9 @@ ctx.nodeContainer.appendChild(n3.domElement);
 n4.createDOM();
 n4.setPosition(200, 300);
 ctx.nodeContainer.appendChild(n4.domElement);
+n5.createDOM();
+n5.setPosition(400, 300);
+ctx.nodeContainer.appendChild(n5.domElement);
 ctx.updateConnectionsCanvas();
 var glob = window;
 glob.evaluate = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -1223,6 +1237,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _types_number__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../types/number */ "./src/delight/nodes/types/number.ts");
 /* harmony import */ var _types_boundedNumber__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../types/boundedNumber */ "./src/delight/nodes/types/boundedNumber.ts");
 /* harmony import */ var _types_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../types/button */ "./src/delight/nodes/types/button.ts");
+/* harmony import */ var _types_color__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../types/color */ "./src/delight/nodes/types/color.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1279,6 +1294,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var ViewerNode = /** @class */ (function (_super) {
     __extends(ViewerNode, _super);
     function ViewerNode() {
@@ -1312,8 +1328,12 @@ var ViewerNode = /** @class */ (function (_super) {
                             value instanceof _types_boundedNumber__WEBPACK_IMPORTED_MODULE_5__["BoundedNumberType"]) {
                             outStr = value.value.toString();
                         }
+                        else if (value instanceof _types_color__WEBPACK_IMPORTED_MODULE_7__["ColorType"]) {
+                            outStr = "R: " + value.value.r + "\nG: " + value.value.g + "\nB: " + value.value.b + "\nBGR: " + value.value.toBGRInt();
+                        }
                         option = this.getOption("display");
                         option.value = outStr;
+                        this.context.updateConnectionsCanvas();
                         return [2 /*return*/];
                 }
             });
@@ -1379,6 +1399,54 @@ var RazerOutputNode = /** @class */ (function (_super) {
     }
     RazerOutputNode.id = "razer.output";
     return RazerOutputNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
+/***/ "./src/delight/nodes/library/value/color.ts":
+/*!**************************************************!*\
+  !*** ./src/delight/nodes/library/value/color.ts ***!
+  \**************************************************/
+/*! exports provided: ColorValueNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorValueNode", function() { return ColorValueNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/color */ "./src/delight/nodes/types/color.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var ColorValueNode = /** @class */ (function (_super) {
+    __extends(ColorValueNode, _super);
+    function ColorValueNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Color";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].general;
+        _this.outputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "color", "Color", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_color__WEBPACK_IMPORTED_MODULE_2__["ColorType"](), true, false)
+        ];
+        return _this;
+    }
+    ColorValueNode.id = "value.color";
+    return ColorValueNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
 
@@ -1585,7 +1653,7 @@ var Socket = /** @class */ (function () {
         },
         set: function (c) {
             this._connected = c;
-            this.domElement.classList.toggle("editable", this.adjustable && !this._connected);
+            this.domElement.classList.toggle("adjustable", this.adjustable);
             this.domElement.classList.toggle("connected", this._connected);
         },
         enumerable: true,
@@ -1602,7 +1670,7 @@ var Socket = /** @class */ (function () {
             socket.classList.add("output");
         else if (this.type === SocketType.option)
             socket.classList.add("option");
-        socket.classList.toggle("editable", this.adjustable && !this._connected);
+        socket.classList.toggle("adjustable", this.adjustable);
         socket.classList.toggle("connected", this._connected);
         var plug = document.createElement("div");
         plug.classList.add("plug");
@@ -1773,11 +1841,17 @@ var Color = /** @class */ (function () {
         ].map(function (x) { return Math.max(Math.min(255 * x, 255), 0).toString(16).padStart(2, "0"); });
         return "#" + rgb.join("");
     };
+    Color.prototype.toBGRInt = function () {
+        var rgb = [
+            this.r, this.g, this.b
+        ].map(function (x) { return Math.max(Math.min(255 * x, 255), 0); });
+        return rgb[0] | (rgb[1] << 8) | (rgb[2] << 16);
+    };
     Color.fromHex = function (hex) {
         var rgb = [
-            hex.substring(1, 2),
-            hex.substring(3, 2),
-            hex.substring(5, 2),
+            hex.substring(1, 3),
+            hex.substring(3, 5),
+            hex.substring(5, 7),
         ].map(function (str) { return parseInt(str, 16) / 255; });
         return new Color(rgb[0], rgb[1], rgb[2]);
     };

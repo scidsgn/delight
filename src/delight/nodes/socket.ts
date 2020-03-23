@@ -30,8 +30,8 @@ export class Socket<T extends IDelightType> {
     set connected(c: boolean) {
         this._connected = c
         this.domElement.classList.toggle(
-            "editable",
-            this.adjustable && !this._connected
+            "adjustable",
+            this.adjustable
         )
         this.domElement.classList.toggle(
             "connected",
@@ -52,7 +52,7 @@ export class Socket<T extends IDelightType> {
         else if (this.type === SocketType.option)
             socket.classList.add("option")
 
-        socket.classList.toggle("editable", this.adjustable && !this._connected)
+        socket.classList.toggle("adjustable", this.adjustable)
         socket.classList.toggle("connected", this._connected)
 
         const plug = document.createElement("div")
