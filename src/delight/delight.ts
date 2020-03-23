@@ -1,12 +1,12 @@
 import "./styles/layout.scss"
 import { RazerOutputNode } from "./nodes/library/razer/output"
 import { Context } from "./context"
-import { ArithmeticNode } from "./nodes/library/math/arithmetic"
+import { ArithmeticNode } from "./nodes/library/number/arithmetic"
 import { CommentNode } from "./nodes/library/misc/comment"
 import { Socket } from "./nodes/socket"
 import { BoundedNumberType } from "./nodes/types/boundedNumber"
 import { ViewerNode } from "./nodes/library/misc/viewer"
-import { ColorValueNode } from "./nodes/library/value/color"
+import { ColorValueNode } from "./nodes/library/color/color"
 
 const ctx = new Context()
 ctx.setupEvents()

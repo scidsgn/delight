@@ -4,7 +4,7 @@ import { IDelightType } from "../../types/type"
 import { ColorType } from "../../types/color"
 
 export class ColorValueNode extends DelightNode {
-    public static id = "value.color"
+    public static id = "color.color"
 
     public name = "Color"
     public category: NodeCategory = NodeCategory.general
