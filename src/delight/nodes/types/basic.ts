@@ -22,8 +22,7 @@ export class NumberType implements IDelightType {
     set value(v: number) {
         this._value = v
 
-        const input = this.domElement.children[0] as HTMLInputElement
-        input.value = v.toString()
+        this.updateDOM()
     }
 
     deserialize(data: any) {
@@ -32,6 +31,17 @@ export class NumberType implements IDelightType {
 
     serialize(): any {
         return this.value
+    }
+
+    updateDOM() {
+        const input = this.domElement.children[0] as HTMLInputElement
+        input.value = this._value.toString()
+
+        const progress = this.domElement.querySelector("div.progress") as HTMLDivElement
+        progress.style.width = `${100 * (this._value - this.min) / (this.max - this.min)}%`
+
+        const span = this.domElement.querySelector("span") as HTMLSpanElement
+        span.textContent = this._value.toString()
     }
 
     createDOM() {
@@ -47,11 +57,24 @@ export class NumberType implements IDelightType {
         input.value = this._value.toString()
 
         input.addEventListener("input", () => {
-            this._value = +input.value
+            this.value = +input.value
         })
         
         div.appendChild(input)
 
+        const display = document.createElement("div")
+        display.classList.add("display")
+
+        const progress = document.createElement("div")
+        progress.classList.add("progress")
+        display.appendChild(progress)
+
+        const span = document.createElement("span")
+        display.appendChild(span)
+
+        div.appendChild(display)
+
         this.domElement = div
+        this.updateDOM()
     }
 }

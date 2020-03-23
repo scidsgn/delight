@@ -115,7 +115,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.node {\n  position: absolute;\n  width: 128px;\n  background: #666d;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 10pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: #666;\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #aaa; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
+exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: #666d;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: #666;\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #aaa; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -133,7 +133,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.type.number input {\n  width: 100%; }\n", ""]);
+exports.push([module.i, "div.type.number {\n  position: relative; }\n  div.type.number input {\n    width: 100%;\n    opacity: 0; }\n  div.type.number div.display {\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: #666;\n    border-radius: 4px;\n    box-shadow: inset 0px 0px 0px 2px #0003;\n    overflow: hidden;\n    pointer-events: none; }\n    div.type.number div.display div.progress {\n      height: 100%;\n      background: #0006; }\n    div.type.number div.display span {\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      transform: translate(-50%, -50%); }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1192,8 +1192,7 @@ var NumberType = /** @class */ (function () {
         },
         set: function (v) {
             this._value = v;
-            var input = this.domElement.children[0];
-            input.value = v.toString();
+            this.updateDOM();
         },
         enumerable: true,
         configurable: true
@@ -1203,6 +1202,14 @@ var NumberType = /** @class */ (function () {
     };
     NumberType.prototype.serialize = function () {
         return this.value;
+    };
+    NumberType.prototype.updateDOM = function () {
+        var input = this.domElement.children[0];
+        input.value = this._value.toString();
+        var progress = this.domElement.querySelector("div.progress");
+        progress.style.width = 100 * (this._value - this.min) / (this.max - this.min) + "%";
+        var span = this.domElement.querySelector("span");
+        span.textContent = this._value.toString();
     };
     NumberType.prototype.createDOM = function () {
         var _this = this;
@@ -1215,10 +1222,19 @@ var NumberType = /** @class */ (function () {
         input.step = this.step.toString();
         input.value = this._value.toString();
         input.addEventListener("input", function () {
-            _this._value = +input.value;
+            _this.value = +input.value;
         });
         div.appendChild(input);
+        var display = document.createElement("div");
+        display.classList.add("display");
+        var progress = document.createElement("div");
+        progress.classList.add("progress");
+        display.appendChild(progress);
+        var span = document.createElement("span");
+        display.appendChild(span);
+        div.appendChild(display);
         this.domElement = div;
+        this.updateDOM();
     };
     return NumberType;
 }());
