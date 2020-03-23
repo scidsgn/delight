@@ -17,6 +17,7 @@ type SelectTypeOption = SelectTypeOptionGroup | SelectTypeOptionItem
 export class SelectType implements IDelightType {
     public domElement: HTMLDivElement
     public typeId = "select"
+    public accepts = [this.typeId]
 
     constructor(
         public options: SelectTypeOption[] = [],

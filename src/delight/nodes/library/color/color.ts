@@ -7,7 +7,7 @@ export class ColorValueNode extends DelightNode {
     public static id = "color.color"
 
     public name = "Color"
-    public category: NodeCategory = NodeCategory.general
+    public category: NodeCategory = NodeCategory.color
 
     public outputs: Socket<IDelightType>[] = [
         new Socket(

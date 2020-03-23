@@ -828,7 +828,7 @@ var Context = /** @class */ (function () {
             var socket = this.findSocket(function (s) { return s.domElement === target.parentElement; });
             if (this.partialConnection &&
                 socket.type === _nodes_socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input &&
-                (this.partialConnection.inputSocket.value.typeId === socket.value.typeId ||
+                (socket.value.accepts.includes(this.partialConnection.inputSocket.value.typeId) ||
                     socket.acceptAll)) {
                 var existingConn = this.findConnection(null, null, socket.node, socket);
                 if (!existingConn) {
@@ -877,10 +877,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_layout_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_layout_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nodes/library/razer/output */ "./src/delight/nodes/library/razer/output.ts");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context */ "./src/delight/context.ts");
-/* harmony import */ var _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/library/math/arithmetic */ "./src/delight/nodes/library/math/arithmetic.ts");
-/* harmony import */ var _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/library/misc/comment */ "./src/delight/nodes/library/misc/comment.ts");
-/* harmony import */ var _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/library/misc/viewer */ "./src/delight/nodes/library/misc/viewer.ts");
-/* harmony import */ var _nodes_library_value_color__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/library/value/color */ "./src/delight/nodes/library/value/color.ts");
+/* harmony import */ var _nodes_library_number_arithmetic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/library/number/arithmetic */ "./src/delight/nodes/library/number/arithmetic.ts");
+/* harmony import */ var _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/library/misc/viewer */ "./src/delight/nodes/library/misc/viewer.ts");
+/* harmony import */ var _nodes_library_color_color__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/library/color/color */ "./src/delight/nodes/library/color/color.ts");
+/* harmony import */ var _nodes_library_color_combine__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/library/color/combine */ "./src/delight/nodes/library/color/combine.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -926,15 +926,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var ctx = new _context__WEBPACK_IMPORTED_MODULE_2__["Context"]();
 ctx.setupEvents();
-var n1 = new _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"](ctx);
+var n1 = new _nodes_library_number_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"](ctx);
 ctx.addNode(n1);
 var n2 = new _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__["RazerOutputNode"](ctx);
 ctx.addNode(n2);
-var n3 = new _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_4__["CommentNode"](ctx);
+var n3 = new _nodes_library_color_combine__WEBPACK_IMPORTED_MODULE_6__["CombineRGBNode"](ctx);
 ctx.addNode(n3);
-var n4 = new _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_5__["ViewerNode"](ctx);
+var n4 = new _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_4__["ViewerNode"](ctx);
 ctx.addNode(n4);
-var n5 = new _nodes_library_value_color__WEBPACK_IMPORTED_MODULE_6__["ColorValueNode"](ctx);
+var n5 = new _nodes_library_color_color__WEBPACK_IMPORTED_MODULE_5__["ColorValueNode"](ctx);
 ctx.addNode(n5);
 n1.createDOM();
 n1.setPosition(16, 16);
@@ -1020,20 +1020,68 @@ var PartialNodeConnection = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/delight/nodes/library/math/arithmetic.ts":
-/*!******************************************************!*\
-  !*** ./src/delight/nodes/library/math/arithmetic.ts ***!
-  \******************************************************/
-/*! exports provided: ArithmeticNode */
+/***/ "./src/delight/nodes/library/color/color.ts":
+/*!**************************************************!*\
+  !*** ./src/delight/nodes/library/color/color.ts ***!
+  \**************************************************/
+/*! exports provided: ColorValueNode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArithmeticNode", function() { return ArithmeticNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorValueNode", function() { return ColorValueNode; });
 /* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
 /* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
-/* harmony import */ var _types_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/select */ "./src/delight/nodes/types/select.ts");
-/* harmony import */ var _types_number__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../types/number */ "./src/delight/nodes/types/number.ts");
+/* harmony import */ var _types_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/color */ "./src/delight/nodes/types/color.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var ColorValueNode = /** @class */ (function (_super) {
+    __extends(ColorValueNode, _super);
+    function ColorValueNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Color";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].color;
+        _this.outputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "color", "Color", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_color__WEBPACK_IMPORTED_MODULE_2__["ColorType"](), true, false)
+        ];
+        return _this;
+    }
+    ColorValueNode.id = "color.color";
+    return ColorValueNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
+/***/ "./src/delight/nodes/library/color/combine.ts":
+/*!****************************************************!*\
+  !*** ./src/delight/nodes/library/color/combine.ts ***!
+  \****************************************************/
+/*! exports provided: CombineRGBNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CombineRGBNode", function() { return CombineRGBNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/color */ "./src/delight/nodes/types/color.ts");
+/* harmony import */ var _types_boundedNumber__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../types/boundedNumber */ "./src/delight/nodes/types/boundedNumber.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1087,133 +1135,43 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-var ArithmeticNode = /** @class */ (function (_super) {
-    __extends(ArithmeticNode, _super);
-    function ArithmeticNode() {
+var CombineRGBNode = /** @class */ (function (_super) {
+    __extends(CombineRGBNode, _super);
+    function CombineRGBNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = "Arithmetic";
-        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].math;
-        _this.options = [
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "operation", "Operation", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_select__WEBPACK_IMPORTED_MODULE_2__["SelectType"]([
-                {
-                    id: "add",
-                    name: "Add"
-                },
-                {
-                    id: "sub",
-                    name: "Subtract"
-                },
-                {
-                    id: "mul",
-                    name: "Multiply"
-                },
-                {
-                    id: "div",
-                    name: "Divide"
-                },
-                {
-                    id: "pow",
-                    name: "Power"
-                },
-                {
-                    id: "log",
-                    name: "Base B Log"
-                }
-            ], "add"), true, false)
-        ];
+        _this.name = "Combine RGB";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].color;
         _this.inputs = [
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num1", "A", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01)),
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num2", "B", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01))
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "r", "Red", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_boundedNumber__WEBPACK_IMPORTED_MODULE_3__["BoundedNumberType"](0.5, 0, 1, 0.01)),
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "g", "Green", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_boundedNumber__WEBPACK_IMPORTED_MODULE_3__["BoundedNumberType"](0.5, 0, 1, 0.01)),
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "b", "Blue", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_boundedNumber__WEBPACK_IMPORTED_MODULE_3__["BoundedNumberType"](0.5, 0, 1, 0.01))
         ];
         _this.outputs = [
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "result", "Result", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01), false // Not adjustable by the user
-            )
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "color", "Color", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_color__WEBPACK_IMPORTED_MODULE_2__["ColorType"](), false)
         ];
         return _this;
     }
-    ArithmeticNode.prototype.process = function () {
+    CombineRGBNode.prototype.process = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var operation, num1, num2, outSocket, newNum;
+            var values, out;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        operation = this.getOption("operation");
-                        return [4 /*yield*/, this.getInput("num1")];
+                    case 0: return [4 /*yield*/, Promise.all([
+                            this.getInput("r"),
+                            this.getInput("g"),
+                            this.getInput("b")
+                        ])];
                     case 1:
-                        num1 = _a.sent();
-                        return [4 /*yield*/, this.getInput("num2")];
-                    case 2:
-                        num2 = _a.sent();
-                        outSocket = this.getOutputSocket("result");
-                        newNum = 0;
-                        if (operation.value === "add")
-                            newNum = num1.value + num2.value;
-                        else if (operation.value === "sub")
-                            newNum = num1.value - num2.value;
-                        else if (operation.value === "mul")
-                            newNum = num1.value * num2.value;
-                        else if (operation.value === "div")
-                            newNum = num1.value / num2.value;
-                        else if (operation.value === "pow")
-                            newNum = Math.pow(num1.value, num2.value);
-                        else if (operation.value === "log")
-                            newNum = Math.log(num1.value) / Math.log(num2.value);
-                        outSocket.value.value = newNum;
+                        values = _a.sent();
+                        out = this.getOutput("color");
+                        out.value = new _types_color__WEBPACK_IMPORTED_MODULE_2__["Color"](values[0].value, values[1].value, values[2].value);
                         return [2 /*return*/];
                 }
             });
         });
     };
-    ArithmeticNode.id = "math.arithmetic";
-    return ArithmeticNode;
-}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
-
-
-
-/***/ }),
-
-/***/ "./src/delight/nodes/library/misc/comment.ts":
-/*!***************************************************!*\
-  !*** ./src/delight/nodes/library/misc/comment.ts ***!
-  \***************************************************/
-/*! exports provided: CommentNode */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentNode", function() { return CommentNode; });
-/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
-/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
-/* harmony import */ var _types_comment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/comment */ "./src/delight/nodes/types/comment.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var CommentNode = /** @class */ (function (_super) {
-    __extends(CommentNode, _super);
-    function CommentNode() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = "Comment";
-        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].comment;
-        _this.options = [
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "comment", "Comment", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_comment__WEBPACK_IMPORTED_MODULE_2__["CommentType"]("Your comment here", true), true, false)
-        ];
-        return _this;
-    }
-    CommentNode.id = "misc.comment";
-    return CommentNode;
+    CombineRGBNode.id = "color.combine";
+    return CombineRGBNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
 
@@ -1347,6 +1305,158 @@ var ViewerNode = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/delight/nodes/library/number/arithmetic.ts":
+/*!********************************************************!*\
+  !*** ./src/delight/nodes/library/number/arithmetic.ts ***!
+  \********************************************************/
+/*! exports provided: ArithmeticNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArithmeticNode", function() { return ArithmeticNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/select */ "./src/delight/nodes/types/select.ts");
+/* harmony import */ var _types_number__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../types/number */ "./src/delight/nodes/types/number.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var ArithmeticNode = /** @class */ (function (_super) {
+    __extends(ArithmeticNode, _super);
+    function ArithmeticNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Arithmetic";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].math;
+        _this.options = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "operation", "Operation", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_select__WEBPACK_IMPORTED_MODULE_2__["SelectType"]([
+                {
+                    id: "add",
+                    name: "Add"
+                },
+                {
+                    id: "sub",
+                    name: "Subtract"
+                },
+                {
+                    id: "mul",
+                    name: "Multiply"
+                },
+                {
+                    id: "div",
+                    name: "Divide"
+                },
+                {
+                    id: "pow",
+                    name: "Power"
+                },
+                {
+                    id: "log",
+                    name: "Base B Log"
+                }
+            ], "add"), true, false)
+        ];
+        _this.inputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num1", "A", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01)),
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num2", "B", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01))
+        ];
+        _this.outputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "result", "Result", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01), false // Not adjustable by the user
+            )
+        ];
+        return _this;
+    }
+    ArithmeticNode.prototype.process = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var operation, num1, num2, out, newNum;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        operation = this.getOption("operation");
+                        return [4 /*yield*/, this.getInput("num1")];
+                    case 1:
+                        num1 = _a.sent();
+                        return [4 /*yield*/, this.getInput("num2")];
+                    case 2:
+                        num2 = _a.sent();
+                        out = this.getOutput("result");
+                        newNum = 0;
+                        if (operation.value === "add")
+                            newNum = num1.value + num2.value;
+                        else if (operation.value === "sub")
+                            newNum = num1.value - num2.value;
+                        else if (operation.value === "mul")
+                            newNum = num1.value * num2.value;
+                        else if (operation.value === "div")
+                            newNum = num1.value / num2.value;
+                        else if (operation.value === "pow")
+                            newNum = Math.pow(num1.value, num2.value);
+                        else if (operation.value === "log")
+                            newNum = Math.log(num1.value) / Math.log(num2.value);
+                        out.value = newNum;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ArithmeticNode.id = "math.arithmetic";
+    return ArithmeticNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
 /***/ "./src/delight/nodes/library/razer/output.ts":
 /*!***************************************************!*\
   !*** ./src/delight/nodes/library/razer/output.ts ***!
@@ -1399,54 +1509,6 @@ var RazerOutputNode = /** @class */ (function (_super) {
     }
     RazerOutputNode.id = "razer.output";
     return RazerOutputNode;
-}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
-
-
-
-/***/ }),
-
-/***/ "./src/delight/nodes/library/value/color.ts":
-/*!**************************************************!*\
-  !*** ./src/delight/nodes/library/value/color.ts ***!
-  \**************************************************/
-/*! exports provided: ColorValueNode */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorValueNode", function() { return ColorValueNode; });
-/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
-/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
-/* harmony import */ var _types_color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/color */ "./src/delight/nodes/types/color.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var ColorValueNode = /** @class */ (function (_super) {
-    __extends(ColorValueNode, _super);
-    function ColorValueNode() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = "Color";
-        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].general;
-        _this.outputs = [
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "color", "Color", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_color__WEBPACK_IMPORTED_MODULE_2__["ColorType"](), true, false)
-        ];
-        return _this;
-    }
-    ColorValueNode.id = "value.color";
-    return ColorValueNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
 
@@ -1508,6 +1570,7 @@ var NodeCategory;
     NodeCategory["general"] = "general";
     NodeCategory["comment"] = "comment";
     NodeCategory["math"] = "math";
+    NodeCategory["color"] = "color";
     NodeCategory["razer"] = "razer";
 })(NodeCategory || (NodeCategory = {}));
 var DelightNode = /** @class */ (function () {
@@ -1563,6 +1626,12 @@ var DelightNode = /** @class */ (function () {
     };
     DelightNode.prototype.getOption = function (id) {
         var socket = this.getOptionSocket(id);
+        if (!socket)
+            throw "what the fuck";
+        return socket.value;
+    };
+    DelightNode.prototype.getOutput = function (id) {
+        var socket = this.getOutputSocket(id);
         if (!socket)
             throw "what the fuck";
         return socket.value;
@@ -1712,6 +1781,7 @@ var BoundedNumberType = /** @class */ (function () {
         this.max = max;
         this.step = step;
         this.typeId = "boundedNumber";
+        this.accepts = ["boundedNumber", "number"];
         this.createDOM();
     }
     Object.defineProperty(BoundedNumberType.prototype, "value", {
@@ -1789,6 +1859,7 @@ var ButtonType = /** @class */ (function () {
         this.text = text;
         this.callback = callback;
         this.typeId = "button";
+        this.accepts = [this.typeId];
         this.createDOM();
     }
     ButtonType.prototype.deserialize = function (data) { };
@@ -1863,6 +1934,7 @@ var ColorType = /** @class */ (function () {
         if (_value === void 0) { _value = new Color(); }
         this._value = _value;
         this.typeId = "color";
+        this.accepts = [this.typeId];
         this.createDOM();
     }
     Object.defineProperty(ColorType.prototype, "value", {
@@ -1931,6 +2003,7 @@ var CommentType = /** @class */ (function () {
         this._value = _value;
         this.editable = editable;
         this.typeId = "comment";
+        this.accepts = [this.typeId];
         this.createDOM();
     }
     Object.defineProperty(CommentType.prototype, "value", {
@@ -1996,6 +2069,7 @@ var NumberType = /** @class */ (function () {
         this._value = _value;
         this.step = step;
         this.typeId = "number";
+        this.accepts = ["boundedNumber", "number"];
         this.createDOM();
     }
     Object.defineProperty(NumberType.prototype, "value", {
@@ -2061,6 +2135,7 @@ var SelectType = /** @class */ (function () {
         this.options = options;
         this._value = _value;
         this.typeId = "select";
+        this.accepts = [this.typeId];
         this.createDOM();
     }
     Object.defineProperty(SelectType.prototype, "value", {
@@ -2133,6 +2208,7 @@ __webpack_require__.r(__webpack_exports__);
 var NullType = /** @class */ (function () {
     function NullType() {
         this.typeId = "null";
+        this.accepts = [this.typeId];
         this.createDOM();
     }
     NullType.prototype.deserialize = function (data) { };

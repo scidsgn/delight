@@ -247,7 +247,7 @@ export class Context {
                 this.partialConnection &&
                 socket.type === SocketType.input &&
                 (
-                    this.partialConnection.inputSocket.value.typeId === socket.value.typeId ||
+                    socket.value.accepts.includes(this.partialConnection.inputSocket.value.typeId) ||
                     socket.acceptAll
                 )
             ) {

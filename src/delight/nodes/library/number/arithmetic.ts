@@ -83,7 +83,7 @@ export class ArithmeticNode extends DelightNode {
         const num1 = await this.getInput("num1") as NumberType
         const num2 = await this.getInput("num2") as NumberType
 
-        const outSocket = this.getOutputSocket("result") as Socket<BoundedNumberType>
+        const out = this.getOutput("result") as NumberType
 
         let newNum = 0
 
@@ -100,6 +100,6 @@ export class ArithmeticNode extends DelightNode {
         else if (operation.value === "log")
             newNum = Math.log(num1.value) / Math.log(num2.value)
         
-        outSocket.value.value = newNum
+            out.value = newNum
     }
 }

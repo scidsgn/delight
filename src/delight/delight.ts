@@ -7,6 +7,7 @@ import { Socket } from "./nodes/socket"
 import { BoundedNumberType } from "./nodes/types/boundedNumber"
 import { ViewerNode } from "./nodes/library/misc/viewer"
 import { ColorValueNode } from "./nodes/library/color/color"
+import { CombineRGBNode } from "./nodes/library/color/combine"
 
 const ctx = new Context()
 ctx.setupEvents()
@@ -17,7 +18,7 @@ ctx.addNode(n1)
 const n2 = new RazerOutputNode(ctx)
 ctx.addNode(n2)
 
-const n3 = new CommentNode(ctx)
+const n3 = new CombineRGBNode(ctx)
 ctx.addNode(n3)
 
 const n4 = new ViewerNode(ctx)

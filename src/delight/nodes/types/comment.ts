@@ -5,6 +5,7 @@ import "../../styles/types/comment.scss"
 export class CommentType implements IDelightType {
     public domElement: HTMLDivElement
     public typeId = "comment"
+    public accepts = [this.typeId]
 
     constructor(
         private _value = "",

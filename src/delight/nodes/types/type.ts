@@ -1,6 +1,7 @@
 export interface IDelightType {
     domElement: HTMLElement
     typeId: string
+    accepts: string[]
 
     serialize: () => any
     deserialize: (data: any) => void
@@ -9,6 +10,7 @@ export interface IDelightType {
 export class NullType implements IDelightType {
     public domElement: HTMLDivElement
     public typeId = "null"
+    public accepts = [this.typeId]
 
     constructor() {
         this.createDOM()

@@ -9,6 +9,7 @@ export enum NodeCategory {
     comment = "comment",
     
     math = "math",
+    color = "color",
 
     razer = "razer"
 }
@@ -76,6 +77,13 @@ export class DelightNode {
 
     getOption(id: string): IDelightType {
         const socket = this.getOptionSocket(id)
+        if (!socket) throw "what the fuck"
+
+        return socket.value
+    }
+    
+    getOutput(id: string): IDelightType {
+        const socket = this.getOutputSocket(id)
         if (!socket) throw "what the fuck"
 
         return socket.value

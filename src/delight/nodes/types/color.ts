@@ -45,6 +45,7 @@ export class Color {
 export class ColorType implements IDelightType {
     public domElement: HTMLDivElement
     public typeId = "color"
+    public accepts = [this.typeId]
 
     constructor(
         private _value = new Color()

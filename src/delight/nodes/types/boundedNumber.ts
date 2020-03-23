@@ -5,6 +5,7 @@ import "../../styles/types/number.scss"
 export class BoundedNumberType implements IDelightType {
     public domElement: HTMLDivElement
     public typeId = "boundedNumber"
+    public accepts = ["boundedNumber", "number"]
 
     constructor(
         private _value = 0,

@@ -5,6 +5,7 @@ import "../../styles/types/button.scss"
 export class ButtonType implements IDelightType {
     public domElement: HTMLDivElement
     public typeId = "button"
+    public accepts = [this.typeId]
 
     constructor(
         public text: string,
