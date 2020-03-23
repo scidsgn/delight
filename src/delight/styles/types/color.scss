@@ -1,15 +1,11 @@
-div.socket.select {
+div.socket.color{
+    --socket-color: var(--socket-colortype) !important;
+
     div.type {
-        position: relative;
+        input {
+            width: calc(100% - 16px);
 
-        select {
-            width: calc(100%);
-
-            background: #333;
-            color: #fff;
-
-            font-family: "Inter";
-            font-size: 9pt;
+            background: #666;
             
             outline: none;
             border: none;

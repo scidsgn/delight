@@ -1,8 +1,6 @@
-div.socket.select {
+div.socket.button {
     div.type {
-        position: relative;
-
-        select {
+        button {
             width: calc(100%);
 
             background: #333;
@@ -19,6 +17,11 @@ div.socket.select {
 
             &:hover {
                 box-shadow: inset 0px 0px 0px 2px var(--selected);
+            }
+
+            &:active {
+                background: var(--selected);
+                color: #000;
             }
         }
     }

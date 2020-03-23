@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
+        "rootDir": "src",
+
         "noImplicitAny": true,
         "sourceMap": true,
 
@@ -7,9 +9,11 @@
         "target": "ES5",
         "lib": ["ESNext", "DOM"],
 
-        "jsx": "react",
-        "allowJs": true,
+        "allowJs": false,
 
         "moduleResolution": "Node"
-    }
+    },
+    "exclude": [
+        "./webpack.config.js"
+    ]
 }

@@ -1,4 +1,6 @@
 :root {
+    --selected: rgb(247, 213, 61);
+
     --node-general: #666d;
     --node-comment: #555137dd;
     --node-math: rgba(82, 96, 112, 0.867);
@@ -6,4 +8,5 @@
 
     --socket-general: #666;
     --socket-number: #3db55e;
+    --socket-colortype: #e7ab29;
 }

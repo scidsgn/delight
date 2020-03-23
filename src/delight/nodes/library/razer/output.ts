@@ -3,6 +3,7 @@ import { Socket, SocketType } from "../../socket"
 import { IDelightType } from "../../types/type"
 import { NumberType } from "../../types/number"
 import { SelectType } from "../../types/select"
+import { ColorType } from "../../types/color"
 
 export class RazerOutputNode extends DelightNode {
     public static id = "razer.output"
@@ -30,10 +31,10 @@ export class RazerOutputNode extends DelightNode {
     public inputs: Socket<IDelightType>[] = [
         new Socket(
             this,
-            "dummy", "Dummy",
+            "color", "Color",
             SocketType.input,
-            new NumberType(),
-            false
+            new ColorType(),
+            true
         )
     ]
 }

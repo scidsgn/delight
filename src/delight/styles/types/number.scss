@@ -26,6 +26,10 @@ div.socket.boundedNumber {
             overflow: hidden;
             pointer-events: none;
 
+            &:hover {
+                box-shadow: inset 0px 0px 0px 2px var(--selected);
+            }
+
             div.progress {
                 height: 100%;
 
@@ -61,6 +65,11 @@ div.socket.boundedNumber {
             border: none;
             padding: 8px 8px;
             border-radius: 4px;
-            box-shadow: inset 0px 0px 0px 2px #0003;}
+            box-shadow: inset 0px 0px 0px 2px #0003;
+
+            &:hover {
+                box-shadow: inset 0px 0px 0px 2px var(--selected);
+            }
+        }
     }
 }

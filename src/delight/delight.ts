@@ -5,6 +5,7 @@ import { ArithmeticNode } from "./nodes/library/math/arithmetic"
 import { CommentNode } from "./nodes/library/misc/comment"
 import { Socket } from "./nodes/socket"
 import { BoundedNumberType } from "./nodes/types/boundedNumber"
+import { ViewerNode } from "./nodes/library/misc/viewer"
 
 const ctx = new Context()
 ctx.setupEvents()
@@ -18,6 +19,9 @@ ctx.addNode(n2)
 const n3 = new CommentNode(ctx)
 ctx.addNode(n3)
 
+const n4 = new ViewerNode(ctx)
+ctx.addNode(n4)
+
 n1.createDOM()
 n1.setPosition(16, 16)
 ctx.nodeContainer.appendChild(n1.domElement)
@@ -30,14 +34,22 @@ n3.createDOM()
 n3.setPosition(16, 300)
 ctx.nodeContainer.appendChild(n3.domElement)
 
+n4.createDOM()
+n4.setPosition(200, 300)
+ctx.nodeContainer.appendChild(n4.domElement)
+
 ctx.updateConnectionsCanvas()
 
 const glob = window as any
 glob.evaluate = async () => {
     ctx.resetProcessing()
-    await n2.process()
-    
-    const outSocket = n2.getOutputSocket("newNum") as Socket<BoundedNumberType>
 
-    return outSocket.value.value
+    const nodesToProcess = ctx.nodes.filter(
+        n => n instanceof RazerOutputNode
+    )
+    await Promise.all(
+        nodesToProcess.map(
+            n => n.process()
+        )
+    )
 }

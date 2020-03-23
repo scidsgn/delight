@@ -80,8 +80,8 @@ export class ArithmeticNode extends DelightNode {
     async process(): Promise<void> {
         const operation = this.getOption("operation") as SelectType
 
-        const num1 = await this.getInput("num1", this.context) as NumberType
-        const num2 = await this.getInput("num2", this.context) as NumberType
+        const num1 = await this.getInput("num1") as NumberType
+        const num2 = await this.getInput("num2") as NumberType
 
         const outSocket = this.getOutputSocket("result") as Socket<BoundedNumberType>
 

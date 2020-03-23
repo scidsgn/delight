@@ -5,3 +5,23 @@ export interface IDelightType {
     serialize: () => any
     deserialize: (data: any) => void
 }
+
+export class NullType implements IDelightType {
+    public domElement: HTMLDivElement
+    public typeId = "null"
+
+    constructor() {
+        this.createDOM()
+    }
+
+    deserialize(data: any) {}
+
+    serialize(): any {}
+
+    createDOM() {
+        const div = document.createElement("div")
+        div.classList.add("type", this.typeId)
+
+        this.domElement = div
+    }
+}

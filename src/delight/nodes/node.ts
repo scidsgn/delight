@@ -64,11 +64,11 @@ export class DelightNode {
         return this.options.find(s => s.id === id)
     }
     
-    async getInput(id: string, ctx: Context): Promise<IDelightType> {
+    async getInput(id: string): Promise<IDelightType> {
         const socket = this.getInputSocket(id)
         if (!socket) throw "what the fuck"
 
-        const connValue = await ctx.getConnectionValue(this, socket)
+        const connValue = await this.context.getConnectionValue(this, socket)
         if (connValue !== null) return connValue
         
         return socket.value

@@ -4,7 +4,7 @@ import { Socket, SocketType } from "./nodes/socket";
 import { IDelightType } from "./nodes/types/type";
 
 export class Context {
-    private nodes: DelightNode[] = []
+    public nodes: DelightNode[] = []
     private connections: NodeConnection[] = []
 
     private _currentNode: DelightNode = null
@@ -237,7 +237,10 @@ export class Context {
             if (
                 this.partialConnection &&
                 socket.type === SocketType.input &&
-                this.partialConnection.inputSocket.value.typeId === socket.value.typeId
+                (
+                    this.partialConnection.inputSocket.value.typeId === socket.value.typeId ||
+                    socket.acceptAll
+                )
             ) {
                 const existingConn = this.findConnection(
                     null, null,

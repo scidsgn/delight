@@ -17,7 +17,8 @@ export class Socket<T extends IDelightType> {
         public type: SocketType,
         public value: T,
         public adjustable = true,
-        public header = true
+        public header = true,
+        public acceptAll = false
     ) {
         this.createDOM()
     }
