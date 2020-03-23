@@ -117,7 +117,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: var(--node-general);\n  padding-bottom: 8px;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.comment {\n    background: var(--node-comment); }\n  div.node.math {\n    background: var(--node-math); }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    margin-bottom: 4px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: var(--socket-general);\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket.output p {\n      text-align: right; }\n    div.node div.socket.option div.plug {\n      display: none; }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket.hiddenHeader p {\n      display: none; }\n    div.node div.socket > *:last-child {\n      margin-top: 4px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
+exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: var(--node-general);\n  padding-bottom: 8px;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.comment {\n    background: var(--node-comment); }\n  div.node.math {\n    background: var(--node-math); }\n  div.node.razer {\n    background: var(--node-razer); }\n    div.node.razer > header {\n      background: rgba(0, 245, 0, 0.315); }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    margin-bottom: 4px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: var(--socket-general);\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket.output p {\n      text-align: right; }\n    div.node div.socket.option div.plug {\n      display: none; }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket.hiddenHeader p {\n      display: none; }\n    div.node div.socket > *:last-child {\n      margin-top: 4px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -189,7 +189,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ":root {\r\n    --node-general: #666d;\r\n    --node-comment: #555137dd;\r\n    --node-math: rgba(82, 96, 112, 0.867);\r\n\r\n    --socket-general: #666;\r\n    --socket-number: #3db55e;\r\n}", ""]);
+exports.push([module.i, ":root {\r\n    --node-general: #666d;\r\n    --node-comment: #555137dd;\r\n    --node-math: rgba(82, 96, 112, 0.867);\r\n    --node-razer: rgba(19, 19, 19, 0.867);\r\n\r\n    --socket-general: #666;\r\n    --socket-number: #3db55e;\r\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -831,27 +831,10 @@ var Context = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_layout_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/layout.scss */ "./src/delight/styles/layout.scss");
 /* harmony import */ var _styles_layout_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_layout_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/delight/context.ts");
-/* harmony import */ var _nodes_node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes/node */ "./src/delight/nodes/node.ts");
-/* harmony import */ var _nodes_socket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nodes/library/razer/output */ "./src/delight/nodes/library/razer/output.ts");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context */ "./src/delight/context.ts");
+/* harmony import */ var _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/library/math/arithmetic */ "./src/delight/nodes/library/math/arithmetic.ts");
 /* harmony import */ var _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/library/misc/comment */ "./src/delight/nodes/library/misc/comment.ts");
-/* harmony import */ var _nodes_types_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/types/select */ "./src/delight/nodes/types/select.ts");
-/* harmony import */ var _nodes_types_number__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/types/number */ "./src/delight/nodes/types/number.ts");
-/* harmony import */ var _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nodes/library/math/arithmetic */ "./src/delight/nodes/library/math/arithmetic.ts");
-// Basic bitch testing for now
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -893,67 +876,11 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
-
-
-// A node that adds 1 to the input
-var TestNode = /** @class */ (function (_super) {
-    __extends(TestNode, _super);
-    function TestNode() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.id = "gen.testNode";
-        _this.name = "Plus minus";
-        _this.category = _nodes_node__WEBPACK_IMPORTED_MODULE_2__["NodeCategory"].general;
-        _this.options = [
-            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "operation", "Operation", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].option, new _nodes_types_select__WEBPACK_IMPORTED_MODULE_5__["SelectType"]([
-                {
-                    id: "add",
-                    name: "Add 1"
-                },
-                {
-                    id: "subtract",
-                    name: "Subtract 1"
-                }
-            ], "add"), true, false)
-        ];
-        _this.inputs = [
-            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "num", "Number", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].input, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_6__["NumberType"](0, 1))
-        ];
-        _this.outputs = [
-            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "newNum", "Result", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].output, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_6__["NumberType"](0, 1), false // Not adjustable by the user
-            )
-        ];
-        return _this;
-    }
-    TestNode.prototype.process = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var operation, num, outSocket, newNum;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        operation = this.getOption("operation");
-                        return [4 /*yield*/, this.getInput("num", this.context)];
-                    case 1:
-                        num = _a.sent();
-                        outSocket = this.getOutputSocket("newNum");
-                        newNum = num.value;
-                        if (operation.value === "add")
-                            newNum++;
-                        else if (operation.value === "subtract")
-                            newNum--;
-                        outSocket.value.value = newNum;
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return TestNode;
-}(_nodes_node__WEBPACK_IMPORTED_MODULE_2__["DelightNode"]));
-var ctx = new _context__WEBPACK_IMPORTED_MODULE_1__["Context"]();
+var ctx = new _context__WEBPACK_IMPORTED_MODULE_2__["Context"]();
 ctx.setupEvents();
-var n1 = new _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_7__["ArithmeticNode"](ctx);
+var n1 = new _nodes_library_math_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"](ctx);
 ctx.addNode(n1);
-var n2 = new TestNode(ctx);
+var n2 = new _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__["RazerOutputNode"](ctx);
 ctx.addNode(n2);
 var n3 = new _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_4__["CommentNode"](ctx);
 ctx.addNode(n3);
@@ -1106,7 +1033,6 @@ var ArithmeticNode = /** @class */ (function (_super) {
     __extends(ArithmeticNode, _super);
     function ArithmeticNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.id = "math.arithmetic";
         _this.name = "Arithmetic";
         _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].math;
         _this.options = [
@@ -1126,12 +1052,20 @@ var ArithmeticNode = /** @class */ (function (_super) {
                 {
                     id: "div",
                     name: "Divide"
+                },
+                {
+                    id: "pow",
+                    name: "Power"
+                },
+                {
+                    id: "log",
+                    name: "Base B Log"
                 }
             ], "add"), true, false)
         ];
         _this.inputs = [
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num1", "Number", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01)),
-            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num2", "Number", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01))
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num1", "A", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01)),
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "num2", "B", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01))
         ];
         _this.outputs = [
             new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "result", "Result", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_3__["NumberType"](0, 0.01), false // Not adjustable by the user
@@ -1162,12 +1096,17 @@ var ArithmeticNode = /** @class */ (function (_super) {
                             newNum = num1.value * num2.value;
                         else if (operation.value === "div")
                             newNum = num1.value / num2.value;
+                        else if (operation.value === "pow")
+                            newNum = Math.pow(num1.value, num2.value);
+                        else if (operation.value === "log")
+                            newNum = Math.log(num1.value) / Math.log(num2.value);
                         outSocket.value.value = newNum;
                         return [2 /*return*/];
                 }
             });
         });
     };
+    ArithmeticNode.id = "math.arithmetic";
     return ArithmeticNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
@@ -1208,7 +1147,6 @@ var CommentNode = /** @class */ (function (_super) {
     __extends(CommentNode, _super);
     function CommentNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.id = "misc.comment";
         _this.name = "Comment";
         _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].comment;
         _this.options = [
@@ -1216,7 +1154,66 @@ var CommentNode = /** @class */ (function (_super) {
         ];
         return _this;
     }
+    CommentNode.id = "misc.comment";
     return CommentNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
+/***/ "./src/delight/nodes/library/razer/output.ts":
+/*!***************************************************!*\
+  !*** ./src/delight/nodes/library/razer/output.ts ***!
+  \***************************************************/
+/*! exports provided: RazerOutputNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RazerOutputNode", function() { return RazerOutputNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_number__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/number */ "./src/delight/nodes/types/number.ts");
+/* harmony import */ var _types_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../types/select */ "./src/delight/nodes/types/select.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+var RazerOutputNode = /** @class */ (function (_super) {
+    __extends(RazerOutputNode, _super);
+    function RazerOutputNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Send to Chroma";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].razer;
+        _this.options = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "device", "Target device", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_select__WEBPACK_IMPORTED_MODULE_3__["SelectType"]([
+                {
+                    id: "keyboard",
+                    name: "Keyboard"
+                }
+            ], "keyboard"), true, false)
+        ];
+        _this.inputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "dummy", "Dummy", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].input, new _types_number__WEBPACK_IMPORTED_MODULE_2__["NumberType"](), false)
+        ];
+        return _this;
+    }
+    RazerOutputNode.id = "razer.output";
+    return RazerOutputNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
 
@@ -1278,11 +1275,11 @@ var NodeCategory;
     NodeCategory["general"] = "general";
     NodeCategory["comment"] = "comment";
     NodeCategory["math"] = "math";
+    NodeCategory["razer"] = "razer";
 })(NodeCategory || (NodeCategory = {}));
 var DelightNode = /** @class */ (function () {
     function DelightNode(context) {
         this.context = context;
-        this.id = "gen.blankNode";
         this.name = "Node";
         this.category = NodeCategory.general;
         // Do not touch this! This will be handled by the Context
@@ -1349,7 +1346,7 @@ var DelightNode = /** @class */ (function () {
         var header = document.createElement("header");
         header.classList.add("nodeHeader");
         var icon = document.createElement("img");
-        icon.src = "../../design/icons/blank.svg";
+        icon.src = "../../design/icons/" + this.category + ".svg";
         header.appendChild(icon);
         var name = document.createElement("p");
         name.textContent = this.name;
@@ -1376,6 +1373,7 @@ var DelightNode = /** @class */ (function () {
         node.addEventListener("click", function () { return _this.context.currentNode = _this; });
         this.domElement = node;
     };
+    DelightNode.id = "gen.blankNode";
     return DelightNode;
 }());
 

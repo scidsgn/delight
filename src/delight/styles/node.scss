@@ -16,6 +16,14 @@ div.node {
     &.math {
         background: var(--node-math);
     }
+    
+    &.razer {
+        background: var(--node-razer);
+
+        & > header {
+            background: rgba(0, 245, 0, 0.315);
+        }
+    }
 
     &.current {
         box-shadow: inset 0px 0px 0px 2px rgb(247, 213, 61),

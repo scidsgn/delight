@@ -6,7 +6,7 @@ import { NumberType } from "../../types/number"
 import { BoundedNumberType } from "../../types/boundedNumber"
 
 export class ArithmeticNode extends DelightNode {
-    public id = "math.arithmetic"
+    public static id = "math.arithmetic"
 
     public name = "Arithmetic"
     public category: NodeCategory = NodeCategory.math
@@ -34,6 +34,14 @@ export class ArithmeticNode extends DelightNode {
                     {
                         id: "div",
                         name: "Divide"
+                    },
+                    {
+                        id: "pow",
+                        name: "Power"
+                    },
+                    {
+                        id: "log",
+                        name: "Base B Log"
                     }
                 ],
                 "add"
@@ -46,14 +54,14 @@ export class ArithmeticNode extends DelightNode {
         new Socket(
             this,
             "num1",
-            "Number",
+            "A",
             SocketType.input,
             new NumberType(0, 0.01)
         ),
         new Socket(
             this,
             "num2",
-            "Number",
+            "B",
             SocketType.input,
             new NumberType(0, 0.01)
         )
@@ -87,6 +95,10 @@ export class ArithmeticNode extends DelightNode {
             newNum = num1.value * num2.value
         else if (operation.value === "div")
             newNum = num1.value / num2.value
+        else if (operation.value === "pow")
+            newNum = num1.value ** num2.value
+        else if (operation.value === "log")
+            newNum = Math.log(num1.value) / Math.log(num2.value)
         
         outSocket.value.value = newNum
     }

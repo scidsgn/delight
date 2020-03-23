@@ -7,11 +7,14 @@ import "../styles/node.scss"
 export enum NodeCategory {
     general = "general",
     comment = "comment",
-    math = "math"
+    
+    math = "math",
+
+    razer = "razer"
 }
 
 export class DelightNode {
-    public id = "gen.blankNode"
+    public static id = "gen.blankNode"
 
     public name = "Node"
     public category: NodeCategory = NodeCategory.general
@@ -88,7 +91,7 @@ export class DelightNode {
         header.classList.add("nodeHeader")
 
         const icon = document.createElement("img")
-        icon.src = "../../design/icons/blank.svg"
+        icon.src = `../../design/icons/${this.category}.svg`
         header.appendChild(icon)
         
         const name = document.createElement("p")

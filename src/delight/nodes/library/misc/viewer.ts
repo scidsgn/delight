@@ -4,7 +4,7 @@ import { IDelightType } from "../../types/type"
 import { CommentType } from "../../types/comment"
 
 export class ViewerNode extends DelightNode {
-    public id = "misc.viewer"
+    public static id = "misc.viewer"
 
     public name = "Viewer"
     public category: NodeCategory = NodeCategory.comment
