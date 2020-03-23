@@ -3,11 +3,11 @@ import { Socket, SocketType } from "../../socket"
 import { IDelightType } from "../../types/type"
 import { NumberType } from "../../types/number"
 
-export class NumberValueNode extends DelightNode {
-    public static id = "number.number"
-    public static listName = "Number"
+export class RandomNumberNode extends DelightNode {
+    public static id = "number.random"
+    public static listName = "Random"
 
-    public name = "Number"
+    public name = "Random"
     public category: NodeCategory = NodeCategory.number
 
     public outputs: Socket<IDelightType>[] = [
@@ -16,7 +16,13 @@ export class NumberValueNode extends DelightNode {
             "number", "Number",
             SocketType.output,
             new NumberType(),
-            true, false
+            false
         )
     ]
+
+    async process() {
+        const out = this.getOutput("number") as NumberType
+
+        out.value = Math.random()
+    }
 }

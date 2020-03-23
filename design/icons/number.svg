@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-80,0)">
+        <g id="number" transform="matrix(1,0,0,1,80,0)">
+            <rect x="0" y="0" width="16" height="16" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="0" y="0" width="16" height="16"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1,0,0,1,-80,0)">
+                    <path d="M88,0C90.208,0 92,1.792 92,4C92,6.208 90.208,8 88,8C85.792,8 84,6.208 84,4C84,1.792 85.792,0 88,0ZM88,2C89.104,2 90,2.896 90,4C90,5.104 89.104,6 88,6C86.896,6 86,5.104 86,4C86,2.896 86.896,2 88,2Z"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-80,0)">
+                    <path d="M88,6C90.76,6 93,8.24 93,11C93,13.76 90.76,16 88,16C85.24,16 83,13.76 83,11C83,8.24 85.24,6 88,6ZM88,8C89.656,8 91,9.344 91,11C91,12.656 89.656,14 88,14C86.344,14 85,12.656 85,11C85,9.344 86.344,8 88,8Z"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

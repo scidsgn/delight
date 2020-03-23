@@ -10,6 +10,7 @@ import { CombineRGBNode } from "./nodes/library/color/combine"
 import { CommentNode } from "./nodes/library/misc/comment"
 import { ViewerNode } from "./nodes/library/misc/viewer"
 import { NumberValueNode } from "./nodes/library/number/number"
+import { RandomNumberNode } from "./nodes/library/number/random"
 
 const { Menu } = require("electron").remote
 
@@ -23,6 +24,7 @@ const availableNodes: {
     ],
     "Number": [
         NumberValueNode,
+        RandomNumberNode,
         null,
         ArithmeticNode
     ],
@@ -66,6 +68,7 @@ export class Context {
         this.connections.filter(
             c => c.inputNode === n || c.outputNode === n
         ).forEach(conn => {
+            conn.outputSocket.connected = false
             this.connections.splice(
                 this.connections.indexOf(conn), 1
             )
@@ -76,6 +79,8 @@ export class Context {
         this.nodes.splice(
             this.nodes.indexOf(n), 1
         )
+
+        this.updateConnectionsCanvas(true)
     }
 
     findConnection(
