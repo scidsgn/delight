@@ -5,7 +5,7 @@ import "./styles/layout.scss"
 import { Context } from "./context"
 import { DelightNode, NodeCategory } from "./nodes/node"
 import { Socket, SocketType } from "./nodes/socket"
-import { NumberType } from "./nodes/types/basic"
+import { NumberType } from "./nodes/types/number"
 import { IDelightType } from "./nodes/types/type"
 
 // A node that adds 1 to the input

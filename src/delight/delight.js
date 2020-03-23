@@ -115,7 +115,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: #666d;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: #666;\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #aaa; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
+exports.push([module.i, "div.node {\n  position: absolute;\n  width: 144px;\n  background: #666d;\n  border-radius: 8px;\n  box-shadow: inset 0px 0px 0px 2px #0003,\r 0px 3px 12px #0001,\r 0px 1px 2px #0001; }\n  div.node.current {\n    box-shadow: inset 0px 0px 0px 2px #f7d53d, 0px 3px 12px #0001, 0px 1px 2px #0001;\n    z-index: 9999; }\n  div.node > header {\n    background: #0000002C;\n    padding: 8px 12px;\n    border-radius: 8px 8px 0px 0px;\n    display: flex;\n    align-items: center; }\n    div.node > header * {\n      pointer-events: none; }\n    div.node > header img {\n      width: 16px;\n      height: 16px;\n      opacity: 0.5;\n      filter: invert(1) drop-shadow(0px 1px 0px #0006); }\n    div.node > header p {\n      color: #fff;\n      font-size: 9pt;\n      font-weight: 500;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px 0px 0px 8px;\n      flex-grow: 1; }\n  div.node div.socket {\n    --socket-color: #666;\n    position: relative;\n    padding: 4px 12px; }\n    div.node div.socket div.plug {\n      position: absolute;\n      top: 50%;\n      left: 1px;\n      width: 12px;\n      height: 12px;\n      background: var(--socket-color);\n      border-radius: 50%;\n      box-shadow: inset 0px 0px 0px 2px #0005;\n      transform: translate(-50%, -50%); }\n    div.node div.socket.connected div.plug {\n      box-shadow: inset 0px 0px 0px 2px #fff7; }\n    div.node div.socket.output div.plug {\n      left: unset;\n      right: 1px;\n      border-radius: 2px;\n      transform: translate(50%, -50%); }\n    div.node div.socket p {\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      margin: 0px; }\n    div.node div.socket:not(.editable) > *:last-child {\n      display: none; }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -133,7 +133,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "div.type.number {\n  position: relative; }\n  div.type.number input {\n    width: 100%;\n    opacity: 0; }\n  div.type.number div.display {\n    position: absolute;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    background: #666;\n    border-radius: 4px;\n    box-shadow: inset 0px 0px 0px 2px #0003;\n    overflow: hidden;\n    pointer-events: none; }\n    div.type.number div.display div.progress {\n      height: 100%;\n      background: #0006; }\n    div.type.number div.display span {\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      color: #fff;\n      font-size: 9pt;\n      text-shadow: 0px 1px 0px #0003;\n      transform: translate(-50%, -50%); }\n", ""]);
+exports.push([module.i, "div.socket.number {\n  --socket-color: #3db55e !important; }\n  div.socket.number div.type.number {\n    position: relative; }\n    div.socket.number div.type.number input {\n      width: 100%;\n      opacity: 0; }\n    div.socket.number div.type.number div.display {\n      position: absolute;\n      left: 0;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      background: #666;\n      border-radius: 4px;\n      box-shadow: inset 0px 0px 0px 2px #0003;\n      overflow: hidden;\n      pointer-events: none; }\n      div.socket.number div.type.number div.display div.progress {\n        height: 100%;\n        background: #0006; }\n      div.socket.number div.type.number div.display span {\n        position: absolute;\n        left: 50%;\n        top: 50%;\n        color: #fff;\n        font-size: 9pt;\n        text-shadow: 0px 1px 0px #0003;\n        transform: translate(-50%, -50%); }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -778,7 +778,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/delight/context.ts");
 /* harmony import */ var _nodes_node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes/node */ "./src/delight/nodes/node.ts");
 /* harmony import */ var _nodes_socket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/socket */ "./src/delight/nodes/socket.ts");
-/* harmony import */ var _nodes_types_basic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/types/basic */ "./src/delight/nodes/types/basic.ts");
+/* harmony import */ var _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/types/number */ "./src/delight/nodes/types/number.ts");
 // Basic bitch testing for now
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -843,10 +843,10 @@ var TestNode = /** @class */ (function (_super) {
         _this.name = "Add 1, lol";
         _this.category = _nodes_node__WEBPACK_IMPORTED_MODULE_2__["NodeCategory"].general;
         _this.inputs = [
-            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "num", "Number", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].input, new _nodes_types_basic__WEBPACK_IMPORTED_MODULE_4__["NumberType"](0, 0, 10, 1))
+            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "num", "Number", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].input, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__["NumberType"](0, 0, 10, 1))
         ];
         _this.outputs = [
-            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "newNum", "Number + 1", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].output, new _nodes_types_basic__WEBPACK_IMPORTED_MODULE_4__["NumberType"](1), false // Not adjustable by the user
+            new _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["Socket"](_this, "newNum", "Number + 1", _nodes_socket__WEBPACK_IMPORTED_MODULE_3__["SocketType"].output, new _nodes_types_number__WEBPACK_IMPORTED_MODULE_4__["NumberType"](1), false // Not adjustable by the user
             )
         ];
         return _this;
@@ -1138,6 +1138,7 @@ var Socket = /** @class */ (function () {
     Socket.prototype.createDOM = function () {
         var socket = document.createElement("div");
         socket.classList.add("socket");
+        socket.classList.add(this.value.typeId);
         if (this.type === SocketType.input)
             socket.classList.add("input");
         else if (this.type === SocketType.output)
@@ -1160,10 +1161,10 @@ var Socket = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/delight/nodes/types/basic.ts":
-/*!******************************************!*\
-  !*** ./src/delight/nodes/types/basic.ts ***!
-  \******************************************/
+/***/ "./src/delight/nodes/types/number.ts":
+/*!*******************************************!*\
+  !*** ./src/delight/nodes/types/number.ts ***!
+  \*******************************************/
 /*! exports provided: NumberType */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

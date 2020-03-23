@@ -40,6 +40,7 @@ export class Socket<T extends IDelightType> {
     createDOM() {
         const socket = document.createElement("div")
         socket.classList.add("socket")
+        socket.classList.add(this.value.typeId)
 
         if (this.type === SocketType.input)
             socket.classList.add("input")
