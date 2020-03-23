@@ -16,6 +16,7 @@ export enum NodeCategory {
 
 export class DelightNode {
     public static id = "gen.blankNode"
+    public static listName = "Node"
 
     public name = "Node"
     public category: NodeCategory = NodeCategory.general
@@ -136,11 +137,17 @@ export class DelightNode {
         node.appendChild(outputs)
 
         node.addEventListener("click", () => this.context.currentNode = this)
+        node.addEventListener("contextmenu", (e) => {
+            e.stopPropagation()
+        })
 
         this.domElement = node
     }
 }
 
 export interface DelightNodeConstructor {
+    id: string
+    listName: string
+    
     new(ctx: Context): DelightNode
 }

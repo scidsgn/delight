@@ -5,6 +5,7 @@ import { CommentType } from "../../types/comment"
 
 export class CommentNode extends DelightNode {
     public static id = "misc.comment"
+    public static listName = "Comment"
 
     public name = "Comment"
     public category: NodeCategory = NodeCategory.comment

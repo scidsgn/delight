@@ -5,6 +5,7 @@ import { ColorType } from "../../types/color"
 
 export class ColorValueNode extends DelightNode {
     public static id = "color.color"
+    public static listName = "Color"
 
     public name = "Color"
     public category: NodeCategory = NodeCategory.color

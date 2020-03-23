@@ -3,12 +3,31 @@ import { NodeConnection, PartialNodeConnection } from "./nodes/connection";
 import { Socket, SocketType } from "./nodes/socket";
 import { IDelightType } from "./nodes/types/type";
 import { RazerOutputNode } from "./nodes/library/razer/output"
+import { MenuItem } from "electron"
+import { ArithmeticNode } from "./nodes/library/number/arithmetic"
+import { ColorValueNode } from "./nodes/library/color/color"
+import { CombineRGBNode } from "./nodes/library/color/combine"
+import { CommentNode } from "./nodes/library/misc/comment"
+import { ViewerNode } from "./nodes/library/misc/viewer"
+
+const { Menu } = require("electron").remote
 
 const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
 } = {
+    "Color": [
+        ColorValueNode,
+        CombineRGBNode
+    ],
+    "Number": [
+        ArithmeticNode
+    ],
     "Razer Chroma": [
         RazerOutputNode
+    ],
+    "Misc.": [
+        CommentNode,
+        ViewerNode
     ]
 }
 
@@ -171,6 +190,9 @@ export class Context {
         this.nodeContainer.addEventListener(
             "mousemove", (e) => this.handleMouseMove(e)
         )
+        this.nodeContainer.addEventListener(
+            "contextmenu", (e) => this.handleContextMenu(e)
+        )
     }
 
     findSocket(
@@ -292,5 +314,43 @@ export class Context {
         }
 
         if (updateConnCanvas) this.updateConnectionsCanvas(true)
+    }
+
+    handleContextMenu(e: MouseEvent) {
+        const addNodeItems: MenuItem[] = Object.keys(
+            availableNodes
+        ).map(
+            category => {
+                const nodeItems: MenuItem[] = availableNodes[category].map(
+                    n => {
+                        return {
+                            label: n.listName,
+                            click: () => {
+                                const node = new n(this)
+                                node.createDOM()
+                                node.setPosition(e.clientX, e.clientY)
+
+                                this.addNode(node)
+                                this.currentNode = node
+                                this.nodeContainer.appendChild(node.domElement)
+                            }
+                        } as unknown as MenuItem
+                    }
+                )
+
+                return {
+                    label: category,
+                    submenu: nodeItems
+                } as unknown as MenuItem
+            }
+        )
+
+        const menu = Menu.buildFromTemplate(
+            [
+                ...addNodeItems
+            ]
+        )
+
+        menu.popup()
     }
 }

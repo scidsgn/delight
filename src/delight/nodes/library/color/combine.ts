@@ -7,6 +7,7 @@ import { NumberType } from "../../types/number"
 
 export class CombineRGBNode extends DelightNode {
     public static id = "color.combine"
+    public static listName = "Combine RGB"
 
     public name = "Combine RGB"
     public category: NodeCategory = NodeCategory.color

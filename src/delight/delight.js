@@ -630,6 +630,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nodes_connection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nodes/connection */ "./src/delight/nodes/connection.ts");
 /* harmony import */ var _nodes_socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nodes/socket */ "./src/delight/nodes/socket.ts");
 /* harmony import */ var _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes/library/razer/output */ "./src/delight/nodes/library/razer/output.ts");
+/* harmony import */ var _nodes_library_number_arithmetic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nodes/library/number/arithmetic */ "./src/delight/nodes/library/number/arithmetic.ts");
+/* harmony import */ var _nodes_library_color_color__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/library/color/color */ "./src/delight/nodes/library/color/color.ts");
+/* harmony import */ var _nodes_library_color_combine__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/library/color/combine */ "./src/delight/nodes/library/color/combine.ts");
+/* harmony import */ var _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/library/misc/comment */ "./src/delight/nodes/library/misc/comment.ts");
+/* harmony import */ var _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nodes/library/misc/viewer */ "./src/delight/nodes/library/misc/viewer.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -666,12 +671,36 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 
 
+
+
+
+
+
+var Menu = __webpack_require__(/*! electron */ "electron").remote.Menu;
 var availableNodes = {
+    "Color": [
+        _nodes_library_color_color__WEBPACK_IMPORTED_MODULE_4__["ColorValueNode"],
+        _nodes_library_color_combine__WEBPACK_IMPORTED_MODULE_5__["CombineRGBNode"]
+    ],
+    "Number": [
+        _nodes_library_number_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"]
+    ],
     "Razer Chroma": [
         _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_2__["RazerOutputNode"]
+    ],
+    "Misc.": [
+        _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_6__["CommentNode"],
+        _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_7__["ViewerNode"]
     ]
 };
 var Context = /** @class */ (function () {
@@ -781,6 +810,7 @@ var Context = /** @class */ (function () {
         this.nodeContainer.addEventListener("mousedown", function (e) { return _this.handleMouseDown(e); });
         this.nodeContainer.addEventListener("mouseup", function (e) { return _this.handleMouseUp(e); });
         this.nodeContainer.addEventListener("mousemove", function (e) { return _this.handleMouseMove(e); });
+        this.nodeContainer.addEventListener("contextmenu", function (e) { return _this.handleContextMenu(e); });
     };
     Context.prototype.findSocket = function (predicate) {
         for (var _i = 0, _a = this.nodes; _i < _a.length; _i++) {
@@ -856,6 +886,30 @@ var Context = /** @class */ (function () {
         }
         if (updateConnCanvas)
             this.updateConnectionsCanvas(true);
+    };
+    Context.prototype.handleContextMenu = function (e) {
+        var _this = this;
+        var addNodeItems = Object.keys(availableNodes).map(function (category) {
+            var nodeItems = availableNodes[category].map(function (n) {
+                return {
+                    label: n.listName,
+                    click: function () {
+                        var node = new n(_this);
+                        node.createDOM();
+                        node.setPosition(e.clientX, e.clientY);
+                        _this.addNode(node);
+                        _this.currentNode = node;
+                        _this.nodeContainer.appendChild(node.domElement);
+                    }
+                };
+            });
+            return {
+                label: category,
+                submenu: nodeItems
+            };
+        });
+        var menu = Menu.buildFromTemplate(__spreadArrays(addNodeItems));
+        menu.popup();
     };
     return Context;
 }());
@@ -1061,6 +1115,7 @@ var ColorValueNode = /** @class */ (function (_super) {
         return _this;
     }
     ColorValueNode.id = "color.color";
+    ColorValueNode.listName = "Color";
     return ColorValueNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
@@ -1171,7 +1226,57 @@ var CombineRGBNode = /** @class */ (function (_super) {
         });
     };
     CombineRGBNode.id = "color.combine";
+    CombineRGBNode.listName = "Combine RGB";
     return CombineRGBNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
+/***/ "./src/delight/nodes/library/misc/comment.ts":
+/*!***************************************************!*\
+  !*** ./src/delight/nodes/library/misc/comment.ts ***!
+  \***************************************************/
+/*! exports provided: CommentNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentNode", function() { return CommentNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_comment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/comment */ "./src/delight/nodes/types/comment.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var CommentNode = /** @class */ (function (_super) {
+    __extends(CommentNode, _super);
+    function CommentNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Comment";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].comment;
+        _this.options = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "comment", "Comment", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_comment__WEBPACK_IMPORTED_MODULE_2__["CommentType"]("Your comment here", true), true, false)
+        ];
+        return _this;
+    }
+    CommentNode.id = "misc.comment";
+    CommentNode.listName = "Comment";
+    return CommentNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
 
@@ -1298,6 +1403,7 @@ var ViewerNode = /** @class */ (function (_super) {
         });
     };
     ViewerNode.id = "misc.viewer";
+    ViewerNode.listName = "Viewer";
     return ViewerNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
@@ -1449,7 +1555,8 @@ var ArithmeticNode = /** @class */ (function (_super) {
             });
         });
     };
-    ArithmeticNode.id = "math.arithmetic";
+    ArithmeticNode.id = "number.arithmetic";
+    ArithmeticNode.listName = "Arithmetic";
     return ArithmeticNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
@@ -1508,6 +1615,7 @@ var RazerOutputNode = /** @class */ (function (_super) {
         return _this;
     }
     RazerOutputNode.id = "razer.output";
+    RazerOutputNode.listName = "Send to Chroma";
     return RazerOutputNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 
@@ -1673,9 +1781,13 @@ var DelightNode = /** @class */ (function () {
         });
         node.appendChild(outputs);
         node.addEventListener("click", function () { return _this.context.currentNode = _this; });
+        node.addEventListener("contextmenu", function (e) {
+            e.stopPropagation();
+        });
         this.domElement = node;
     };
     DelightNode.id = "gen.blankNode";
+    DelightNode.listName = "Node";
     return DelightNode;
 }());
 
@@ -2439,6 +2551,17 @@ var exported = content.locals ? content.locals : {};
 
 
 module.exports = exported;
+
+/***/ }),
+
+/***/ "electron":
+/*!***************************!*\
+  !*** external "electron" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
 
 /***/ })
 

@@ -9,6 +9,7 @@ import { ColorType } from "../../types/color"
 
 export class ViewerNode extends DelightNode {
     public static id = "misc.viewer"
+    public static listName = "Viewer"
 
     public name = "Viewer"
     public category: NodeCategory = NodeCategory.comment

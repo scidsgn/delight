@@ -6,7 +6,8 @@ import { NumberType } from "../../types/number"
 import { BoundedNumberType } from "../../types/boundedNumber"
 
 export class ArithmeticNode extends DelightNode {
-    public static id = "math.arithmetic"
+    public static id = "number.arithmetic"
+    public static listName = "Arithmetic"
 
     public name = "Arithmetic"
     public category: NodeCategory = NodeCategory.math
