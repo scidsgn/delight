@@ -635,6 +635,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nodes_library_color_combine__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./nodes/library/color/combine */ "./src/delight/nodes/library/color/combine.ts");
 /* harmony import */ var _nodes_library_misc_comment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nodes/library/misc/comment */ "./src/delight/nodes/library/misc/comment.ts");
 /* harmony import */ var _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nodes/library/misc/viewer */ "./src/delight/nodes/library/misc/viewer.ts");
+/* harmony import */ var _nodes_library_number_number__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./nodes/library/number/number */ "./src/delight/nodes/library/number/number.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -686,13 +687,17 @@ var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
 
 
 
+
 var Menu = __webpack_require__(/*! electron */ "electron").remote.Menu;
 var availableNodes = {
     "Color": [
         _nodes_library_color_color__WEBPACK_IMPORTED_MODULE_4__["ColorValueNode"],
+        null,
         _nodes_library_color_combine__WEBPACK_IMPORTED_MODULE_5__["CombineRGBNode"]
     ],
     "Number": [
+        _nodes_library_number_number__WEBPACK_IMPORTED_MODULE_8__["NumberValueNode"],
+        null,
         _nodes_library_number_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"]
     ],
     "Razer Chroma": [
@@ -712,9 +717,6 @@ var Context = /** @class */ (function () {
         this.movingNode = null;
         this.nodeContainer = document.querySelector("div.nodeGrid");
     }
-    Context.prototype.addNode = function (n) {
-        this.nodes.push(n);
-    };
     Object.defineProperty(Context.prototype, "currentNode", {
         get: function () {
             return this._currentNode;
@@ -728,6 +730,17 @@ var Context = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Context.prototype.addNode = function (n) {
+        this.nodes.push(n);
+    };
+    Context.prototype.deleteNode = function (n) {
+        var _this = this;
+        this.connections.filter(function (c) { return c.inputNode === n || c.outputNode === n; }).forEach(function (conn) {
+            _this.connections.splice(_this.connections.indexOf(conn), 1);
+        });
+        this.nodeContainer.removeChild(n.domElement);
+        this.nodes.splice(this.nodes.indexOf(n), 1);
+    };
     Context.prototype.findConnection = function (inputNode, inputSocket, outputNode, outputSocket) {
         return this.connections.find(function (c) {
             var out = true;
@@ -891,6 +904,11 @@ var Context = /** @class */ (function () {
         var _this = this;
         var addNodeItems = Object.keys(availableNodes).map(function (category) {
             var nodeItems = availableNodes[category].map(function (n) {
+                if (!n) {
+                    return {
+                        type: "separator"
+                    };
+                }
                 return {
                     label: n.listName,
                     click: function () {
@@ -1564,6 +1582,55 @@ var ArithmeticNode = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/delight/nodes/library/number/number.ts":
+/*!****************************************************!*\
+  !*** ./src/delight/nodes/library/number/number.ts ***!
+  \****************************************************/
+/*! exports provided: NumberValueNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumberValueNode", function() { return NumberValueNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_number__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/number */ "./src/delight/nodes/types/number.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var NumberValueNode = /** @class */ (function (_super) {
+    __extends(NumberValueNode, _super);
+    function NumberValueNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Number";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].number;
+        _this.outputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "color", "Color", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_2__["NumberType"](), true, false)
+        ];
+        return _this;
+    }
+    NumberValueNode.id = "number.number";
+    NumberValueNode.listName = "Number";
+    return NumberValueNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
 /***/ "./src/delight/nodes/library/razer/output.ts":
 /*!***************************************************!*\
   !*** ./src/delight/nodes/library/razer/output.ts ***!
@@ -1672,12 +1739,14 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var Menu = __webpack_require__(/*! electron */ "electron").remote.Menu;
 
 var NodeCategory;
 (function (NodeCategory) {
     NodeCategory["general"] = "general";
     NodeCategory["comment"] = "comment";
     NodeCategory["math"] = "math";
+    NodeCategory["number"] = "number";
     NodeCategory["color"] = "color";
     NodeCategory["razer"] = "razer";
 })(NodeCategory || (NodeCategory = {}));
@@ -1782,6 +1851,15 @@ var DelightNode = /** @class */ (function () {
         node.appendChild(outputs);
         node.addEventListener("click", function () { return _this.context.currentNode = _this; });
         node.addEventListener("contextmenu", function (e) {
+            var menu = Menu.buildFromTemplate([
+                {
+                    label: "Delete",
+                    click: function () {
+                        _this.context.deleteNode(_this);
+                    }
+                }
+            ]);
+            menu.popup();
             e.stopPropagation();
         });
         this.domElement = node;

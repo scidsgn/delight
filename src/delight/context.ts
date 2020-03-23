@@ -9,6 +9,7 @@ import { ColorValueNode } from "./nodes/library/color/color"
 import { CombineRGBNode } from "./nodes/library/color/combine"
 import { CommentNode } from "./nodes/library/misc/comment"
 import { ViewerNode } from "./nodes/library/misc/viewer"
+import { NumberValueNode } from "./nodes/library/number/number"
 
 const { Menu } = require("electron").remote
 
@@ -17,9 +18,12 @@ const availableNodes: {
 } = {
     "Color": [
         ColorValueNode,
+        null,
         CombineRGBNode
     ],
     "Number": [
+        NumberValueNode,
+        null,
         ArithmeticNode
     ],
     "Razer Chroma": [
@@ -42,10 +46,6 @@ export class Context {
 
     public nodeContainer: HTMLDivElement = document.querySelector("div.nodeGrid")
 
-    addNode(n: DelightNode) {
-        this.nodes.push(n)
-    }
-
     get currentNode() {
         return this._currentNode
     }
@@ -56,6 +56,26 @@ export class Context {
         
         this._currentNode = n
         n.domElement.classList.add("current")
+    }
+
+    addNode(n: DelightNode) {
+        this.nodes.push(n)
+    }
+
+    deleteNode(n: DelightNode) {
+        this.connections.filter(
+            c => c.inputNode === n || c.outputNode === n
+        ).forEach(conn => {
+            this.connections.splice(
+                this.connections.indexOf(conn), 1
+            )
+        })
+        this.nodeContainer.removeChild(
+            n.domElement
+        )
+        this.nodes.splice(
+            this.nodes.indexOf(n), 1
+        )
     }
 
     findConnection(
@@ -323,6 +343,12 @@ export class Context {
             category => {
                 const nodeItems: MenuItem[] = availableNodes[category].map(
                     n => {
+                        if (!n) {
+                            return {
+                                type: "separator"
+                            } as unknown as MenuItem
+                        }
+
                         return {
                             label: n.listName,
                             click: () => {

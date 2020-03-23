@@ -2,6 +2,8 @@ import { Socket } from "./socket"
 import { Context } from "../context"
 import { IDelightType } from "./types/type"
 
+const { Menu } = require("electron").remote
+
 import "../styles/node.scss"
 
 export enum NodeCategory {
@@ -9,6 +11,7 @@ export enum NodeCategory {
     comment = "comment",
     
     math = "math",
+    number = "number",
     color = "color",
 
     razer = "razer"
@@ -138,6 +141,18 @@ export class DelightNode {
 
         node.addEventListener("click", () => this.context.currentNode = this)
         node.addEventListener("contextmenu", (e) => {
+            const menu = Menu.buildFromTemplate(
+                [
+                    {
+                        label: "Delete",
+                        click: () => {
+                            this.context.deleteNode(this)
+                        }
+                    }
+                ]
+            )
+            menu.popup()
+
             e.stopPropagation()
         })
 
