@@ -90,11 +90,11 @@
 /*!*********************!*\
   !*** ./src/main.ts ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("\r\nexports.__esModule = true;\r\nvar electron_1 = __webpack_require__(/*! electron */ \"electron\");\r\nelectron_1.app.on(\"ready\", function () {\r\n    var win = new electron_1.BrowserWindow({\r\n        width: 1280,\r\n        height: 720,\r\n        webPreferences: {\r\n            nodeIntegration: true\r\n        }\r\n    });\r\n    win.loadFile(\"delight/index.html\");\r\n});\r\n\n\n//# sourceURL=webpack:///./src/main.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var electron__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! electron */ \"electron\");\n/* harmony import */ var electron__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(electron__WEBPACK_IMPORTED_MODULE_0__);\n\r\nelectron__WEBPACK_IMPORTED_MODULE_0__[\"app\"].on(\"ready\", function () {\r\n    var win = new electron__WEBPACK_IMPORTED_MODULE_0__[\"BrowserWindow\"]({\r\n        width: 1280,\r\n        height: 720,\r\n        webPreferences: {\r\n            nodeIntegration: true\r\n        }\r\n    });\r\n    win.loadFile(\"delight/index.html\");\r\n});\r\n\n\n//# sourceURL=webpack:///./src/main.ts?");
 
 /***/ }),
 

@@ -46,6 +46,13 @@ module.exports = [
                 }
             ]
         },
+        resolve: {
+            extensions: [
+                ".ts",
+                ".scss"
+            ],
+            modules: ["node_modules"]
+        },
         output: {
             path: __dirname + "/src/delight",
             filename: "delight.js"
