@@ -10,3 +10,8 @@ export class NodeConnection {
         public outputSocket: Socket<IDelightType>
     ) {}
 }
+
+export class PartialNodeConnection extends NodeConnection {
+    public tailX = 0
+    public tailY = 0
+}

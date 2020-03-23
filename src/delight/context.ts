@@ -1,33 +1,53 @@
 import { DelightNode } from "./nodes/node";
-import { NodeConnection } from "./nodes/connection";
-import { Socket } from "./nodes/socket";
+import { NodeConnection, PartialNodeConnection } from "./nodes/connection";
+import { Socket, SocketType } from "./nodes/socket";
 import { IDelightType } from "./nodes/types/type";
 
 export class Context {
-    public nodes: DelightNode[] = []
-    public connections: NodeConnection[] = []
+    private nodes: DelightNode[] = []
+    private connections: NodeConnection[] = []
 
-    async getConnectionValue(
-        targetNode: DelightNode,
-        targetSocket: Socket<IDelightType>
-    ): Promise<IDelightType> {
-        const conn = this.connections.find(
-            c => c.outputNode === targetNode && c.outputSocket === targetSocket
-        )
-        if (conn) {
-            if (!conn.inputNode.isProcessed) {
-                await conn.inputNode.process(this)
-                conn.inputNode.isProcessed
-            }
-            
-            return conn.inputSocket.value
-        }
+    private _currentNode: DelightNode = null
+    private partialConnection: PartialNodeConnection = null
 
-        return null // Not connected to any output sockets
-    }
+    private movingNode: DelightNode = null
+
+    public nodeContainer: HTMLDivElement = document.querySelector("div.nodeGrid")
 
     addNode(n: DelightNode) {
         this.nodes.push(n)
+    }
+
+    get currentNode() {
+        return this._currentNode
+    }
+
+    set currentNode(n: DelightNode) {
+        if (this._currentNode)
+            this._currentNode.domElement.classList.remove("current")
+        
+        this._currentNode = n
+        n.domElement.classList.add("current")
+    }
+
+    findConnection(
+        inputNode: DelightNode,
+        inputSocket: Socket<IDelightType>,
+        outputNode: DelightNode,
+        outputSocket: Socket<IDelightType>
+    ) {
+        return this.connections.find(
+            c => {
+                let out = true
+
+                if (inputNode) out = out && c.inputNode === inputNode
+                if (inputSocket) out = out && c.inputSocket === inputSocket
+                if (outputNode) out = out && c.outputNode === outputNode
+                if (outputSocket) out = out && c.outputSocket === outputSocket
+
+                return out
+            }
+        )
     }
 
     connectNodes(
@@ -42,5 +62,223 @@ export class Context {
                 outputNode, outputSocket
             )
         )
+
+        inputSocket.connected = true
+        outputSocket.connected = true
+    }
+
+    disconnectNodes(conn: NodeConnection) {
+        this.connections.splice(
+            this.connections.indexOf(conn), 1
+        )
+
+        const otherInputConn = this.findConnection(
+            conn.inputNode, conn.inputSocket,
+            null, null
+        )
+        
+        conn.inputSocket.connected = otherInputConn === null
+        conn.outputSocket.connected = false
+    }
+
+    async getConnectionValue(
+        targetNode: DelightNode,
+        targetSocket: Socket<IDelightType>
+    ): Promise<IDelightType> {
+        const conn = this.findConnection(
+            null, null, targetNode, targetSocket
+        )
+        if (conn) {
+            if (!conn.inputNode.processed) {
+                conn.inputNode.processed = true
+                await conn.inputNode.process()
+            }
+            
+            return conn.inputSocket.value
+        }
+
+        return null // Not connected to any output sockets
+    }
+
+    resetProcessing() {
+        this.nodes.forEach(node => node.processed = false)
+    }
+
+    updateConnectionsCanvas(quick = false) {
+        const canvas = document.querySelector("canvas.connections") as HTMLCanvasElement
+
+        if (!quick) {
+            canvas.width = innerWidth
+            canvas.height = innerHeight
+        }
+
+        const ctx = canvas.getContext("2d")
+
+        ctx.clearRect(0, 0, innerWidth, innerHeight)
+
+        ctx.beginPath()
+
+        this.connections.forEach(conn => {
+            const sock1Rect = conn.inputSocket.domElement.children[0].getBoundingClientRect()
+            const sock2Rect = conn.outputSocket.domElement.children[0].getBoundingClientRect()
+
+            ctx.moveTo(
+                sock1Rect.x + 6, sock1Rect.y + 6
+            )
+            ctx.lineTo(
+                sock2Rect.x + 6, sock2Rect.y + 6
+            )
+        })
+
+        ctx.lineWidth = 2
+        ctx.strokeStyle = "#aaa"
+        ctx.stroke()
+
+        if (this.partialConnection) {
+            const inputSockRect = this.partialConnection.inputSocket
+                                  .domElement.children[0].getBoundingClientRect()
+            
+            ctx.beginPath()
+
+            ctx.moveTo(
+                inputSockRect.x + 6, inputSockRect.y + 6
+            )
+            ctx.lineTo(
+                this.partialConnection.tailX, this.partialConnection.tailY
+            )
+
+            ctx.strokeStyle = "#fff"
+            ctx.stroke()
+        }
+    }
+
+    setupEvents() {
+        this.nodeContainer.addEventListener(
+            "mousedown", (e) => this.handleMouseDown(e)
+        )
+        this.nodeContainer.addEventListener(
+            "mouseup", (e) => this.handleMouseUp(e)
+        )
+        this.nodeContainer.addEventListener(
+            "mousemove", (e) => this.handleMouseMove(e)
+        )
+    }
+
+    findSocket(
+        predicate: (
+            s: Socket<IDelightType>,
+            i: number,
+            a: Socket<IDelightType>[]
+        ) => boolean
+    ): Socket<IDelightType> {
+        for (let node of this.nodes) {
+            for (let socketList of [node.options, node.inputs, node.outputs]) {
+                const socket = socketList.find(predicate)
+                if (socket) return socket
+            }
+        }
+
+        return null
+    }
+
+    handleMouseDown(e: MouseEvent) {
+        const target = e.target as HTMLElement
+
+        if (target.classList.contains("plug")) {
+            const socket = this.findSocket(
+                s => s.domElement === target.parentElement
+            )
+
+            if (socket.type === SocketType.output) {
+                const newConn = new PartialNodeConnection(
+                    socket.node, socket, null, null
+                )
+                newConn.tailX = e.clientX
+                newConn.tailY = e.clientY
+
+                this.partialConnection = newConn
+            } else if (socket.type === SocketType.input) {
+                const existingConn = this.findConnection(
+                    null, null, socket.node, socket
+                )
+
+                if (existingConn) {
+                    const newConn = new PartialNodeConnection(
+                        existingConn.inputNode, existingConn.inputSocket,
+                        null, null
+                    )
+                    newConn.tailX = e.clientX
+                    newConn.tailY = e.clientY
+
+                    this.disconnectNodes(existingConn)
+                    this.partialConnection = newConn
+                }
+            }
+        } else if (target.classList.contains("nodeHeader")) {
+            const node = this.nodes.find(
+                n => n.domElement === target.parentElement
+            )
+
+            if (!node.locked)
+                this.movingNode = node
+            
+            this.currentNode = node
+        }
+    }
+
+    handleMouseUp(e: MouseEvent) {
+        const target = e.target as HTMLElement
+
+        if (target.classList.contains("plug")) {
+            const socket = this.findSocket(
+                s => s.domElement === target.parentElement
+            )
+
+            if (
+                this.partialConnection &&
+                socket.type === SocketType.input &&
+                this.partialConnection.inputSocket.value.typeId === socket.value.typeId
+            ) {
+                const existingConn = this.findConnection(
+                    null, null,
+                    socket.node, socket
+                )
+
+                if (!existingConn) {
+                    this.connectNodes(
+                        this.partialConnection.inputNode,
+                        this.partialConnection.inputSocket,
+                        socket.node, socket
+                    )
+                }
+            }
+
+            this.partialConnection = null
+        } else if (this.partialConnection) {
+            this.partialConnection = null
+        }
+
+        this.movingNode = null
+
+        this.updateConnectionsCanvas()
+    }
+
+    handleMouseMove(e: MouseEvent) {
+        let updateConnCanvas = false
+
+        if (this.partialConnection) {
+            this.partialConnection.tailX = e.clientX
+            this.partialConnection.tailY = e.clientY
+
+            updateConnCanvas = true
+        } else if (this.movingNode) {
+            this.movingNode.move(
+                e.movementX, e.movementY
+            )
+            
+            updateConnCanvas = true
+        }
+
+        if (updateConnCanvas) this.updateConnectionsCanvas(true)
     }
 }
