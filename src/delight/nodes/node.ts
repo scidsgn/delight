@@ -6,7 +6,8 @@ import "../styles/node.scss"
 
 export enum NodeCategory {
     general = "general",
-    comment = "comment"
+    comment = "comment",
+    math = "math"
 }
 
 export class DelightNode {

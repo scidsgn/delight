@@ -1,7 +1,8 @@
-div.socket.number {
+div.socket.number,
+div.socket.boundedNumber {
     --socket-color: var(--socket-number) !important;
 
-    div.type {
+    div.type.boundedNumber {
         position: relative;
 
         input {
@@ -44,5 +45,22 @@ div.socket.number {
                 transform: translate(-50%, -50%);
             }
         }
+    }
+
+    div.type.number {
+        input {
+            width: calc(100% - 16px);
+
+            background: #666;
+            color: #fff;
+
+            font-family: "Inter";
+            font-size: 9pt;
+            
+            outline: none;
+            border: none;
+            padding: 8px 8px;
+            border-radius: 4px;
+            box-shadow: inset 0px 0px 0px 2px #0003;}
     }
 }

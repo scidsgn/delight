@@ -5,10 +5,12 @@ import "./styles/layout.scss"
 import { Context } from "./context"
 import { DelightNode, NodeCategory } from "./nodes/node"
 import { Socket, SocketType } from "./nodes/socket"
-import { NumberType } from "./nodes/types/number"
+import { BoundedNumberType } from "./nodes/types/boundedNumber"
 import { IDelightType } from "./nodes/types/type"
 import { CommentNode } from "./nodes/library/misc/comment"
 import { SelectType } from "./nodes/types/select"
+import { NumberType } from "./nodes/types/number"
+import { ArithmeticNode } from "./nodes/library/math/arithmetic"
 
 // A node that adds 1 to the input
 class TestNode extends DelightNode {
@@ -46,7 +48,7 @@ class TestNode extends DelightNode {
             "num",
             "Number",
             SocketType.input,
-            new NumberType(0, 0, 10, 1)
+            new NumberType(0, 1)
         )
     ]
     public outputs: Socket<IDelightType>[] = [
@@ -55,7 +57,7 @@ class TestNode extends DelightNode {
             "newNum",
             "Result",
             SocketType.output,
-            new NumberType(1),
+            new NumberType(0, 1),
             false // Not adjustable by the user
         )
     ]
@@ -79,9 +81,7 @@ class TestNode extends DelightNode {
 const ctx = new Context()
 ctx.setupEvents()
 
-const n1 = new TestNode(ctx)
-const numInput = n1.getInputSocket("num") as Socket<NumberType>
-numInput.value.value = 4
+const n1 = new ArithmeticNode(ctx)
 ctx.addNode(n1)
 
 const n2 = new TestNode(ctx)
@@ -109,7 +109,7 @@ glob.evaluate = async () => {
     ctx.resetProcessing()
     await n2.process()
     
-    const outSocket = n2.getOutputSocket("newNum") as Socket<NumberType>
+    const outSocket = n2.getOutputSocket("newNum") as Socket<BoundedNumberType>
 
     return outSocket.value.value
 }

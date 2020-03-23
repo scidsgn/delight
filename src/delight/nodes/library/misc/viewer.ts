@@ -3,19 +3,19 @@ import { Socket, SocketType } from "../../socket"
 import { IDelightType } from "../../types/type"
 import { CommentType } from "../../types/comment"
 
-export class CommentNode extends DelightNode {
-    public id = "misc.comment"
+export class ViewerNode extends DelightNode {
+    public id = "misc.viewer"
 
-    public name = "Comment"
+    public name = "Viewer"
     public category: NodeCategory = NodeCategory.comment
     
     public options: Socket<IDelightType>[] = [
         new Socket(
-            this, "comment", "Comment",
+            this, "display", "",
             SocketType.option,
             new CommentType(
-                "Your comment here",
-                true
+                "",
+                false
             ),
             true, false
         )
