@@ -37,6 +37,10 @@ export class ArithmeticNode extends DelightNode {
                         name: "Divide"
                     },
                     {
+                        id: "mod",
+                        name: "Modulo"
+                    },
+                    {
                         id: "pow",
                         name: "Power"
                     },
@@ -96,6 +100,8 @@ export class ArithmeticNode extends DelightNode {
             newNum = num1.value * num2.value
         else if (operation.value === "div")
             newNum = num1.value / num2.value
+        else if (operation.value === "mod")
+            newNum = num1.value % num2.value
         else if (operation.value === "pow")
             newNum = num1.value ** num2.value
         else if (operation.value === "log")

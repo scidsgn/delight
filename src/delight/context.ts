@@ -12,6 +12,8 @@ import { ViewerNode } from "./nodes/library/misc/viewer"
 import { NumberValueNode } from "./nodes/library/number/number"
 import { RandomNumberNode } from "./nodes/library/number/random"
 import { RazerInputNode } from "./nodes/library/razer/input"
+import { FrameNode } from "./nodes/library/time/frame"
+import { TimeNode } from "./nodes/library/time/time"
 
 const { Menu } = require("electron").remote
 
@@ -33,6 +35,10 @@ const availableNodes: {
         RazerInputNode,
         RazerOutputNode
     ],
+    "Time": [
+        FrameNode,
+        TimeNode
+    ],
     "Misc.": [
         CommentNode,
         ViewerNode
@@ -49,6 +55,11 @@ export class Context {
     private movingNode: DelightNode = null
 
     public nodeContainer: HTMLDivElement = document.querySelector("div.nodeGrid")
+
+    public uniforms = {
+        frame: 0,
+        time: 0
+    }
 
     get currentNode() {
         return this._currentNode

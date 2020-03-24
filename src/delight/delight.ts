@@ -74,6 +74,9 @@ glob.initChroma = () => {
                     "CHROMA_CUSTOM",
                     colors
                 )
+
+                ctx.uniforms.frame++
+                ctx.uniforms.time += 1 / 30
             }, 1000 / 30)
         }, 2000)
     })
