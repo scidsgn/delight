@@ -225,7 +225,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ":root {\r\n    --selected: rgb(247, 213, 61);\r\n\r\n    --node-general: #666d;\r\n    --node-comment: #555137dd;\r\n    --node-math: rgba(82, 96, 112, 0.867);\r\n    --node-razer: rgba(19, 19, 19, 0.867);\r\n\r\n    --socket-general: #666;\r\n    --socket-number: #3db55e;\r\n    --socket-colortype: #e7ab29;\r\n}", ""]);
+exports.push([module.i, ":root {\r\n    --selected: rgb(247, 213, 61);\r\n\r\n    --node-general: #666d;\r\n    --node-comment: #555137dd;\r\n    --node-math: rgba(82, 96, 112, 0.867);\r\n    --node-razer: rgba(19, 19, 19, 0.867);\r\n\r\n    --socket-general: #666;\r\n    --socket-number: #25dd6c;\r\n    --socket-colortype: #e7ab29;\r\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -617,6 +617,154 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./src/delight/chroma/chroma.ts":
+/*!**************************************!*\
+  !*** ./src/delight/chroma/chroma.ts ***!
+  \**************************************/
+/*! exports provided: ChromaDevice, init, uninit, putEffect */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChromaDevice", function() { return ChromaDevice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "init", function() { return init; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uninit", function() { return uninit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "putEffect", function() { return putEffect; });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var heartbeatInterval = null;
+var sessionURL = "";
+var ChromaDevice;
+(function (ChromaDevice) {
+    ChromaDevice["keyboard"] = "keyboard";
+    ChromaDevice["mouse"] = "mouse";
+    ChromaDevice["headset"] = "headset";
+    ChromaDevice["mousepad"] = "mousepad";
+    ChromaDevice["keypad"] = "keypad";
+    ChromaDevice["chromaLink"] = "chromalink";
+})(ChromaDevice || (ChromaDevice = {}));
+function init(devices) {
+    if (devices === void 0) { devices = [ChromaDevice.keyboard]; }
+    return __awaiter(this, void 0, void 0, function () {
+        var res, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch("http://localhost:54235/razer/chromasdk", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            title: "Delight",
+                            description: "A node-based effect creation tool for Razer Chroma.",
+                            author: {
+                                name: "sci",
+                                contact: "scintilla4evr.github.io"
+                            },
+                            device_supported: devices,
+                            category: "application"
+                        }),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })];
+                case 1:
+                    res = _a.sent();
+                    return [4 /*yield*/, res.json()];
+                case 2:
+                    data = _a.sent();
+                    if ("sessionid" in data && "uri" in data) {
+                        sessionURL = data.uri;
+                        heartbeatInterval = setInterval(function () {
+                            fetch(sessionURL + "/heartbeat", {
+                                method: "PUT"
+                            });
+                        }, 1000);
+                        return [2 /*return*/, true];
+                    }
+                    return [2 /*return*/, false];
+            }
+        });
+    });
+}
+function uninit() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!sessionURL.length)
+                        return [2 /*return*/];
+                    if (heartbeatInterval) {
+                        clearInterval(heartbeatInterval);
+                        heartbeatInterval = null;
+                    }
+                    return [4 /*yield*/, fetch(sessionURL, {
+                            method: "DELETE"
+                        })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function putEffect(device, effectType, effectParam) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!sessionURL.length)
+                        return [2 /*return*/];
+                    return [4 /*yield*/, fetch(sessionURL + "/" + device, {
+                            method: "PUT",
+                            body: JSON.stringify({
+                                effect: effectType,
+                                param: effectParam
+                            })
+                        })];
+                case 1:
+                    res = _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+
+
+/***/ }),
+
 /***/ "./src/delight/context.ts":
 /*!********************************!*\
   !*** ./src/delight/context.ts ***!
@@ -637,6 +785,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nodes_library_misc_viewer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nodes/library/misc/viewer */ "./src/delight/nodes/library/misc/viewer.ts");
 /* harmony import */ var _nodes_library_number_number__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./nodes/library/number/number */ "./src/delight/nodes/library/number/number.ts");
 /* harmony import */ var _nodes_library_number_random__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./nodes/library/number/random */ "./src/delight/nodes/library/number/random.ts");
+/* harmony import */ var _nodes_library_razer_input__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./nodes/library/razer/input */ "./src/delight/nodes/library/razer/input.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -690,6 +839,7 @@ var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
 
 
 
+
 var Menu = __webpack_require__(/*! electron */ "electron").remote.Menu;
 var availableNodes = {
     "Color": [
@@ -704,6 +854,7 @@ var availableNodes = {
         _nodes_library_number_arithmetic__WEBPACK_IMPORTED_MODULE_3__["ArithmeticNode"]
     ],
     "Razer Chroma": [
+        _nodes_library_razer_input__WEBPACK_IMPORTED_MODULE_10__["RazerInputNode"],
         _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_2__["RazerOutputNode"]
     ],
     "Misc.": [
@@ -954,6 +1105,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nodes/library/razer/output */ "./src/delight/nodes/library/razer/output.ts");
 /* harmony import */ var _styles_layout_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/layout.scss */ "./src/delight/styles/layout.scss");
 /* harmony import */ var _styles_layout_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_layout_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _chroma_chroma__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chroma/chroma */ "./src/delight/chroma/chroma.ts");
+/* harmony import */ var _nodes_library_razer_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./nodes/library/razer/input */ "./src/delight/nodes/library/razer/input.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -993,29 +1146,105 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var ctx = new _context__WEBPACK_IMPORTED_MODULE_0__["Context"]();
 ctx.setupEvents();
-var n1 = new _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__["RazerOutputNode"](ctx);
+var n1 = new _nodes_library_razer_input__WEBPACK_IMPORTED_MODULE_4__["RazerInputNode"](ctx);
 ctx.addNode(n1);
 n1.createDOM();
 n1.setPosition(16, 16);
 ctx.nodeContainer.appendChild(n1.domElement);
+var n2 = new _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__["RazerOutputNode"](ctx);
+ctx.addNode(n2);
+n2.createDOM();
+n2.setPosition(400, 16);
+ctx.nodeContainer.appendChild(n2.domElement);
 ctx.updateConnectionsCanvas();
 var glob = window;
-glob.evaluate = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var nodesToProcess;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                ctx.resetProcessing();
-                nodesToProcess = ctx.nodes.filter(function (n) { return n instanceof _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__["RazerOutputNode"]; });
-                return [4 /*yield*/, Promise.all(nodesToProcess.map(function (n) { return n.process(); }))];
-            case 1:
-                _a.sent();
-                return [2 /*return*/];
-        }
+var chromaTimeout;
+glob.initChroma = function () {
+    Object(_chroma_chroma__WEBPACK_IMPORTED_MODULE_3__["init"])().then(function () {
+        var inputNodes = ctx.nodes.filter(function (n) { return n instanceof _nodes_library_razer_input__WEBPACK_IMPORTED_MODULE_4__["RazerInputNode"]; });
+        var outputNode = ctx.nodes.find(function (n) { return n instanceof _nodes_library_razer_output__WEBPACK_IMPORTED_MODULE_1__["RazerOutputNode"] &&
+            n.getOption("device").value === "keyboard"; });
+        console.log(outputNode);
+        setTimeout(function () {
+            chromaTimeout = setInterval(function () { return __awaiter(void 0, void 0, void 0, function () {
+                var colors, _loop_1, x;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            colors = Array(6).fill(0).map(function (x) { return Array(22).fill(0xFFFFFF); });
+                            _loop_1 = function (x) {
+                                var _loop_2, y;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _loop_2 = function (y) {
+                                                var _a, _b;
+                                                return __generator(this, function (_c) {
+                                                    switch (_c.label) {
+                                                        case 0:
+                                                            ctx.resetProcessing();
+                                                            inputNodes.forEach(function (n) {
+                                                                var xOut = n.getOutput("x");
+                                                                var yOut = n.getOutput("y");
+                                                                xOut.value = x / 22;
+                                                                yOut.value = y / 22;
+                                                            });
+                                                            return [4 /*yield*/, outputNode.process()];
+                                                        case 1:
+                                                            _c.sent();
+                                                            _a = colors[y];
+                                                            _b = x;
+                                                            return [4 /*yield*/, outputNode.getInput("color")];
+                                                        case 2:
+                                                            _a[_b] = (_c.sent()).value.toBGRInt();
+                                                            return [2 /*return*/];
+                                                    }
+                                                });
+                                            };
+                                            y = 0;
+                                            _a.label = 1;
+                                        case 1:
+                                            if (!(y < 6)) return [3 /*break*/, 4];
+                                            return [5 /*yield**/, _loop_2(y)];
+                                        case 2:
+                                            _a.sent();
+                                            _a.label = 3;
+                                        case 3:
+                                            y++;
+                                            return [3 /*break*/, 1];
+                                        case 4: return [2 /*return*/];
+                                    }
+                                });
+                            };
+                            x = 0;
+                            _a.label = 1;
+                        case 1:
+                            if (!(x < 22)) return [3 /*break*/, 4];
+                            return [5 /*yield**/, _loop_1(x)];
+                        case 2:
+                            _a.sent();
+                            _a.label = 3;
+                        case 3:
+                            x++;
+                            return [3 /*break*/, 1];
+                        case 4:
+                            Object(_chroma_chroma__WEBPACK_IMPORTED_MODULE_3__["putEffect"])(_chroma_chroma__WEBPACK_IMPORTED_MODULE_3__["ChromaDevice"].keyboard, "CHROMA_CUSTOM", colors);
+                            return [2 /*return*/];
+                    }
+                });
+            }); }, 1000 / 30);
+        }, 2000);
     });
-}); };
+};
+glob.unInitChroma = function () {
+    if (chromaTimeout)
+        clearInterval(chromaTimeout);
+    Object(_chroma_chroma__WEBPACK_IMPORTED_MODULE_3__["uninit"])();
+};
 
 
 /***/ }),
@@ -1703,6 +1932,56 @@ var RandomNumberNode = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/delight/nodes/library/razer/input.ts":
+/*!**************************************************!*\
+  !*** ./src/delight/nodes/library/razer/input.ts ***!
+  \**************************************************/
+/*! exports provided: RazerInputNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RazerInputNode", function() { return RazerInputNode; });
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node */ "./src/delight/nodes/node.ts");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../socket */ "./src/delight/nodes/socket.ts");
+/* harmony import */ var _types_number__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../types/number */ "./src/delight/nodes/types/number.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var RazerInputNode = /** @class */ (function (_super) {
+    __extends(RazerInputNode, _super);
+    function RazerInputNode() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.name = "Chroma Input";
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].razer;
+        _this.outputs = [
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "x", "X position", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_2__["NumberType"](), false),
+            new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "y", "Y position", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_2__["NumberType"](), false)
+        ];
+        return _this;
+    }
+    RazerInputNode.id = "razer.input";
+    RazerInputNode.listName = "Chroma Input";
+    return RazerInputNode;
+}(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
+
+
+
+/***/ }),
+
 /***/ "./src/delight/nodes/library/razer/output.ts":
 /*!***************************************************!*\
   !*** ./src/delight/nodes/library/razer/output.ts ***!
@@ -1738,7 +2017,7 @@ var RazerOutputNode = /** @class */ (function (_super) {
     __extends(RazerOutputNode, _super);
     function RazerOutputNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.name = "Send to Chroma";
+        _this.name = "Chroma Output";
         _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].razer;
         _this.options = [
             new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "device", "Target device", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].option, new _types_select__WEBPACK_IMPORTED_MODULE_2__["SelectType"]([
@@ -1754,7 +2033,7 @@ var RazerOutputNode = /** @class */ (function (_super) {
         return _this;
     }
     RazerOutputNode.id = "razer.output";
-    RazerOutputNode.listName = "Send to Chroma";
+    RazerOutputNode.listName = "Chroma Output";
     return RazerOutputNode;
 }(_node__WEBPACK_IMPORTED_MODULE_0__["DelightNode"]));
 

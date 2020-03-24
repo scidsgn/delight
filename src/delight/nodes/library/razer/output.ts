@@ -7,9 +7,9 @@ import { ColorType } from "../../types/color"
 
 export class RazerOutputNode extends DelightNode {
     public static id = "razer.output"
-    public static listName = "Send to Chroma"
+    public static listName = "Chroma Output"
 
-    public name = "Send to Chroma"
+    public name = "Chroma Output"
     public category: NodeCategory = NodeCategory.razer
 
     public options: Socket<IDelightType>[] = [

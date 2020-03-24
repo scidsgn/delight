@@ -11,6 +11,7 @@ import { CommentNode } from "./nodes/library/misc/comment"
 import { ViewerNode } from "./nodes/library/misc/viewer"
 import { NumberValueNode } from "./nodes/library/number/number"
 import { RandomNumberNode } from "./nodes/library/number/random"
+import { RazerInputNode } from "./nodes/library/razer/input"
 
 const { Menu } = require("electron").remote
 
@@ -29,6 +30,7 @@ const availableNodes: {
         ArithmeticNode
     ],
     "Razer Chroma": [
+        RazerInputNode,
         RazerOutputNode
     ],
     "Misc.": [
