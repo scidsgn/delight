@@ -3,14 +3,13 @@ import { Socket, SocketType } from "../../socket"
 import { IDelightType } from "../../types/type"
 import { SelectType } from "../../types/select"
 import { NumberType } from "../../types/number"
-import { BoundedNumberType } from "../../types/boundedNumber"
 
 export class ArithmeticNode extends DelightNode {
     public static id = "number.arithmetic"
     public static listName = "Arithmetic"
 
     public name = "Arithmetic"
-    public category: NodeCategory = NodeCategory.math
+    public category: NodeCategory = NodeCategory.number
     
     public options: Socket<IDelightType>[] = [
         new Socket(
@@ -43,10 +42,6 @@ export class ArithmeticNode extends DelightNode {
                     {
                         id: "pow",
                         name: "Power"
-                    },
-                    {
-                        id: "log",
-                        name: "Base B Log"
                     }
                 ],
                 "add"
@@ -107,6 +102,6 @@ export class ArithmeticNode extends DelightNode {
         else if (operation.value === "log")
             newNum = Math.log(num1.value) / Math.log(num2.value)
         
-            out.value = newNum
+        out.value = newNum
     }
 }

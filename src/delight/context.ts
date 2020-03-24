@@ -14,36 +14,9 @@ import { RandomNumberNode } from "./nodes/library/number/random"
 import { RazerInputNode } from "./nodes/library/razer/input"
 import { FrameNode } from "./nodes/library/time/frame"
 import { TimeNode } from "./nodes/library/time/time"
+import { availableNodes } from "./registeredNodes"
 
 const { Menu } = require("electron").remote
-
-const availableNodes: {
-    [prop: string]: DelightNodeConstructor[]
-} = {
-    "Color": [
-        ColorValueNode,
-        null,
-        CombineRGBNode
-    ],
-    "Number": [
-        NumberValueNode,
-        RandomNumberNode,
-        null,
-        ArithmeticNode
-    ],
-    "Razer Chroma": [
-        RazerInputNode,
-        RazerOutputNode
-    ],
-    "Time": [
-        FrameNode,
-        TimeNode
-    ],
-    "Misc.": [
-        CommentNode,
-        ViewerNode
-    ]
-}
 
 export class Context {
     public nodes: DelightNode[] = []
