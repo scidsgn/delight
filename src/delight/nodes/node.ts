@@ -13,6 +13,7 @@ export enum NodeCategory {
     math = "math",
     number = "number",
     color = "color",
+    time = "time",
 
     razer = "razer"
 }

@@ -56,8 +56,8 @@ glob.initChroma = () => {
                                 const xOut = n.getOutput("x") as NumberType
                                 const yOut = n.getOutput("y") as NumberType
 
-                                xOut.value = x / 22
-                                yOut.value = y / 22
+                                xOut.value = x / 21
+                                yOut.value = y / 5
                             }
                         )
 

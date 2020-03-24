@@ -8,7 +8,7 @@ export class TimeNode extends DelightNode {
     public static listName = "Time [s]"
 
     public name = "Time [s]"
-    public category: NodeCategory = NodeCategory.number
+    public category: NodeCategory = NodeCategory.time
 
     public outputs: Socket<IDelightType>[] = [
         new Socket(

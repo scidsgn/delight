@@ -1202,8 +1202,8 @@ glob.initChroma = function () {
                                                             inputNodes.forEach(function (n) {
                                                                 var xOut = n.getOutput("x");
                                                                 var yOut = n.getOutput("y");
-                                                                xOut.value = x / 22;
-                                                                yOut.value = y / 22;
+                                                                xOut.value = x / 21;
+                                                                yOut.value = y / 5;
                                                             });
                                                             return [4 /*yield*/, outputNode.process()];
                                                         case 1:
@@ -2131,7 +2131,7 @@ var FrameNode = /** @class */ (function (_super) {
     function FrameNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.name = "Frame #";
-        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].number;
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].time;
         _this.outputs = [
             new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "frame", "Frame #", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_2__["NumberType"](), false)
         ];
@@ -2226,7 +2226,7 @@ var TimeNode = /** @class */ (function (_super) {
     function TimeNode() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.name = "Time [s]";
-        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].number;
+        _this.category = _node__WEBPACK_IMPORTED_MODULE_0__["NodeCategory"].time;
         _this.outputs = [
             new _socket__WEBPACK_IMPORTED_MODULE_1__["Socket"](_this, "time", "Time", _socket__WEBPACK_IMPORTED_MODULE_1__["SocketType"].output, new _types_number__WEBPACK_IMPORTED_MODULE_2__["NumberType"](), false)
         ];
@@ -2309,6 +2309,7 @@ var NodeCategory;
     NodeCategory["math"] = "math";
     NodeCategory["number"] = "number";
     NodeCategory["color"] = "color";
+    NodeCategory["time"] = "time";
     NodeCategory["razer"] = "razer";
 })(NodeCategory || (NodeCategory = {}));
 var DelightNode = /** @class */ (function () {
