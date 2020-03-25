@@ -16,10 +16,12 @@ import { SeparateRGBNode } from "./nodes/library/color/separate"
 import { TrigNode } from "./nodes/library/number/trig"
 import { LoopNode } from "./nodes/library/number/loop"
 import { AudioSourceNode } from "./nodes/library/audio/source"
-import { Db2VolumeNode } from "./nodes/library/audio/db2value"
 import { AudioPeakNode } from "./nodes/library/audio/peak"
 import { AudioVolumeNode } from "./nodes/library/audio/volume"
 import { AudioSampleNode } from "./nodes/library/audio/sample"
+import { CompareNode } from "./nodes/library/number/compare"
+import { InvertNode } from "./nodes/library/color/invert"
+import { BlendNode } from "./nodes/library/color/blend"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -29,6 +31,7 @@ export const availableNodes: {
         RandomNumberNode,
         null,
         ArithmeticNode,
+        CompareNode,
         TrigNode,
         null,
         ClampNode,
@@ -39,16 +42,17 @@ export const availableNodes: {
         ColorValueNode,
         null,
         CombineRGBNode,
-        SeparateRGBNode
+        SeparateRGBNode,
+        null,
+        BlendNode,
+        InvertNode
     ],
     "Audio": [
         AudioSourceNode,
         null,
         AudioPeakNode,
         AudioVolumeNode,
-        AudioSampleNode,
-        null,
-        Db2VolumeNode
+        AudioSampleNode
     ],
     "Razer Chroma": [
         RazerInputNode,

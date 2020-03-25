@@ -9,6 +9,7 @@ import { NumberType } from "./nodes/types/number"
 import "./styles/layout.scss"
 import { desktopCapturer } from "electron"
 import { UniformNode } from "./nodes/node"
+import { ViewerNode } from "./nodes/library/misc/viewer"
 
 const audioContext = new AudioContext({
     sampleRate: 44100
@@ -74,6 +75,14 @@ glob.initChroma = () => {
                 )
 
                 await ctx.processUniform()
+
+                await Promise.all(
+                    ctx.nodes.filter(
+                        n => n instanceof ViewerNode
+                    ).map(
+                        n => (n as ViewerNode).handleButtonPress(null)
+                    )
+                )
 
                 for (let x = 0; x < 22; x++) {
                     for (let y = 0; y < 6; y++) {

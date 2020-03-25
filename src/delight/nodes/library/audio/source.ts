@@ -15,7 +15,7 @@ export class AudioSourceNode extends UniformNode {
             this,
             "fft", "FFT",
             SocketType.output,
-            new FFTType(64),
+            new FFTType(128),
             false
         )
     ]
@@ -25,5 +25,9 @@ export class AudioSourceNode extends UniformNode {
         this.context.acsAnalyzerNode.getFloatFrequencyData(
             out.value
         )
+
+        for (let i = 0; i < out.length; i++) {
+            out.value[i] = (out.value[i] - this.context.acsAnalyzerNode.minDecibels) / (this.context.acsAnalyzerNode.maxDecibels - this.context.acsAnalyzerNode.minDecibels)
+        }
     }
 }

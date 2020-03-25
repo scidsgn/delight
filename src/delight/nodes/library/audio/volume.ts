@@ -38,9 +38,7 @@ export class AudioVolumeNode extends UniformNode {
         let vol = 0
 
         for (let i = 0; i < fft.length; i++) {
-            let db = fft.value[i]
-
-            vol += 10 ** (db / 20)
+            vol += fft.value[i]
         }
 
         out.value = vol / fft.length

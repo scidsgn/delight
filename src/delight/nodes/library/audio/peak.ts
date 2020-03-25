@@ -31,8 +31,8 @@ export class AudioPeakNode extends UniformNode {
         ),
         new Socket(
             this,
-            "db",
-            "Amplitude [dB]",
+            "ampl",
+            "Amplitude",
             SocketType.output,
             new NumberType(0, 0.01),
             false // Not adjustable by the user
@@ -43,21 +43,21 @@ export class AudioPeakNode extends UniformNode {
         const fft = await this.getInput("fft") as FFTType
 
         const freq = this.getOutput("freq") as NumberType
-        const db = this.getOutput("db") as NumberType
+        const ampl = this.getOutput("ampl") as NumberType
 
-        let maxDb = -Infinity
+        let maxAmpl = -Infinity
         let maxIdx = -1
 
         for (let i = 0; i < fft.length; i++) {
             let vDb = fft.value[i]
 
-            if (vDb > maxDb) {
-                maxDb = vDb
+            if (vDb > maxAmpl) {
+                maxAmpl = vDb
                 maxIdx = i
             }
         }
 
-        db.value = maxDb
+        ampl.value = maxAmpl
         freq.value = (this.context.audioContext.sampleRate / 2) * maxIdx / (fft.length - 1)
     }
 }

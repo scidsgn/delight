@@ -30,8 +30,8 @@ export class AudioSampleNode extends DelightNode {
     public outputs: Socket<IDelightType>[] = [
         new Socket(
             this,
-            "db",
-            "Amplitude [dB]",
+            "ampl",
+            "Amplitude",
             SocketType.output,
             new NumberType(0, 0.01),
             false // Not adjustable by the user
@@ -42,7 +42,7 @@ export class AudioSampleNode extends DelightNode {
         const fft = await this.getInput("fft") as FFTType
         const freq = await this.getInput("freq") as NumberType
 
-        const db = this.getOutput("db") as NumberType
+        const ampl = this.getOutput("ampl") as NumberType
 
         const index = (2 * freq.value / this.context.audioContext.sampleRate) * (fft.length - 1)
         const idxMin = Math.floor(index)
@@ -59,6 +59,6 @@ export class AudioSampleNode extends DelightNode {
             outValue = minValue + (index - idxMin) * (maxValue - minValue)
         }
 
-        db.value = outValue
+        ampl.value = outValue
     }
 }

@@ -53,7 +53,7 @@ export class Context {
             this._audioCaptureStream
         )
         this.acsAnalyzerNode = this.audioContext.createAnalyser()
-        this.acsAnalyzerNode.fftSize = 128
+        this.acsAnalyzerNode.fftSize = 256
 
         this.acsSourceNode.connect(this.acsAnalyzerNode)
     }
