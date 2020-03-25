@@ -1,4 +1,4 @@
-import { DelightNode, DelightNodeConstructor } from "./nodes/node";
+import { DelightNode, DelightNodeConstructor, UniformNode } from "./nodes/node";
 import { NodeConnection, PartialNodeConnection } from "./nodes/connection";
 import { Socket, SocketType } from "./nodes/socket";
 import { IDelightType } from "./nodes/types/type";
@@ -32,6 +32,30 @@ export class Context {
     public uniforms = {
         frame: 0,
         time: 0
+    }
+
+    private _audioCaptureStream: MediaStream
+    public acsSourceNode: MediaStreamAudioSourceNode
+    public acsAnalyzerNode: AnalyserNode
+
+    constructor(
+        public audioContext: AudioContext
+    ) {}
+    
+    get audioCaptureStream() {
+        return this._audioCaptureStream
+    }
+
+    set audioCaptureStream(stream: MediaStream) {
+        this._audioCaptureStream = stream
+
+        this.acsSourceNode = this.audioContext.createMediaStreamSource(
+            this._audioCaptureStream
+        )
+        this.acsAnalyzerNode = this.audioContext.createAnalyser()
+        this.acsAnalyzerNode.fftSize = 128
+
+        this.acsSourceNode.connect(this.acsAnalyzerNode)
     }
 
     get currentNode() {
@@ -141,6 +165,16 @@ export class Context {
 
     resetProcessing() {
         this.nodes.forEach(node => node.processed = false)
+    }
+
+    async processUniform() {
+        await Promise.all(
+            this.nodes.filter(
+                n => n instanceof UniformNode
+            ).map(
+                n => (n as UniformNode).processOnce()
+            )
+        )
     }
 
     updateConnectionsCanvas(quick = false) {

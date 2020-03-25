@@ -1,5 +1,10 @@
 import { app, BrowserWindow } from "electron"
 
+app.commandLine.appendSwitch(
+    "autoplay-policy",
+    "no-user-gesture-required"
+)
+
 app.on("ready", () => {
     const win = new BrowserWindow(
         {

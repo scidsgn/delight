@@ -15,6 +15,11 @@ import { MapRangeNode } from "./nodes/library/number/mapRange"
 import { SeparateRGBNode } from "./nodes/library/color/separate"
 import { TrigNode } from "./nodes/library/number/trig"
 import { LoopNode } from "./nodes/library/number/loop"
+import { AudioSourceNode } from "./nodes/library/audio/source"
+import { Db2VolumeNode } from "./nodes/library/audio/db2value"
+import { AudioPeakNode } from "./nodes/library/audio/peak"
+import { AudioVolumeNode } from "./nodes/library/audio/volume"
+import { AudioSampleNode } from "./nodes/library/audio/sample"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -35,6 +40,15 @@ export const availableNodes: {
         null,
         CombineRGBNode,
         SeparateRGBNode
+    ],
+    "Audio": [
+        AudioSourceNode,
+        null,
+        AudioPeakNode,
+        AudioVolumeNode,
+        AudioSampleNode,
+        null,
+        Db2VolumeNode
     ],
     "Razer Chroma": [
         RazerInputNode,

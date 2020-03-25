@@ -10,10 +10,12 @@ export enum NodeCategory {
     general = "general",
     comment = "comment",
     
-    math = "math",
     number = "number",
     color = "color",
+
+    math = "math",
     time = "time",
+    audio = "audio",
 
     razer = "razer"
 }
@@ -159,6 +161,10 @@ export class DelightNode {
 
         this.domElement = node
     }
+}
+
+export class UniformNode extends DelightNode {
+    async processOnce(): Promise<void> {}
 }
 
 export interface DelightNodeConstructor {

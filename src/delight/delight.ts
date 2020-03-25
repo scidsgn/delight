@@ -1,14 +1,22 @@
 import { Context } from "./context"
 import { RazerOutputNode } from "./nodes/library/razer/output"
-
-import "./styles/layout.scss"
 import { init, uninit, putEffect, ChromaDevice } from "./chroma/chroma"
 import { SelectType } from "./nodes/types/select"
 import { ColorType } from "./nodes/types/color"
 import { RazerInputNode } from "./nodes/library/razer/input"
 import { NumberType } from "./nodes/types/number"
 
-const ctx = new Context()
+import "./styles/layout.scss"
+import { desktopCapturer } from "electron"
+import { UniformNode } from "./nodes/node"
+
+const audioContext = new AudioContext({
+    sampleRate: 44100
+})
+
+const ctx = new Context(
+    audioContext
+)
 ctx.setupEvents()
 
 const n1 = new RazerInputNode(ctx)
@@ -29,6 +37,24 @@ ctx.updateConnectionsCanvas()
 
 const glob = window as any
 
+navigator.mediaDevices.getUserMedia(
+    {
+        audio: {
+            mandatory: {
+                chromeMediaSource: 'desktop'
+            }
+        },
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop'
+            }
+        }
+    } as unknown
+).then(stream => {
+    ctx.audioCaptureStream = stream
+    glob.analyzer = ctx.acsAnalyzerNode
+})
+
 let chromaTimeout: NodeJS.Timeout
 
 glob.initChroma = () => {
@@ -46,6 +72,8 @@ glob.initChroma = () => {
                 const colors: number[][] = Array(6).fill(0).map(
                     x => Array(22).fill(0xFFFFFF)
                 )
+
+                await ctx.processUniform()
 
                 for (let x = 0; x < 22; x++) {
                     for (let y = 0; y < 6; y++) {
