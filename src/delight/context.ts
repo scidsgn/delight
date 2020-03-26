@@ -350,18 +350,26 @@ export class Context {
     handleMouseMove(e: MouseEvent) {
         let updateConnCanvas = false
 
-        if (this.partialConnection) {
-            this.partialConnection.tailX = e.clientX
-            this.partialConnection.tailY = e.clientY
-
-            updateConnCanvas = true
-        } else if (this.movingNode) {
-            this.movingNode.move(
-                e.movementX, e.movementY
+        if (e.buttons & 4) {
+            this.nodes.forEach(
+                n => n.move(e.movementX, e.movementY)
             )
-            
             updateConnCanvas = true
+        } else {
+            if (this.partialConnection) {
+                this.partialConnection.tailX = e.clientX
+                this.partialConnection.tailY = e.clientY
+    
+                updateConnCanvas = true
+            } else if (this.movingNode) {
+                this.movingNode.move(
+                    e.movementX, e.movementY
+                )
+                
+                updateConnCanvas = true
+            }
         }
+
 
         if (updateConnCanvas) this.updateConnectionsCanvas(true)
     }
