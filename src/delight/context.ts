@@ -198,7 +198,9 @@ export class Context {
             ctx.moveTo(
                 sock1Pos[0], sock1Pos[1]
             )
-            ctx.lineTo(
+            ctx.bezierCurveTo(
+                sock1Pos[0] + 100, sock1Pos[1],
+                sock2Pos[0] - 100, sock2Pos[1],
                 sock2Pos[0], sock2Pos[1]
             )
         })
@@ -215,7 +217,11 @@ export class Context {
             ctx.moveTo(
                 inputSockPos[0], inputSockPos[1]
             )
-            ctx.lineTo(
+            ctx.quadraticCurveTo(
+                (this.partialConnection.tailX + inputSockPos[0]) / 2,
+                Math.max(
+                    this.partialConnection.tailY, inputSockPos[1]
+                ) + 64,
                 this.partialConnection.tailX, this.partialConnection.tailY
             )
 
