@@ -300,9 +300,7 @@ export class Context {
                 n => n.domElement === target.parentElement
             )
 
-            if (!node.locked)
-                this.movingNode = node
-            
+            this.movingNode = node            
             this.currentNode = node
         }
     }

@@ -30,7 +30,7 @@ export class DelightNode {
     // Do not touch this! This will be handled by the Context
     public processed = false
 
-    public locked = false
+    private _locked = false
     
     public inputs: Socket<IDelightType>[] = []
     public outputs: Socket<IDelightType>[] = []
@@ -44,6 +44,14 @@ export class DelightNode {
     constructor(
         public context: Context
     ) {}
+
+    get locked() {
+        return this._locked
+    }
+    set locked(v: boolean) {
+        this.domElement.classList.toggle("locked", v)
+        this._locked = v
+    }
 
     setPosition(x: number, y: number) {
         this.xPosition = x
@@ -108,7 +116,7 @@ export class DelightNode {
         header.addEventListener("dblclick", (e) => {
             node.classList.toggle("collapsed")
             this.context.updateConnectionsCanvas()
-            
+
             e.stopPropagation()
         })
 
@@ -155,6 +163,7 @@ export class DelightNode {
                 [
                     {
                         label: "Delete",
+                        enabled: !this._locked,
                         click: () => {
                             this.context.deleteNode(this)
                         }

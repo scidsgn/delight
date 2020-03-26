@@ -67,7 +67,8 @@ glob.initChroma = () => {
             n => n instanceof RazerOutputNode &&
                  (n.getOption("device") as SelectType).value === "keyboard"
         )
-        console.log(outputNode)
+        outputNode.locked = true
+
         setTimeout(() => {
             chromaTimeout = setInterval(async () => {
                 const colors: number[][] = Array(6).fill(0).map(
@@ -119,6 +120,12 @@ glob.initChroma = () => {
     })
 }
 glob.unInitChroma = () => {
+    const outputNode = ctx.nodes.find(
+        n => n instanceof RazerOutputNode &&
+             (n.getOption("device") as SelectType).value === "keyboard"
+    )
+    outputNode.locked = false
+
     if (chromaTimeout) clearInterval(chromaTimeout)
     uninit()
 }
