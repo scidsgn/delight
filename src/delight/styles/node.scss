@@ -1,3 +1,15 @@
+@keyframes NodeAppearAnim {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 div.node {
     position: absolute;
     width: 144px;
@@ -9,6 +21,8 @@ div.node {
     box-shadow: inset 0px 0px 0px 2px #0003,
                 0px 3px 12px #0001,
                 0px 1px 2px #0001;
+    
+    animation: NodeAppearAnim 0.15s;
     
     &.comment {
         background: var(--node-comment);

@@ -382,6 +382,7 @@ export class Context {
 
                                 this.addNode(node)
                                 this.currentNode = node
+                                this.movingNode = node
                                 this.nodeContainer.appendChild(node.domElement)
                             }
                         } as unknown as MenuItem
