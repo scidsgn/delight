@@ -33,6 +33,24 @@ div.node {
         z-index: 9999;
     }
 
+    &.collapsed {
+        width: 40px;
+        padding-bottom: 0px;
+
+        & > header {
+            margin-bottom: 0px;
+            border-radius: 8px;
+
+            p {
+                display: none;
+            }
+        }
+
+        & > *:not(header) {
+            display: none;
+        }
+    }
+
     & > header {
         background: #0000002C;
 

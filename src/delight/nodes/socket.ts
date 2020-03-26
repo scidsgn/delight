@@ -39,6 +39,20 @@ export class Socket<T extends IDelightType> {
         )
     }
 
+    get position(): number[] {
+        let rect: DOMRect
+        if (this.node.domElement.classList.contains("collapsed")) {
+            rect = this.node.domElement.getBoundingClientRect()
+        } else {
+            rect = this.domElement.children[0].getBoundingClientRect()
+        }
+
+        return [
+            rect.x + rect.width / 2,
+            rect.y + rect.height / 2
+        ]
+    }
+
     createDOM() {
         const socket = document.createElement("div")
         socket.classList.add("socket")

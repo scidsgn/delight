@@ -105,6 +105,13 @@ export class DelightNode {
         const header = document.createElement("header")
         header.classList.add("nodeHeader")
 
+        header.addEventListener("dblclick", (e) => {
+            node.classList.toggle("collapsed")
+            this.context.updateConnectionsCanvas()
+            
+            e.stopPropagation()
+        })
+
         const icon = document.createElement("img")
         icon.src = `../../design/icons/${this.category}.svg`
         header.appendChild(icon)

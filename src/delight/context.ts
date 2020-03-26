@@ -192,14 +192,14 @@ export class Context {
         ctx.beginPath()
 
         this.connections.forEach(conn => {
-            const sock1Rect = conn.inputSocket.domElement.children[0].getBoundingClientRect()
-            const sock2Rect = conn.outputSocket.domElement.children[0].getBoundingClientRect()
+            const sock1Pos = conn.inputSocket.position
+            const sock2Pos = conn.outputSocket.position
 
             ctx.moveTo(
-                sock1Rect.x + 6, sock1Rect.y + 6
+                sock1Pos[0], sock1Pos[1]
             )
             ctx.lineTo(
-                sock2Rect.x + 6, sock2Rect.y + 6
+                sock2Pos[0], sock2Pos[1]
             )
         })
 
@@ -208,13 +208,12 @@ export class Context {
         ctx.stroke()
 
         if (this.partialConnection) {
-            const inputSockRect = this.partialConnection.inputSocket
-                                  .domElement.children[0].getBoundingClientRect()
+            const inputSockPos = this.partialConnection.inputSocket.position
             
             ctx.beginPath()
 
             ctx.moveTo(
-                inputSockRect.x + 6, inputSockRect.y + 6
+                inputSockPos[0], inputSockPos[1]
             )
             ctx.lineTo(
                 this.partialConnection.tailX, this.partialConnection.tailY
