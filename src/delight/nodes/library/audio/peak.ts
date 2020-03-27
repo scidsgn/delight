@@ -48,7 +48,7 @@ export class AudioPeakNode extends UniformNode {
         let maxAmpl = -Infinity
         let maxIdx = -1
 
-        for (let i = 0; i < fft.length; i++) {
+        for (let i = 1; i < fft.length; i++) {
             let vDb = fft.value[i]
 
             if (vDb > maxAmpl) {
