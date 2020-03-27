@@ -3,3 +3,4 @@ node_modules
 src/main.js
 src/delight/delight.js
 src/delight/delight.js.map
+.data
