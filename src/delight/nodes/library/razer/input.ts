@@ -15,14 +15,28 @@ export class RazerInputNode extends DelightNode {
     public outputs: Socket<IDelightType>[] = [
         new Socket(
             this,
-            "x", "X position",
+            "x", "Virtual X position",
             SocketType.output,
             new NumberType(),
             false
         ),
         new Socket(
             this,
-            "y", "Y position",
+            "y", "Virtual Y position",
+            SocketType.output,
+            new NumberType(),
+            false
+        ),
+        new Socket(
+            this,
+            "physX", "Physical X position",
+            SocketType.output,
+            new NumberType(),
+            false
+        ),
+        new Socket(
+            this,
+            "physY", "Physical Y position",
             SocketType.output,
             new NumberType(),
             false

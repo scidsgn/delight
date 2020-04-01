@@ -69,4 +69,22 @@ export class ChromaRegion {
             x, y
         }
     }
+
+    getPhysicalPosition(entity: ChromaEntity) {
+        let x: number, y: number
+
+        if (this.physicalBounds.width === 0)
+            x = 0
+        else
+            x = (entity.positionX - this.physicalBounds.left) / this.physicalBounds.width
+
+        if (this.physicalBounds.height === 0)
+            y = 0
+        else
+            y = (entity.positionY - this.physicalBounds.top) / this.physicalBounds.height
+        
+        return {
+            x, y
+        }
+    }
 }

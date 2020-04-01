@@ -77,8 +77,8 @@ export default new ChromaKeyboardDevice(
         new ChromaEntity("keyComma", 10, 4, 422.5, 241),
         new ChromaEntity("keyPeriod", 11, 4, 461.5, 241),
         new ChromaEntity("keySlash", 12, 4, 500, 241),
-        new ChromaEntity("keyShiftRight", 14, 4, 500, 241),
-
+        new ChromaEntity("keyShiftRight", 14, 4, 571, 241),
+        
         new ChromaEntity("keyCtrlLeft", 1, 5, 77, 278.667),
         new ChromaEntity("keyWinLeft", 2, 5, 130, 279),
         new ChromaEntity("keyAltLeft", 3, 5, 178, 279),
