@@ -51,4 +51,22 @@ export class ChromaRegion {
             entities, (ent: ChromaEntity) => [ent.positionX, ent.positionY]
         )
     }
+
+    getAPIPosition(entity: ChromaEntity) {
+        let x: number, y: number
+
+        if (this.apiBounds.width === 0)
+            x = 0
+        else
+            x = (entity.arrayX - this.apiBounds.left) / this.apiBounds.width
+
+        if (this.apiBounds.height === 0)
+            y = 0
+        else
+            y = (entity.arrayY - this.apiBounds.top) / this.apiBounds.height
+        
+        return {
+            x, y
+        }
+    }
 }

@@ -1,19 +1,15 @@
 import { RazerOutputNode } from "../nodes/library/razer/output"
 import { Context } from "../context"
 import { ChromaDeviceType, init, uninit, putEffect } from "./chroma"
-import { SelectType } from "../nodes/types/select"
 import { ViewerNode } from "../nodes/library/misc/viewer"
 import { ColorType } from "../nodes/types/color"
 import { RazerInputNode } from "../nodes/library/razer/input"
 import { NumberType } from "../nodes/types/number"
-import ornata from "./devices/keyboards/ornata"
 import { ChromaEnvironment } from "./environment"
 
 export class ChromaExecutor {
     private _running = false
     private context: Context
-
-    private outputNodes: RazerOutputNode[]
 
     private timeout: NodeJS.Timeout
 
@@ -40,6 +36,9 @@ export class ChromaExecutor {
         const inputNodes = this.context.nodes.filter(
             n => n instanceof RazerInputNode
         )
+        const outputNodes = this.context.nodes.filter(
+            n => n instanceof RazerOutputNode
+        ) as RazerOutputNode[]
 
         const outputArrays: {
             [p: string]: number[][]
@@ -49,7 +48,7 @@ export class ChromaExecutor {
             )
         }
 
-        for (let output of this.outputNodes) {
+        for (let output of outputNodes) {
             const target: number[][] = outputArrays[
                 output.device.type as ChromaDeviceType
             ]
@@ -62,8 +61,10 @@ export class ChromaExecutor {
                         const xOut = n.getOutput("x") as NumberType
                         const yOut = n.getOutput("y") as NumberType
 
-                        xOut.value = entity.arrayX
-                        yOut.value = entity.arrayY
+                        const apiPos = output.region.getAPIPosition(entity)
+
+                        xOut.value = apiPos.x
+                        yOut.value = apiPos.y
                     }
                 )
 
@@ -93,16 +94,11 @@ export class ChromaExecutor {
     }
 
     startExecution(context: Context) {
-        this.outputNodes = context.nodes.filter(
-            n => n instanceof RazerOutputNode
-        ) as RazerOutputNode[]
-
         init([
             ChromaDeviceType.keyboard
         ]).then((enabled) => {
             if (!enabled) return
 
-            this.outputNodes.forEach(n => n.locked = true)
             this.context = context
 
             this._running = true
@@ -117,7 +113,6 @@ export class ChromaExecutor {
         if (!this._running) return
 
         uninit().then(() => {
-            this.outputNodes.forEach(n => n.locked = false)
             this.context = null
             this._running = false
 
