@@ -21,7 +21,8 @@ export class SelectType implements IDelightType {
 
     constructor(
         public options: SelectTypeOption[] = [],
-        private _value = ""
+        private _value = "",
+        public valueChangeWatcher: (value: string) => void = null
     ) {
         this.createDOM()
     }
@@ -38,6 +39,9 @@ export class SelectType implements IDelightType {
 
     deserialize(data: any) {
         this.value = data
+
+        if (this.valueChangeWatcher)
+            this.valueChangeWatcher(this.value)
     }
 
     serialize(): any {
@@ -67,6 +71,12 @@ export class SelectType implements IDelightType {
 
     updateDOM() {
         const select = this.domElement.querySelector("select") as HTMLSelectElement
+
+        select.innerHTML = ""
+        this.options.forEach(
+            item => select.appendChild(this.selectOptionToDOM(item))
+        )
+
         select.value = this._value
     }
 
@@ -76,13 +86,11 @@ export class SelectType implements IDelightType {
 
         const select = document.createElement("select")
 
-        this.options.forEach(
-            item => select.appendChild(this.selectOptionToDOM(item))
-        )
-        select.value = this._value
-
         select.addEventListener("input", () => {
             this.value = select.value
+
+            if (this.valueChangeWatcher)
+                this.valueChangeWatcher(this.value)
         })
 
         div.appendChild(select)

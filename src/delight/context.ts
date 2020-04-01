@@ -15,6 +15,8 @@ import { RazerInputNode } from "./nodes/library/razer/input"
 import { FrameNode } from "./nodes/library/time/frame"
 import { TimeNode } from "./nodes/library/time/time"
 import { availableNodes } from "./registeredNodes"
+import { ChromaExecutor } from "./chroma/executor"
+import { ChromaEnvironment } from "./chroma/environment"
 
 const { Menu } = require("electron").remote
 
@@ -39,6 +41,7 @@ export class Context {
     public acsAnalyzerNode: AnalyserNode
 
     constructor(
+        public environment: ChromaEnvironment,
         public audioContext: AudioContext
     ) {}
     

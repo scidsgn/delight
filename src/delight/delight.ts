@@ -4,12 +4,17 @@ import { RazerInputNode } from "./nodes/library/razer/input"
 
 import "./styles/layout.scss"
 import { ChromaExecutor } from "./chroma/executor"
+import { entityTemplates } from "./chroma/entities"
+import { ChromaEnvironment } from "./chroma/environment"
 
 const audioContext = new AudioContext({
     sampleRate: 44100
 })
 
+const chromaEnviron = new ChromaEnvironment()
+
 const ctx = new Context(
+    chromaEnviron,
     audioContext
 )
 ctx.setupEvents()
@@ -50,8 +55,14 @@ navigator.mediaDevices.getUserMedia(
     glob.analyzer = ctx.acsAnalyzerNode
 })
 
-const executor = new ChromaExecutor(30)
+const executor = new ChromaExecutor(
+    chromaEnviron, 30
+)
 
 executor.startExecution(ctx)
 
 glob.executor = executor
+
+console.log(
+    entityTemplates
+)

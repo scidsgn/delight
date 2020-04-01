@@ -1,11 +1,13 @@
 import { RazerOutputNode } from "../nodes/library/razer/output"
 import { Context } from "../context"
-import { ChromaDevice, init, uninit, putEffect } from "./chroma"
+import { ChromaDeviceType, init, uninit, putEffect } from "./chroma"
 import { SelectType } from "../nodes/types/select"
 import { ViewerNode } from "../nodes/library/misc/viewer"
 import { ColorType } from "../nodes/types/color"
 import { RazerInputNode } from "../nodes/library/razer/input"
 import { NumberType } from "../nodes/types/number"
+import ornata from "./devices/keyboards/ornata"
+import { ChromaEnvironment } from "./environment"
 
 export class ChromaExecutor {
     private _running = false
@@ -16,6 +18,7 @@ export class ChromaExecutor {
     private timeout: NodeJS.Timeout
 
     constructor(
+        public environment: ChromaEnvironment,
         public framerate: number
     ) {}
 
@@ -38,40 +41,47 @@ export class ChromaExecutor {
             n => n instanceof RazerInputNode
         )
 
-        for (let output of this.outputNodes) {
-            const w = 22, h = 6
-            const colors: number[][] = Array(h).fill(0).map(
-                x => Array(w).fill(0xFFFFFF)
-            )
-
-            for (let x = 0; x < w; x++) {
-                for (let y = 0; y < h; y++) {
-                    this.context.resetProcessing()
-
-                    inputNodes.forEach(
-                        n => {
-                            const xOut = n.getOutput("x") as NumberType
-                            const yOut = n.getOutput("y") as NumberType
-
-                            xOut.value = x / (w - 1)
-                            yOut.value = y / (h - 1)
-                        }
-                    )
-
-                    await output.process()
-
-                    colors[y][x] = (
-                        await output.getInput("color") as ColorType
-                    ).value.toBGRInt()
-                }
-            }
-
-            putEffect(
-                ChromaDevice.keyboard,
-                "CHROMA_CUSTOM",
-                colors
+        const outputArrays: {
+            [p: string]: number[][]
+        } = {
+            "keyboard": Array(6).fill(0).map(
+                x => Array(22).fill(0)
             )
         }
+
+        for (let output of this.outputNodes) {
+            const target: number[][] = outputArrays[
+                output.device.type as ChromaDeviceType
+            ]
+
+            for (let entity of output.region.entities) {
+                this.context.resetProcessing()
+
+                inputNodes.forEach(
+                    n => {
+                        const xOut = n.getOutput("x") as NumberType
+                        const yOut = n.getOutput("y") as NumberType
+
+                        xOut.value = entity.arrayX
+                        yOut.value = entity.arrayY
+                    }
+                )
+
+                await output.process()
+
+                target[entity.arrayY][entity.arrayX] = (
+                    await output.getInput("color") as ColorType
+                ).value.toBGRInt()
+            }
+        }
+
+        Object.keys(outputArrays).forEach(devType => {
+            putEffect(
+                devType as ChromaDeviceType,
+                "CHROMA_CUSTOM",
+                outputArrays[devType]
+            )
+        })
 
         this.context.uniforms.frame++
         this.context.uniforms.time += 1 / this.framerate
@@ -85,12 +95,11 @@ export class ChromaExecutor {
     startExecution(context: Context) {
         this.outputNodes = context.nodes.filter(
             n => n instanceof RazerOutputNode
-        )
-        const devices: ChromaDevice[] = this.outputNodes.map(
-            n => (n.getOption("device") as SelectType).value as ChromaDevice
-        )
+        ) as RazerOutputNode[]
 
-        init(devices).then((enabled) => {
+        init([
+            ChromaDeviceType.keyboard
+        ]).then((enabled) => {
             if (!enabled) return
 
             this.outputNodes.forEach(n => n.locked = true)

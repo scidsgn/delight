@@ -1,7 +1,9 @@
+import { ChromaDevice } from "./device"
+
 let heartbeatInterval: NodeJS.Timeout = null
 let sessionURL = ""
 
-export enum ChromaDevice {
+export enum ChromaDeviceType {
     keyboard = "keyboard",
     mouse = "mouse",
     headset = "headset",
@@ -11,7 +13,7 @@ export enum ChromaDevice {
 }
 
 export async function init(
-    devices: ChromaDevice[] = [ChromaDevice.keyboard]
+    devices: ChromaDeviceType[] = [ChromaDeviceType.keyboard]
 ): Promise<boolean> {
     const res = await fetch(
         "http://localhost:54235/razer/chromasdk",
@@ -70,7 +72,7 @@ export async function uninit(): Promise<void> {
 }
 
 export async function putEffect(
-    device: ChromaDevice,
+    device: ChromaDeviceType,
     effectType: string,
     effectParam: any
 ) {
@@ -88,4 +90,6 @@ export async function putEffect(
             )
         }
     )
+
+    // console.log(await res.json())
 }
