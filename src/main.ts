@@ -15,6 +15,7 @@ app.on("ready", () => {
             resizable: true,
 
             webPreferences: {
+                backgroundThrottling: false,
                 nodeIntegration: true
             }
         }
