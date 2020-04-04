@@ -27,12 +27,17 @@ div.node {
     &.comment {
         background: var(--node-comment);
     }
-    &.math {
-        background: var(--node-math);
-    }
-    
     &.razer {
         background: var(--node-razer);
+    }
+    &.audio {
+        background: var(--node-audio);
+    }
+    &.color {
+        background: var(--node-color);
+    }
+    &.number {
+        background: var(--node-number);
     }
 
     &.current {

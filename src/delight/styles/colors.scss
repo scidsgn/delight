@@ -9,10 +9,13 @@
     --selected: rgb(247, 213, 61);
     --locked: rgb(223, 31, 47);
 
-    --node-general: #666d;
-    --node-comment: #555137dd;
+    --node-general: rgba(102, 102, 102, 0.867);
+    --node-comment: rgba(145, 145, 145, 0.867);
     --node-math: rgba(82, 96, 112, 0.867);
-    --node-razer: #666d;
+    --node-razer: rgba(44, 44, 44, 0.867);
+    --node-audio: rgba(108, 88, 116, 0.867);
+    --node-number: rgba(101, 114, 91, 0.867);
+    --node-color: rgba(114, 110, 94, 0.867);
 
     --socket-general: #666;
     --socket-number: #25dd6c;
