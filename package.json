@@ -30,6 +30,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "chroma-js": "^2.1.0",
     "htmlparser2": "^4.1.0",
     "yargs": "^15.3.1"
   }
