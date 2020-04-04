@@ -26,9 +26,30 @@ export class ChromaKeyboardDevice extends ChromaDevice {
             ),
             new ChromaRegion(
                 this,
+                "Function keys",
+                this.entities.filter(
+                    ent => ent.id.startsWith("keyF") && !isNaN(+ent.id.substring(4)) && ent.id.length > 4
+                )
+            ),
+            new ChromaRegion(
+                this,
                 "Numpad",
                 this.entities.filter(
                     ent => ent.id.startsWith("keyNumpad") || ent.id === "keyNumLock"
+                )
+            ),
+            new ChromaRegion(
+                this,
+                "WASD",
+                this.entities.filter(
+                    ent => ent.id.length === 4 && "WASD".includes(ent.id[3])
+                )
+            ),
+            new ChromaRegion(
+                this,
+                "Arrow keys",
+                this.entities.filter(
+                    ent => ent.id.startsWith("keyArrow")
                 )
             ),
             ...this.entities.map(

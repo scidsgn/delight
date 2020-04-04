@@ -1,11 +1,18 @@
 :root {
+    --app-toolbar: rgba(20, 20, 20, 0.603);
+    --app-color: #fff;
+    --app-button-hover: #0001;
+    --app-button-active: #0002;
+
+    --node-bg: #333;
+
     --selected: rgb(247, 213, 61);
     --locked: rgb(223, 31, 47);
 
     --node-general: #666d;
     --node-comment: #555137dd;
     --node-math: rgba(82, 96, 112, 0.867);
-    --node-razer: rgba(19, 19, 19, 0.867);
+    --node-razer: #666d;
 
     --socket-general: #666;
     --socket-number: #25dd6c;

@@ -19,8 +19,8 @@ div.node {
     padding-bottom: 8px;
     border-radius: 8px;
     box-shadow: inset 0px 0px 0px 2px #0003,
-                0px 3px 12px #0001,
-                0px 1px 2px #0001;
+                0px 6px 12px #0001,
+                0px 2px 2px #0001;
     
     animation: NodeAppearAnim 0.15s;
     
@@ -33,24 +33,20 @@ div.node {
     
     &.razer {
         background: var(--node-razer);
-
-        & > header {
-            background: rgba(0, 245, 0, 0.315);
-        }
     }
 
     &.current {
         box-shadow: inset 0px 0px 0px 2px var(--selected),
-                    0px 3px 12px #0001,
-                    0px 1px 2px #0001;
+                    0px 6px 12px #0001,
+                    0px 2px 2px #0001;
         
         z-index: 9999;
     }
     
     &.locked {
         box-shadow: inset 0px 0px 0px 2px var(--locked),
-                    0px 3px 12px #0001,
-                    0px 1px 2px #0001;
+                    0px 6px 12px #0001,
+                    0px 2px 2px #0001;
     }
 
 
