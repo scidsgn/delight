@@ -1,4 +1,5 @@
 import keys from "./templates/keys"
+import { ChromaRect, ChromaRegion } from "./region"
 
 export enum ChromaEntityGroup {
     unknown = 0x0000,
@@ -50,6 +51,42 @@ export class ChromaEntity {
 
     belongs(group: ChromaEntityGroup) {
         return (this.template.group & group) === group
+    }
+
+    getVirtualPosition(region: ChromaRegion) {
+        let x: number, y: number
+
+        if (region.apiBounds.width === 0)
+            x = 0
+        else
+            x = (this.arrayX - region.apiBounds.left) / region.apiBounds.width
+
+        if (region.apiBounds.height === 0)
+            y = 0
+        else
+            y = (this.arrayY - region.apiBounds.top) / region.apiBounds.height
+        
+        return {
+            x, y
+        }
+    }
+    
+    getPhysicalPosition(region: ChromaRegion) {
+        let x: number, y: number
+
+        if (region.physicalBounds.width === 0)
+            x = 0
+        else
+            x = (this.positionX - region.physicalBounds.left) / region.physicalBounds.width
+
+        if (region.physicalBounds.height === 0)
+            y = 0
+        else
+            y = (this.positionY - region.physicalBounds.top) / region.physicalBounds.height
+        
+        return {
+            x, y
+        }
     }
 }
 

@@ -52,24 +52,24 @@ export class ChromaRegion {
         )
     }
 
-    getAPIPosition(entity: ChromaEntity) {
+    getRelativePosition(entity: ChromaEntity, rect: ChromaRect) {
         let x: number, y: number
 
-        if (this.apiBounds.width === 0)
+        if (rect.width === 0)
             x = 0
         else
-            x = (entity.arrayX - this.apiBounds.left) / this.apiBounds.width
+            x = (entity.arrayX - rect.left) / rect.width
 
-        if (this.apiBounds.height === 0)
+        if (rect.height === 0)
             y = 0
         else
-            y = (entity.arrayY - this.apiBounds.top) / this.apiBounds.height
+            y = (entity.arrayY - rect.top) / rect.height
         
         return {
             x, y
         }
     }
-
+    
     getPhysicalPosition(entity: ChromaEntity) {
         let x: number, y: number
 

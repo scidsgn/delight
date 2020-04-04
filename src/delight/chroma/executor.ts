@@ -57,20 +57,7 @@ export class ChromaExecutor {
                 this.context.resetProcessing()
 
                 inputNodes.forEach(
-                    n => {
-                        const xOut = n.getOutput("x") as NumberType
-                        const yOut = n.getOutput("y") as NumberType
-                        const pxOut = n.getOutput("physX") as NumberType
-                        const pyOut = n.getOutput("physY") as NumberType
-
-                        const apiPos = output.region.getAPIPosition(entity)
-                        const physPos = output.region.getPhysicalPosition(entity)
-
-                        xOut.value = apiPos.x
-                        yOut.value = apiPos.y
-                        pxOut.value = physPos.x
-                        pyOut.value = physPos.y
-                    }
+                    n => (n as RazerInputNode).update(output.region, entity)
                 )
 
                 await output.process()
