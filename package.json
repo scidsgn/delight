@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/scintilla4evr/delight#readme",
   "devDependencies": {
+    "@types/chroma-js": "^2.0.0",
     "css-loader": "^3.4.2",
     "electron": "^8.1.1",
     "node-sass": "^4.13.1",

@@ -3,8 +3,8 @@ import { Socket, SocketType } from "../../socket"
 import { IDelightType } from "../../types/type"
 import { ColorType, Color } from "../../types/color"
 import { BoundedNumberType } from "../../types/boundedNumber"
-import { NumberType } from "../../types/number"
 import { SelectType } from "../../types/select"
+import * as chroma from "chroma-js"
 
 export class BlendNode extends DelightNode {
     public static id = "color.blend"
@@ -22,8 +22,17 @@ export class BlendNode extends DelightNode {
             new SelectType(
                 [
                     {
-                        id: "mix",
-                        name: "Mix"
+                        header: "Mix",
+                        items: [
+                            {
+                                id: "mixRGB",
+                                name: "Mix (RGB)"
+                            },
+                            {
+                                id: "mixLCH",
+                                name: "Mix (LCH)"
+                            }
+                        ]
                     },
                     {
                         header: "Lighten",
@@ -35,7 +44,7 @@ export class BlendNode extends DelightNode {
                         ]
                     }
                 ],
-                "mix"
+                "mixRGB"
             ),
             true,
             false
@@ -82,7 +91,16 @@ export class BlendNode extends DelightNode {
 
         let v = c2.value
 
-        if (mode.value === "add") {
+        if (mode.value === "mixLCH") {
+            v = Color.fromChromaJS(
+                chroma.mix(
+                    c1.value.toChromaJS(),
+                    c2.value.toChromaJS(),
+                    mix.value,
+                    "lch"
+                )
+            )
+        } else if (mode.value === "add") {
             v = new Color(
                 c1.value.r + c2.value.r,
                 c1.value.g + c2.value.g,

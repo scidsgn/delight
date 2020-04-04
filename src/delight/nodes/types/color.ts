@@ -1,4 +1,5 @@
 import { IDelightType } from "./type"
+import * as chroma from "chroma-js"
 
 import "../../styles/types/color.scss"
 
@@ -8,6 +9,12 @@ export class Color {
         public g = 0,
         public b = 0
     ) {}
+
+    toChromaJS() {
+        return chroma.gl(
+            this.r, this.g, this.b
+        )
+    }
 
     toHex() {
         const rgb = [
@@ -27,6 +34,13 @@ export class Color {
         )
 
         return rgb[0] | (rgb[1] << 8) | (rgb[2] << 16)
+    }
+
+    static fromChromaJS(c: chroma.Color) {
+        const rgb = c.gl()
+        return new Color(
+            rgb[0], rgb[1], rgb[2]
+        )
     }
 
     static fromHex(hex: string) {
