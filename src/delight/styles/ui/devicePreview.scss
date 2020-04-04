@@ -1,0 +1,20 @@
+div.devicePreview {
+    position: relative;
+
+    div.entityPreview {
+        --entity-led: #000;
+
+        position: absolute;
+
+        background: var(--node-bg);
+
+        box-shadow: 0px 0px 0px 4px var(--entity-led);
+
+        &.dimensionless {
+            width: 16px;
+            height: 16px;
+
+            border-radius: 8px;
+        }
+    }
+}

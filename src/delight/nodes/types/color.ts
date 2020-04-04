@@ -20,7 +20,7 @@ export class Color {
         const rgb = [
             this.r, this.g, this.b
         ].map(
-            x => Math.max(Math.min(255 * x, 255), 0).toString(16).padStart(2, "0")
+            x => Math.max(Math.min(Math.round(255 * x), 255), 0).toString(16).padStart(2, "0")
         )
 
         return `#${rgb.join("")}`

@@ -21,6 +21,7 @@ import { AudioSampleNode } from "./nodes/library/audio/sample"
 import { CompareNode } from "./nodes/library/number/compare"
 import { InvertNode } from "./nodes/library/color/invert"
 import { BlendNode } from "./nodes/library/color/blend"
+import { RazerPreviewNode } from "./nodes/library/razer/preview"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -54,7 +55,9 @@ export const availableNodes: {
     ],
     "Razer Chroma": [
         RazerInputNode,
-        RazerOutputNode
+        RazerOutputNode,
+        null,
+        RazerPreviewNode
     ],
     "Time": [
         FrameNode,

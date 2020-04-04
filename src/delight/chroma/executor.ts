@@ -6,6 +6,7 @@ import { ColorType } from "../nodes/types/color"
 import { RazerInputNode } from "../nodes/library/razer/input"
 import { NumberType } from "../nodes/types/number"
 import { ChromaEnvironment } from "./environment"
+import { RazerPreviewNode } from "../nodes/library/razer/preview"
 
 export class ChromaExecutor {
     private _running = false
@@ -35,10 +36,13 @@ export class ChromaExecutor {
 
         const inputNodes = this.context.nodes.filter(
             n => n instanceof RazerInputNode
-        )
+        ) as RazerInputNode[]
         const outputNodes = this.context.nodes.filter(
             n => n instanceof RazerOutputNode
         ) as RazerOutputNode[]
+        const previewNodes = this.context.nodes.filter(
+            n => n instanceof RazerPreviewNode
+        ) as RazerPreviewNode[]
 
         const outputArrays: {
             [p: string]: number[][]
@@ -57,14 +61,21 @@ export class ChromaExecutor {
                 this.context.resetProcessing()
 
                 inputNodes.forEach(
-                    n => (n as RazerInputNode).update(output.region, entity)
+                    n => n.update(output.region, entity)
                 )
 
                 await output.process()
 
-                target[entity.arrayY][entity.arrayX] = (
-                    await output.getInput("color") as ColorType
-                ).value.toBGRInt()
+                const color = await output.getInput("color") as ColorType
+
+                target[entity.arrayY][entity.arrayX] = color.value.toBGRInt()
+
+                previewNodes.forEach(
+                    n => {
+                        if (n.device === output.device)
+                            n.updateEntity(entity, color.value)
+                    }
+                )                
             }
         }
 

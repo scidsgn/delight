@@ -36,13 +36,14 @@ export type ChromaEntityTemplate = {
 
 export class ChromaEntity {
     public template: ChromaEntityTemplate
+    public physicalDimensions: ChromaRect = null
 
     constructor(
         public id: string,
         public arrayX: number,
         public arrayY: number,
-        public positionX: number,
-        public positionY: number
+        public ledPositionX: number,
+        public ledPositionY: number
     ) {
         this.template = entityTemplates.find(
             e => e.id === id
@@ -51,6 +52,22 @@ export class ChromaEntity {
 
     belongs(group: ChromaEntityGroup) {
         return (this.template.group & group) === group
+    }
+
+    getPreviewDOM(): HTMLDivElement {
+        const div = document.createElement("div")
+        div.classList.add("entityPreview")
+
+        if (this.physicalDimensions) {
+
+        } else {
+            div.classList.add("dimensionless")
+
+            div.style.left = `${this.ledPositionX}px`
+            div.style.top = `${this.ledPositionY}px`
+        }
+
+        return div
     }
 
     getVirtualPosition(region: ChromaRegion) {
@@ -77,12 +94,12 @@ export class ChromaEntity {
         if (region.physicalBounds.width === 0)
             x = 0
         else
-            x = (this.positionX - region.physicalBounds.left) / region.physicalBounds.width
+            x = (this.ledPositionX - region.physicalBounds.left) / region.physicalBounds.width
 
         if (region.physicalBounds.height === 0)
             y = 0
         else
-            y = (this.positionY - region.physicalBounds.top) / region.physicalBounds.height
+            y = (this.ledPositionY - region.physicalBounds.top) / region.physicalBounds.height
         
         return {
             x, y

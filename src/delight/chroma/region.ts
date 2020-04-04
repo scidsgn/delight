@@ -48,43 +48,7 @@ export class ChromaRegion {
             entities, (ent: ChromaEntity) => [ent.arrayX, ent.arrayY]
         )
         this.physicalBounds = findBoundingRect(
-            entities, (ent: ChromaEntity) => [ent.positionX, ent.positionY]
+            entities, (ent: ChromaEntity) => [ent.ledPositionX, ent.ledPositionY]
         )
-    }
-
-    getRelativePosition(entity: ChromaEntity, rect: ChromaRect) {
-        let x: number, y: number
-
-        if (rect.width === 0)
-            x = 0
-        else
-            x = (entity.arrayX - rect.left) / rect.width
-
-        if (rect.height === 0)
-            y = 0
-        else
-            y = (entity.arrayY - rect.top) / rect.height
-        
-        return {
-            x, y
-        }
-    }
-    
-    getPhysicalPosition(entity: ChromaEntity) {
-        let x: number, y: number
-
-        if (this.physicalBounds.width === 0)
-            x = 0
-        else
-            x = (entity.positionX - this.physicalBounds.left) / this.physicalBounds.width
-
-        if (this.physicalBounds.height === 0)
-            y = 0
-        else
-            y = (entity.positionY - this.physicalBounds.top) / this.physicalBounds.height
-        
-        return {
-            x, y
-        }
     }
 }
