@@ -21,20 +21,6 @@ const ctx = new Context(
 )
 ctx.setupEvents()
 
-const n1 = new RazerInputNode(ctx)
-ctx.addNode(n1)
-
-n1.createDOM()
-n1.setPosition(16, 80)
-ctx.nodeContainer.appendChild(n1.domElement)
-
-const n2 = new RazerOutputNode(ctx)
-ctx.addNode(n2)
-
-n2.createDOM()
-n2.setPosition(400, 80)
-ctx.nodeContainer.appendChild(n2.domElement)
-
 ctx.updateConnectionsCanvas()
 
 const glob = window as any

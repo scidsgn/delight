@@ -40,6 +40,38 @@ body > header {
             }
         }
 
+        div.context {
+            position: relative;
+            -webkit-app-region: no-drag;
+    
+            button {
+                background: transparent;
+                color: var(--app-color);
+
+                font-family: "Inter";
+
+                border: none;
+                outline: none;
+                padding: 8px 16px;
+
+                &::after {
+                    content: "";
+
+                    font-family: "Segoe MDL2 Assets"; // Temporary
+
+                    margin-left: 12px;
+                }
+
+                &:hover {
+                    background: var(--app-button-hover);
+                }
+
+                &:active {
+                    background: var(--app-button-active);
+                }
+            }
+        }
+
         div.wm {
             display: flex;
             -webkit-app-region: no-drag;
@@ -72,22 +104,6 @@ body > header {
                     filter: invert(1);
                 }
             }
-        }
-    }
-
-    nav {
-        padding: 0px 16px;
-
-        display: flex;
-
-        div.tabButton {
-            background: var(--node-bg);
-            color: var(--app-color);
-
-            font-size: 10pt;
-
-            padding: 8px 16px;
-            border-radius: 4px 4px 0px 0px;
         }
     }
 }
