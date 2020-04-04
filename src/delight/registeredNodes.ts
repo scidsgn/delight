@@ -1,6 +1,6 @@
 import { DelightNodeConstructor } from "./nodes/node"
 import { ColorValueNode } from "./nodes/library/color/color"
-import { CombineRGBNode } from "./nodes/library/color/combine"
+import { CombineRGBNode } from "./nodes/library/color/combineRGB"
 import { NumberValueNode } from "./nodes/library/number/number"
 import { RandomNumberNode } from "./nodes/library/number/random"
 import { ArithmeticNode } from "./nodes/library/number/arithmetic"
@@ -12,12 +12,11 @@ import { CommentNode } from "./nodes/library/misc/comment"
 import { ViewerNode } from "./nodes/library/misc/viewer"
 import { ClampNode } from "./nodes/library/number/clamp"
 import { MapRangeNode } from "./nodes/library/number/mapRange"
-import { SeparateRGBNode } from "./nodes/library/color/separate"
+import { SeparateRGBNode } from "./nodes/library/color/separateRGB"
 import { TrigNode } from "./nodes/library/number/trig"
 import { LoopNode } from "./nodes/library/number/loop"
 import { AudioSourceNode } from "./nodes/library/audio/source"
 import { AudioPeakNode } from "./nodes/library/audio/peak"
-import { AudioVolumeNode } from "./nodes/library/audio/volume"
 import { AudioSampleNode } from "./nodes/library/audio/sample"
 import { CompareNode } from "./nodes/library/number/compare"
 import { InvertNode } from "./nodes/library/color/invert"
@@ -51,7 +50,6 @@ export const availableNodes: {
         AudioSourceNode,
         null,
         AudioPeakNode,
-        AudioVolumeNode,
         AudioSampleNode
     ],
     "Razer Chroma": [

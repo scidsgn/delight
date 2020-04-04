@@ -1,21 +1,9 @@
-import { DelightNode, DelightNodeConstructor, UniformNode } from "./nodes/node";
+import { DelightNode, UniformNode } from "./nodes/node";
 import { NodeConnection, PartialNodeConnection } from "./nodes/connection";
 import { Socket, SocketType } from "./nodes/socket";
 import { IDelightType } from "./nodes/types/type";
-import { RazerOutputNode } from "./nodes/library/razer/output"
 import { MenuItem } from "electron"
-import { ArithmeticNode } from "./nodes/library/number/arithmetic"
-import { ColorValueNode } from "./nodes/library/color/color"
-import { CombineRGBNode } from "./nodes/library/color/combine"
-import { CommentNode } from "./nodes/library/misc/comment"
-import { ViewerNode } from "./nodes/library/misc/viewer"
-import { NumberValueNode } from "./nodes/library/number/number"
-import { RandomNumberNode } from "./nodes/library/number/random"
-import { RazerInputNode } from "./nodes/library/razer/input"
-import { FrameNode } from "./nodes/library/time/frame"
-import { TimeNode } from "./nodes/library/time/time"
 import { availableNodes } from "./registeredNodes"
-import { ChromaExecutor } from "./chroma/executor"
 import { ChromaEnvironment } from "./chroma/environment"
 
 const { Menu } = require("electron").remote
