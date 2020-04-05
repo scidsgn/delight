@@ -34,6 +34,11 @@ export class InvertNode extends DelightNode {
         const color = await this.getInput("color") as ColorType
         const colorOut = this.getOutput("color") as ColorType
 
-        colorOut.value = color.value
+        colorOut.value = new Color(
+            1 - color.value.r,
+            1 - color.value.g,
+            1 - color.value.b,
+            color.value.a
+        )
     }
 }
