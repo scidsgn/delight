@@ -59,6 +59,12 @@ export class CombineHSLNode extends DelightNode {
             "l", "Lightness",
             SocketType.input,
             new BoundedNumberType(0.5, 0, 1, 0.01)
+        ),
+        new Socket(
+            this,
+            "a", "Alpha",
+            SocketType.input,
+            new BoundedNumberType(1, 0, 1, 0.01)
         )
     ]
     public outputs: Socket<IDelightType>[] = [
@@ -75,7 +81,8 @@ export class CombineHSLNode extends DelightNode {
         const values = await Promise.all([
             this.getInput("h") as Promise<NumberType>,
             this.getInput("s") as Promise<NumberType>,
-            this.getInput("l") as Promise<NumberType>
+            this.getInput("l") as Promise<NumberType>,
+            this.getInput("a") as Promise<NumberType>
         ])
         const unit = this.getOption("unit") as SelectType
         const out = this.getOutput("color") as ColorType
@@ -87,12 +94,15 @@ export class CombineHSLNode extends DelightNode {
         else if (unit.value === "rad")
             hue /= 2 * Math.PI
 
-        out.value = Color.fromChromaJS(
+        let hsl = Color.fromChromaJS(
             chroma.hsl(
                 hue * 360,
                 values[1].value,
                 values[2].value
             )
         )
+        hsl.a = values[3].value
+
+        out.value = hsl
     }
 }

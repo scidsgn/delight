@@ -30,6 +30,12 @@ export class CombineRGBNode extends DelightNode {
             "b", "Blue",
             SocketType.input,
             new BoundedNumberType(0.5, 0, 1, 0.01)
+        ),
+        new Socket(
+            this,
+            "a", "Alpha",
+            SocketType.input,
+            new BoundedNumberType(1, 0, 1, 0.01)
         )
     ]
     public outputs: Socket<IDelightType>[] = [
@@ -46,14 +52,16 @@ export class CombineRGBNode extends DelightNode {
         const values = await Promise.all([
             this.getInput("r") as Promise<NumberType>,
             this.getInput("g") as Promise<NumberType>,
-            this.getInput("b") as Promise<NumberType>
+            this.getInput("b") as Promise<NumberType>,
+            this.getInput("a") as Promise<NumberType>
         ])
         const out = this.getOutput("color") as ColorType
 
         out.value = new Color(
             values[0].value,
             values[1].value,
-            values[2].value
+            values[2].value,
+            values[3].value
         )
     }
 }

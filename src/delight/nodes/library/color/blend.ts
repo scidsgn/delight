@@ -104,14 +104,16 @@ export class BlendNode extends DelightNode {
             v = new Color(
                 c1.value.r + c2.value.r,
                 c1.value.g + c2.value.g,
-                c1.value.b + c2.value.b
+                c1.value.b + c2.value.b,
+                c2.value.a + c1.value.a * (1 - c2.value.a)
             )
         }
 
         out.value = new Color(
             c1.value.r + mix.value * (v.r - c1.value.r),
             c1.value.g + mix.value * (v.g - c1.value.g),
-            c1.value.b + mix.value * (v.b - c1.value.b)
+            c1.value.b + mix.value * (v.b - c1.value.b),
+            c1.value.a + mix.value * (v.a - c1.value.a)
         )
     }
 }

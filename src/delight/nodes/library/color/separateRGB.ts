@@ -41,6 +41,13 @@ export class SeparateRGBNode extends DelightNode {
             SocketType.output,
             new NumberType(),
             false
+        ),
+        new Socket(
+            this,
+            "a", "Alpha",
+            SocketType.output,
+            new NumberType(),
+            false
         )
     ]
 
@@ -50,9 +57,11 @@ export class SeparateRGBNode extends DelightNode {
         const r = this.getOutput("r") as NumberType
         const g = this.getOutput("g") as NumberType
         const b = this.getOutput("b") as NumberType
+        const a = this.getOutput("a") as NumberType
 
         r.value = color.value.r
         g.value = color.value.g
         b.value = color.value.b
+        a.value = color.value.a
     }
 }

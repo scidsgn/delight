@@ -7,18 +7,29 @@ export class Color {
     constructor(
         public r = 0,
         public g = 0,
-        public b = 0
+        public b = 0,
+        public a = 1
     ) {}
+
+    get premultiplied() {
+        return new Color(
+            this.r * this.a,
+            this.g * this.a,
+            this.b * this.a,
+            this.a
+        )
+    }
 
     toChromaJS() {
         return chroma.gl(
-            this.r, this.g, this.b
+            this.r, this.g, this.b, this.a
         )
     }
 
     toHex() {
+        const c = this.premultiplied
         const rgb = [
-            this.r, this.g, this.b
+            c.r, c.g, c.b
         ].map(
             x => Math.max(Math.min(Math.round(255 * x), 255), 0).toString(16).padStart(2, "0")
         )
@@ -27,8 +38,9 @@ export class Color {
     }
 
     toBGRInt() {
+        const c = this.premultiplied
         const rgb = [
-            this.r, this.g, this.b
+            c.r, c.g, c.b
         ].map(
             x => Math.max(Math.min(255 * x, 255), 0)
         )
@@ -39,7 +51,7 @@ export class Color {
     static fromChromaJS(c: chroma.Color) {
         const rgb = c.gl()
         return new Color(
-            rgb[0], rgb[1], rgb[2]
+            rgb[0], rgb[1], rgb[2], rgb[3]
         )
     }
 
@@ -79,7 +91,7 @@ export class ColorType implements IDelightType {
 
     deserialize(data: any) {
         this.value = new Color(
-            data.r, data.g, data.b
+            data.r, data.g, data.b, data.a
         )
     }
 
@@ -87,7 +99,8 @@ export class ColorType implements IDelightType {
         return {
             r: this._value.r,
             g: this._value.g,
-            b: this._value.b
+            b: this._value.b,
+            a: this._value.a
         }
     }
 
