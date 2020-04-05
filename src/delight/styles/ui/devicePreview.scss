@@ -9,6 +9,16 @@ div.devicePreview {
 
     overflow: hidden;
 
+    &[data-style=simple] {
+        div.lights div {
+            opacity: 0;
+        }
+
+        div.objects div.entityPreview {
+            background: var(--entity-led);
+        }
+    }
+
     div.lights {
         position: absolute;
         left: 8px;

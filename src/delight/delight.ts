@@ -4,7 +4,7 @@ import { ChromaExecutor } from "./chroma/executor"
 import { ChromaEnvironment } from "./chroma/environment"
 
 import { addAppMenu } from "./ui/menu"
-import { saveContextAs, saveContext, openContext } from "./ui/io"
+import { saveContextAs, saveContext, openContext, aboutDelight } from "./ui/io"
 
 import "./styles/layout.scss"
 import "./styles/ui/toolbar.scss"
@@ -95,6 +95,13 @@ addAppMenu(
             {
                 label: "Save as...",
                 click: () => saveContextAs(ctx)
+            },
+            {
+                type: "separator"
+            },
+            {
+                label: "About",
+                click: () => aboutDelight()
             }
         ]
     }

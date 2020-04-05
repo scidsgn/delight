@@ -48,3 +48,13 @@ export function openContext(ctx: Context) {
         }
     )
 }
+
+export function aboutDelight() {
+    dialog.showMessageBox(
+        {
+            type: "info",
+            title: "About Delight",
+            message: `Delight - a node-based customization tool for Razer Chroma.`
+        }
+    )
+}

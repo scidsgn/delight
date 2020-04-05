@@ -1,11 +1,13 @@
 import { DelightNode, NodeCategory } from "../../node"
 import { IDelightType } from "../../types/type"
-import { Socket } from "../../socket"
+import { Socket, SocketType } from "../../socket"
 import { ChromaDevice } from "../../../chroma/device"
 
 import "../../../styles/ui/devicePreview.scss"
 import { ChromaEntity } from "../../../chroma/entities"
 import { Color } from "../../types/color"
+import { SelectType } from "../../types/select"
+import { Context } from "../../../context"
 
 export class RazerPreviewNode extends DelightNode {
     public static id = "razer.preview"
@@ -21,7 +23,68 @@ export class RazerPreviewNode extends DelightNode {
     public deviceObjectsDOM: HTMLDivElement
 
     public options: Socket<IDelightType>[] = [
+        new Socket(
+            this,
+            "device", "Device",
+            SocketType.option,
+            new SelectType(
+                [], "0",
+                v => this.changeDevice(+v)
+            ),
+            true
+        ),
+        new Socket(
+            this,
+            "style",
+            "Display style",
+            SocketType.option,
+            new SelectType(
+                [
+                    {
+                        id: "simple",
+                        name: "Simplified"
+                    },
+                    {
+                        id: "realistic",
+                        name: "Realistic"
+                    }
+                ],
+                "realistic",
+                (value: string) => {
+                    this.devicePreviewDOM.setAttribute(
+                        "data-style", value
+                    )
+                }
+            )
+        )
     ]
+
+    constructor(ctx: Context) {
+        super(ctx)
+
+        this.updateDeviceSelect()
+    }
+
+    updateDeviceSelect() {
+        const deviceSelect = this.getOption("device") as SelectType
+
+        deviceSelect.options = this.context.environment.devices.map(
+            (dev, i) => {
+                return {
+                    id: i.toString(),
+                    name: dev.name
+                }
+            }
+        )
+        deviceSelect.value = this.context.environment.devices.indexOf(this.device).toString()
+        deviceSelect.updateDOM()
+    }
+
+    changeDevice(index: number) {
+        this.device = this.context.environment.devices[index]
+        this.updateDevice()
+        this.updateDeviceSelect()
+    }
 
     updateDevice() {
         this.deviceLightsDOM.innerHTML = ""
@@ -67,6 +130,10 @@ export class RazerPreviewNode extends DelightNode {
         super.createDOM()
 
         this.domElement.style.width = `unset`
+
+        const options = this.domElement.querySelector("div.options") as HTMLDivElement
+
+        options.style.display = "flex"
 
         this.devicePreviewDOM = document.createElement("div")
         this.devicePreviewDOM.classList.add("devicePreview")
