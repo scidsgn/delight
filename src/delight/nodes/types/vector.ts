@@ -7,6 +7,10 @@ export class Vector {
         public x = 0,
         public y = 0
     ) {}
+
+    get length() {
+        return Math.hypot(this.x, this.y)
+    }
 }
 
 export class VectorType implements IDelightType {

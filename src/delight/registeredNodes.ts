@@ -24,6 +24,8 @@ import { BlendNode } from "./nodes/library/color/blend"
 import { RazerPreviewNode } from "./nodes/library/razer/preview"
 import { CombineVectorNode } from "./nodes/library/vector/combine"
 import { SeparateVectorNode } from "./nodes/library/vector/separate"
+import { VectorLengthNode } from "./nodes/library/vector/length"
+import { VectorScaleNode } from "./nodes/library/vector/scale"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -42,7 +44,10 @@ export const availableNodes: {
     ],
     "Vector": [
         CombineVectorNode,
-        SeparateVectorNode
+        SeparateVectorNode,
+        null,
+        VectorLengthNode,
+        VectorScaleNode
     ],
     "_Sep": [],
     "Color": [
