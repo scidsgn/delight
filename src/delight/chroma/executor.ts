@@ -52,6 +52,8 @@ export class ChromaExecutor {
             )
         }
 
+        previewNodes.forEach(n => n.resetPreview())
+
         for (let output of outputNodes) {
             const target: number[][] = outputArrays[
                 output.device.type as ChromaDeviceType

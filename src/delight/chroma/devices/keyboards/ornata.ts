@@ -1,7 +1,7 @@
 import { ChromaEntity } from "../../entities"
 import { ChromaKeyboardDevice } from "./keyboard"
 
-export default new ChromaKeyboardDevice(
+const ornata = new ChromaKeyboardDevice(
     "Razer Ornata Chroma",
     "803378C1-CC48-4970-8539-D828CC1D420A",
     0x021E,
@@ -128,3 +128,126 @@ export default new ChromaKeyboardDevice(
         new ChromaEntity("keyNumpadEnter", 21, 4, 897, 260)
     ]
 )
+
+ornata.setEntityDimensions(1, 0, 49, 58, 36, 36)
+ornata.setEntityDimensions(3, 0, 127, 58, 36, 36)
+ornata.setEntityDimensions(4, 0, 165, 58, 36, 36)
+ornata.setEntityDimensions(5, 0, 203, 58, 36, 36)
+ornata.setEntityDimensions(6, 0, 241, 58, 36, 36)
+ornata.setEntityDimensions(7, 0, 299, 58, 36, 36)
+ornata.setEntityDimensions(8, 0, 337, 58, 36, 36)
+ornata.setEntityDimensions(9, 0, 375, 58, 36, 36)
+ornata.setEntityDimensions(10, 0, 413, 58, 36, 36)
+ornata.setEntityDimensions(11, 0, 472, 58, 36, 36)
+ornata.setEntityDimensions(12, 0, 510, 58, 36, 36)
+ornata.setEntityDimensions(13, 0, 548, 58, 36, 36)
+ornata.setEntityDimensions(14, 0, 586, 58, 36, 36)
+ornata.setEntityDimensions(15, 0, 638, 58, 36, 36)
+ornata.setEntityDimensions(16, 0, 676, 58, 36, 36)
+ornata.setEntityDimensions(17, 0, 714, 58, 36, 36)
+
+ornata.setEntityDimensions(1, 1, 49, 109, 36, 36)
+ornata.setEntityDimensions(2, 1, 87, 109, 36, 36)
+ornata.setEntityDimensions(3, 1, 125, 109, 36, 36)
+ornata.setEntityDimensions(4, 1, 163, 109, 37, 36)
+ornata.setEntityDimensions(5, 1, 202, 109, 37, 36)
+ornata.setEntityDimensions(6, 1, 241, 109, 36, 36)
+ornata.setEntityDimensions(7, 1, 279, 109, 36, 36)
+ornata.setEntityDimensions(8, 1, 317, 109, 37, 36)
+ornata.setEntityDimensions(9, 1, 356, 109, 36, 36)
+ornata.setEntityDimensions(10, 1, 394, 109, 37, 36)
+ornata.setEntityDimensions(11, 1, 433, 109, 36, 36)
+ornata.setEntityDimensions(12, 1, 471, 109, 37, 36)
+ornata.setEntityDimensions(13, 1, 510, 109, 36, 36)
+ornata.setEntityDimensions(14, 1, 548, 109, 74, 36)
+
+ornata.setEntityDimensions(1, 2, 49, 147, 56, 36)
+ornata.setEntityDimensions(2, 2, 107, 147, 36, 36)
+ornata.setEntityDimensions(3, 2, 145, 147, 36, 36)
+ornata.setEntityDimensions(4, 2, 183, 147, 36, 36)
+ornata.setEntityDimensions(5, 2, 221, 147, 37, 36)
+ornata.setEntityDimensions(6, 2, 260, 147, 36, 36)
+ornata.setEntityDimensions(7, 2, 298, 147, 37, 36)
+ornata.setEntityDimensions(8, 2, 337, 147, 36, 36)
+ornata.setEntityDimensions(9, 2, 375, 147, 37, 36)
+ornata.setEntityDimensions(10, 2, 414, 147, 36, 36)
+ornata.setEntityDimensions(11, 2, 452, 147, 36, 36)
+ornata.setEntityDimensions(12, 2, 490, 147, 36, 36)
+ornata.setEntityDimensions(13, 2, 528, 147, 36, 36)
+ornata.setEntityDimensions(14, 2, 566, 147, 56, 36)
+
+ornata.setEntityDimensions(1, 3, 49, 185, 64.667, 36)
+ornata.setEntityDimensions(2, 3, 116, 185, 37, 36)
+ornata.setEntityDimensions(3, 3, 155, 185, 36, 36)
+ornata.setEntityDimensions(4, 3, 193, 185, 36, 36)
+ornata.setEntityDimensions(5, 3, 231, 185, 37, 36)
+ornata.setEntityDimensions(6, 3, 270, 185, 37, 36)
+ornata.setEntityDimensions(7, 3, 309, 185, 37, 36)
+ornata.setEntityDimensions(8, 3, 348, 185, 36, 36)
+ornata.setEntityDimensions(9, 3, 386, 185, 36, 36)
+ornata.setEntityDimensions(10, 3, 424, 185, 36, 36)
+ornata.setEntityDimensions(11, 3, 462, 185, 36, 36)
+ornata.setEntityDimensions(12, 3, 500, 185, 36, 36)
+ornata.setEntityDimensions(14, 3, 538, 185, 84, 36)
+
+ornata.setEntityDimensions(1, 4, 49, 223, 84, 36)
+ornata.setEntityDimensions(3, 4, 135, 223, 37, 36)
+ornata.setEntityDimensions(4, 4, 174, 223, 36, 36)
+ornata.setEntityDimensions(5, 4, 212, 223, 36, 36)
+ornata.setEntityDimensions(6, 4, 250, 223, 37, 36)
+ornata.setEntityDimensions(7, 4, 289, 223, 36, 36)
+ornata.setEntityDimensions(8, 4, 327, 223, 36, 36)
+ornata.setEntityDimensions(9, 4, 365, 223, 37, 36)
+ornata.setEntityDimensions(10, 4, 404, 223, 37, 36)
+ornata.setEntityDimensions(11, 4, 443, 223, 37, 36)
+ornata.setEntityDimensions(12, 4, 482, 223, 36, 36)
+ornata.setEntityDimensions(14, 4, 520, 223, 102, 36)
+
+ornata.setEntityDimensions(1, 5, 49, 260.667, 56, 36)
+ornata.setEntityDimensions(2, 5, 107, 261, 46, 36)
+ornata.setEntityDimensions(3, 5, 155, 261, 46, 36)
+ornata.setEntityDimensions(7, 5, 203, 261, 219, 36)
+ornata.setEntityDimensions(11, 5, 424, 261, 46, 36)
+ornata.setEntityDimensions(12, 5, 472, 261, 46, 36)
+ornata.setEntityDimensions(13, 5, 520, 261, 45, 36)
+ornata.setEntityDimensions(14, 5, 567, 261, 55, 36)
+
+ornata.setEntityDimensions(15, 1, 638, 109, 36, 36)
+ornata.setEntityDimensions(16, 1, 676, 109, 36, 36)
+ornata.setEntityDimensions(17, 1, 714, 109, 36, 36)
+
+ornata.setEntityDimensions(15, 2, 638, 147, 36, 36)
+ornata.setEntityDimensions(16, 2, 676, 147, 36, 36)
+ornata.setEntityDimensions(17, 2, 714, 147, 36, 36)
+
+ornata.setEntityDimensions(16, 4, 676, 223, 36, 36)
+
+ornata.setEntityDimensions(15, 5, 638, 261, 36, 36)
+ornata.setEntityDimensions(16, 5, 676, 261, 36, 36)
+ornata.setEntityDimensions(17, 5, 714, 261, 36, 36)
+
+ornata.setEntityDimensions(18, 1, 765, 109, 36, 36)
+ornata.setEntityDimensions(19, 1, 803, 109, 36, 36)
+ornata.setEntityDimensions(20, 1, 841, 109, 36, 36)
+ornata.setEntityDimensions(21, 1, 879, 109, 36, 36)
+
+ornata.setEntityDimensions(18, 2, 765, 147, 36, 36)
+ornata.setEntityDimensions(19, 2, 803, 147, 36, 36)
+ornata.setEntityDimensions(20, 2, 841, 147, 36, 36)
+ornata.setEntityDimensions(21, 2, 879, 147, 36, 74)
+
+ornata.setEntityDimensions(18, 3, 765, 185, 36, 36)
+ornata.setEntityDimensions(19, 3, 803, 185, 36, 36)
+ornata.setEntityDimensions(20, 3, 841, 185, 36, 36)
+
+ornata.setEntityDimensions(18, 4, 765, 223, 36, 36)
+ornata.setEntityDimensions(19, 4, 803, 223, 36, 36)
+ornata.setEntityDimensions(20, 4, 841, 223, 36, 36)
+
+ornata.setEntityDimensions(21, 4, 879, 223, 36, 74)
+ornata.setEntityDimensions(19, 5, 765, 261, 74, 36)
+ornata.setEntityDimensions(20, 5, 841, 261, 36, 36)
+
+ornata.updateDeviceDimensions()
+
+export default ornata

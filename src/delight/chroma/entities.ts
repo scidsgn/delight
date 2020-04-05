@@ -1,5 +1,6 @@
 import keys from "./templates/keys"
 import { ChromaRect, ChromaRegion } from "./region"
+import { ChromaDevice } from "./device"
 
 export enum ChromaEntityGroup {
     unknown = 0x0000,
@@ -32,6 +33,7 @@ export type ChromaEntityTemplate = {
     group: ChromaEntityGroup
     id: string
     name: string
+    display?: string
 }
 
 export class ChromaEntity {
@@ -54,12 +56,18 @@ export class ChromaEntity {
         return (this.template.group & group) === group
     }
 
-    getPreviewDOM(): HTMLDivElement {
+    getPreviewDOM(device: ChromaDevice): HTMLDivElement {
         const div = document.createElement("div")
         div.classList.add("entityPreview")
 
-        if (this.physicalDimensions) {
+        if (this.template.display)
+            div.textContent = this.template.display
 
+        if (this.physicalDimensions) {
+            div.style.left = `${this.physicalDimensions.left - device.dimensions.left}px`
+            div.style.top = `${this.physicalDimensions.top - device.dimensions.top}px`
+            div.style.width = `${this.physicalDimensions.width}px`
+            div.style.height = `${this.physicalDimensions.height}px`
         } else {
             div.classList.add("dimensionless")
 
