@@ -484,9 +484,14 @@ export class Context {
                     }
                 )
 
+                if (nodeItems.length)
+                    return {
+                        label: category,
+                        submenu: nodeItems
+                    } as unknown as MenuItem
+                    
                 return {
-                    label: category,
-                    submenu: nodeItems
+                    type: "separator"
                 } as unknown as MenuItem
             }
         )

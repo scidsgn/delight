@@ -22,6 +22,8 @@ import { CompareNode } from "./nodes/library/number/compare"
 import { InvertNode } from "./nodes/library/color/invert"
 import { BlendNode } from "./nodes/library/color/blend"
 import { RazerPreviewNode } from "./nodes/library/razer/preview"
+import { CombineVectorNode } from "./nodes/library/vector/combine"
+import { SeparateVectorNode } from "./nodes/library/vector/separate"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -38,6 +40,11 @@ export const availableNodes: {
         MapRangeNode,
         LoopNode
     ],
+    "Vector": [
+        CombineVectorNode,
+        SeparateVectorNode
+    ],
+    "_Sep": [],
     "Color": [
         ColorValueNode,
         null,

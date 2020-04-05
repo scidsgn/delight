@@ -5,6 +5,7 @@ import { NumberType } from "../../types/number"
 import { SelectType } from "../../types/select"
 import { ChromaRegion } from "../../../chroma/region"
 import { ChromaEntity } from "../../../chroma/entities"
+import { VectorType, Vector } from "../../types/vector"
 
 export class RazerInputNode extends DelightNode {
     public static id = "razer.input"
@@ -48,13 +49,21 @@ export class RazerInputNode extends DelightNode {
             SocketType.output,
             new NumberType(),
             false
+        ),
+        new Socket(
+            this,
+            "pos", "Position vector",
+            SocketType.output,
+            new VectorType(),
+            false
         )
     ]
 
     update(region: ChromaRegion, entity: ChromaEntity) {
         const positioning = this.getOption("positioning") as SelectType
-        const outX = this.getOutput("x") as NumberType 
+        const outX = this.getOutput("x") as NumberType
         const outY = this.getOutput("y") as NumberType
+        const outVec = this.getOutput("pos") as VectorType
 
         let pos = entity.getVirtualPosition(region)
 
@@ -63,5 +72,7 @@ export class RazerInputNode extends DelightNode {
 
         outX.value = pos.x
         outY.value = pos.y
+        outVec.value.x = pos.x
+        outVec.value.y = pos.y
     }
 }

@@ -12,6 +12,7 @@ export enum NodeCategory {
     
     number = "number",
     color = "color",
+    vector = "vector",
 
     math = "math",
     time = "time",

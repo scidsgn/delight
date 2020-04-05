@@ -104,5 +104,24 @@ addAppMenu(
                 click: () => aboutDelight()
             }
         ]
+    },
+    {
+        name: "Nodes",
+        menu: [
+            {
+                label: "Add node"
+            },
+            {
+                label: "Reusable groups"
+            },
+            {
+                type: "separator"
+            },
+            {
+                label: "Enable grid",
+                type: "checkbox",
+                checked: true
+            }
+        ]
     }
 )

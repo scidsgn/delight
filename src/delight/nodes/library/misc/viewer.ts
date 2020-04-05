@@ -7,6 +7,7 @@ import { BoundedNumberType } from "../../types/boundedNumber"
 import { ButtonType } from "../../types/button"
 import { ColorType } from "../../types/color"
 import { FFTType } from "../../types/fft"
+import { VectorType } from "../../types/vector"
 
 export class ViewerNode extends DelightNode {
     public static id = "misc.viewer"
@@ -65,6 +66,10 @@ export class ViewerNode extends DelightNode {
             value instanceof ColorType
         ) {
             outStr = `R: ${value.value.r}\nG: ${value.value.g}\nB: ${value.value.b}\nBGR: ${value.value.toBGRInt()}`
+        } else if (
+            value instanceof VectorType
+        ) {
+            outStr = `X: ${value.value.x}\nY: ${value.value.y}`
         } else if (
             value instanceof FFTType
         ) {

@@ -1,5 +1,7 @@
 import { IDelightType } from "./type"
 
+import "../../styles/types/vector.scss"
+
 export class Vector {
     constructor(
         public x = 0,
@@ -12,10 +14,8 @@ export class VectorType implements IDelightType {
     public typeId = "vector"
     public accepts = [this.typeId]
 
-    public value: Vector
-
     constructor(
-        public vec = new Vector()
+        public value = new Vector()
     ) {
         this.createDOM()
     }
