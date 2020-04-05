@@ -34,6 +34,13 @@ import { VectorMathNode } from "./nodes/library/vector/math"
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
 } = {
+    "Razer Chroma": [
+        RazerInputNode,
+        RazerOutputNode,
+        null,
+        RazerPreviewNode
+    ],
+    "_Sep0": [],
     "Number": [
         NumberValueNode,
         RandomNumberNode,
@@ -57,7 +64,7 @@ export const availableNodes: {
         VectorScaleNode,
         VectorRotateNode
     ],
-    "_Sep": [],
+    "_Sep1": [],
     "Color": [
         ColorValueNode,
         null,
@@ -68,22 +75,19 @@ export const availableNodes: {
         BlendNode,
         InvertNode
     ],
+    "_Sep2": [],
     "Audio": [
         AudioSourceNode,
         null,
         AudioPeakNode,
         AudioSampleNode
     ],
-    "Razer Chroma": [
-        RazerInputNode,
-        RazerOutputNode,
-        null,
-        RazerPreviewNode
-    ],
+    "_Sep3": [],
     "Time": [
         FrameNode,
         TimeNode
     ],
+    "_Sep4": [],
     "Misc.": [
         CommentNode,
         ViewerNode
