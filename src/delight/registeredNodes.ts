@@ -26,6 +26,7 @@ import { CombineVectorNode } from "./nodes/library/vector/combine"
 import { SeparateVectorNode } from "./nodes/library/vector/separate"
 import { VectorLengthNode } from "./nodes/library/vector/length"
 import { VectorScaleNode } from "./nodes/library/vector/scale"
+import { VectorAngleNode } from "./nodes/library/vector/angle"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -47,6 +48,8 @@ export const availableNodes: {
         SeparateVectorNode,
         null,
         VectorLengthNode,
+        VectorAngleNode,
+        null,
         VectorScaleNode
     ],
     "_Sep": [],

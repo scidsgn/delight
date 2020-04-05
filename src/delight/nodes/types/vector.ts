@@ -11,6 +11,15 @@ export class Vector {
     get length() {
         return Math.hypot(this.x, this.y)
     }
+
+    get angle() {
+        let angle = Math.atan2(this.y, this.x)
+
+        if (angle < 0)
+            angle += Math.PI * 2
+
+        return angle
+    }
 }
 
 export class VectorType implements IDelightType {
