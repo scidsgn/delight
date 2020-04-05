@@ -39,6 +39,9 @@ div.node {
     &.number {
         background: var(--node-number);
     }
+    &.vector {
+        background: var(--node-vector);
+    }
 
     &.current {
         box-shadow: inset 0px 0px 0px 2px var(--selected),

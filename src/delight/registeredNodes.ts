@@ -29,6 +29,7 @@ import { VectorScaleNode } from "./nodes/library/vector/scale"
 import { VectorAngleNode } from "./nodes/library/vector/angle"
 import { CombineHSLNode } from "./nodes/library/color/combineHSL"
 import { VectorRotateNode } from "./nodes/library/vector/rotate"
+import { VectorMathNode } from "./nodes/library/vector/math"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -52,6 +53,7 @@ export const availableNodes: {
         VectorLengthNode,
         VectorAngleNode,
         null,
+        VectorMathNode,
         VectorScaleNode,
         VectorRotateNode
     ],
