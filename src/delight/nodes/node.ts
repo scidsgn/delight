@@ -59,28 +59,31 @@ export class DelightNode {
 
             inputs: this.inputs.map(
                 s => {
+                    if (!s.adjustable) return null
                     return {
                         id: s.id,
                         value: s.value.serialize()
                     }
                 }
-            ),
+            ).filter(s => s),
             outputs: this.outputs.map(
                 s => {
+                    if (!s.adjustable) return null
                     return {
                         id: s.id,
                         value: s.value.serialize()
                     }
                 }
-            ),
+            ).filter(s => s),
             options: this.options.map(
                 s => {
+                    if (!s.adjustable) return null
                     return {
                         id: s.id,
                         value: s.value.serialize()
                     }
                 }
-            )
+            ).filter(s => s)
         }
     }
 

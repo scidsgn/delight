@@ -55,11 +55,9 @@ body > header {
                 padding: 8px 16px;
 
                 &::after {
-                    content: "";
+                    content: " - Delight";
 
-                    font-family: "Segoe MDL2 Assets"; // Temporary
-
-                    margin-left: 12px;
+                    opacity: 0.5;
                 }
 
                 &:hover {
