@@ -91,6 +91,10 @@ export class SelectType implements IDelightType {
 
             if (this.valueChangeWatcher)
                 this.valueChangeWatcher(this.value)
+
+            dispatchEvent(
+                new CustomEvent("contextModified")
+            )
         })
 
         div.appendChild(select)

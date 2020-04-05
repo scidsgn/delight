@@ -1,10 +1,10 @@
 import { Context } from "./context"
-import { RazerOutputNode } from "./nodes/library/razer/output"
-import { RazerInputNode } from "./nodes/library/razer/input"
 
 import { ChromaExecutor } from "./chroma/executor"
-import { entityTemplates } from "./chroma/entities"
 import { ChromaEnvironment } from "./chroma/environment"
+
+import { addAppMenu } from "./ui/menu"
+import { saveContextAs, saveContext, openContext } from "./ui/io"
 
 import "./styles/layout.scss"
 import "./styles/ui/toolbar.scss"
@@ -50,7 +50,52 @@ const executor = new ChromaExecutor(
 executor.startExecution(ctx)
 
 glob.executor = executor
+glob.ctx = ctx
 
-console.log(
-    entityTemplates
+addEventListener("contextModified", () => {
+    ctx.modified = true
+})
+
+// Setup menus
+addAppMenu(
+    {
+        name: "File",
+        menu: [
+            {
+                label: "New",
+                click: () => {
+                    ctx.deserialize(
+                        null, {
+                            nodes: [],
+                            currentNode: -1,
+                            connections: []
+                        }
+                    )
+                }
+            },
+            {
+                type: "separator"
+            },
+            {
+                label: "Open",
+                click: () => openContext(ctx)
+            },
+            {
+                type: "separator"
+            },
+            {
+                label: "Save",
+                click: () => {
+                    if (ctx.fileName)
+                        saveContext(ctx, ctx.fileName)
+                    else
+                        saveContextAs(ctx)
+                }
+            },
+            {
+                label: "Save as...",
+                click: () => saveContextAs(ctx)
+            }
+        ]
+    }
 )

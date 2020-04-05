@@ -68,3 +68,7 @@ export const availableNodes: {
         ViewerNode
     ]
 }
+
+export const flatAvailableNodes = (
+    Object.values(availableNodes).flat() as DelightNodeConstructor[]
+).filter(nc => nc)

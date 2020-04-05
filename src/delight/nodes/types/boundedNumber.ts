@@ -59,6 +59,10 @@ export class BoundedNumberType implements IDelightType {
 
         input.addEventListener("input", () => {
             this.value = +input.value
+
+            dispatchEvent(
+                new CustomEvent("contextModified")
+            )
         })
         
         div.appendChild(input)

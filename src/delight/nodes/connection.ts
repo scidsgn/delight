@@ -9,6 +9,21 @@ export class NodeConnection {
         public outputNode: DelightNode,
         public outputSocket: Socket<IDelightType>
     ) {}
+
+    serialize() {
+        const context = this.inputNode.context
+
+        return {
+            input: {
+                node: context.nodes.indexOf(this.inputNode),
+                socket: this.inputNode.outputs.indexOf(this.inputSocket)
+            },
+            output: {
+                node: context.nodes.indexOf(this.outputNode),
+                socket: this.outputNode.inputs.indexOf(this.outputSocket)
+            }
+        }
+    }
 }
 
 export class PartialNodeConnection extends NodeConnection {

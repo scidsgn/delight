@@ -21,6 +21,11 @@ export enum NodeCategory {
 }
 
 export class DelightNode {
+    // How 2 cheat
+    public __proto__: {
+        constructor: DelightNodeConstructor
+    }
+
     public static id = "gen.blankNode"
     public static listName = "Node"
 
@@ -45,6 +50,60 @@ export class DelightNode {
         public context: Context
     ) {}
 
+    serialize() {
+        return {
+            position: {
+                x: this.xPosition,
+                y: this.yPosition
+            },
+
+            inputs: this.inputs.map(
+                s => {
+                    return {
+                        id: s.id,
+                        value: s.value.serialize()
+                    }
+                }
+            ),
+            outputs: this.outputs.map(
+                s => {
+                    return {
+                        id: s.id,
+                        value: s.value.serialize()
+                    }
+                }
+            ),
+            options: this.options.map(
+                s => {
+                    return {
+                        id: s.id,
+                        value: s.value.serialize()
+                    }
+                }
+            )
+        }
+    }
+
+    deserialize(data: any) {
+        this.setPosition(
+            data.position.x,
+            data.position.y
+        )
+
+        data.inputs.forEach((spec: any) => {
+            const socket = this.getInputSocket(spec.id)
+            socket.value.deserialize(spec.value)
+        })
+        data.outputs.forEach((spec: any) => {
+            const socket = this.getOutputSocket(spec.id)
+            socket.value.deserialize(spec.value)
+        })
+        data.options.forEach((spec: any) => {
+            const socket = this.getOptionSocket(spec.id)
+            socket.value.deserialize(spec.value)
+        })
+    }
+
     get locked() {
         return this._locked
     }
@@ -59,6 +118,7 @@ export class DelightNode {
 
         this.domElement.style.left = `${x}px`
         this.domElement.style.top = `${y}px`
+        this.context.modified = true
     }
 
     move(dX: number, dY: number) {

@@ -107,3 +107,7 @@ body > header {
         }
     }
 }
+
+body.modified > header div.context > button::before {
+    content: "*";
+}

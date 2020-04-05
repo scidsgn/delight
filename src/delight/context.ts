@@ -1,9 +1,9 @@
-import { DelightNode, UniformNode } from "./nodes/node";
-import { NodeConnection, PartialNodeConnection } from "./nodes/connection";
-import { Socket, SocketType } from "./nodes/socket";
-import { IDelightType } from "./nodes/types/type";
+import { DelightNode, UniformNode } from "./nodes/node"
+import { NodeConnection, PartialNodeConnection } from "./nodes/connection"
+import { Socket, SocketType } from "./nodes/socket"
+import { IDelightType } from "./nodes/types/type"
 import { MenuItem } from "electron"
-import { availableNodes } from "./registeredNodes"
+import { availableNodes, flatAvailableNodes } from "./registeredNodes"
 import { ChromaEnvironment } from "./chroma/environment"
 
 const { Menu } = require("electron").remote
@@ -28,10 +28,97 @@ export class Context {
     public acsSourceNode: MediaStreamAudioSourceNode
     public acsAnalyzerNode: AnalyserNode
 
+    private _fileName: string = null
+    public _modified = false
+
     constructor(
         public environment: ChromaEnvironment,
         public audioContext: AudioContext
     ) {}
+
+    serialize() {
+        return {
+            nodes: this.nodes.map(
+                n => {
+                    return {
+                        id: n.__proto__.constructor.id,
+                        data: n.serialize()
+                    }
+                }
+            ),
+            currentNode: this.nodes.indexOf(this._currentNode),
+
+            connections: this.connections.map(
+                c => c.serialize()
+            )
+        }
+    }
+
+    deserialize(fileName: string, data: any) {
+        this.currentNode = null;
+        
+        [...this.nodes].forEach(n => this.deleteNode(n))
+
+        data.nodes.forEach((nodeSpec: {
+            id: string, data: any
+        }) => {
+            const nodeConstruct = flatAvailableNodes.find(nc => nc.id === nodeSpec.id)
+            if (!nodeConstruct) return
+
+
+            const node = new nodeConstruct(this)
+            node.createDOM()
+            
+            node.deserialize(nodeSpec.data)
+
+            this.addNode(node)
+            this.nodeContainer.appendChild(
+                node.domElement
+            )
+        })
+        if (data.currentNode >= 0)
+            this.currentNode = this.nodes[
+                data.currentNode
+            ]
+        
+        data.connections.forEach(
+            (conn: any) => {
+                this.connectNodes(
+                    this.nodes[conn.input.node],
+                    this.nodes[conn.input.node].outputs[conn.input.socket],
+                    this.nodes[conn.output.node],
+                    this.nodes[conn.output.node].inputs[conn.output.socket]
+                )
+            }
+        )
+
+        this.fileName = fileName
+        this.modified = false
+
+        this.updateConnectionsCanvas()
+    }
+
+    public get fileName() {
+        return this._fileName
+    }
+
+    public set fileName(value: string) {
+        const btn = document.querySelector(
+            "body > header div.context > button"
+        ) as HTMLButtonElement
+        btn.textContent = value ?? "Untitled"
+
+        this._fileName = value
+    }
+
+    get modified() {
+        return this._modified
+    }
+
+    set modified(v: boolean) {
+        document.body.classList.toggle("modified", v)
+        this._modified = v
+    }
     
     get audioCaptureStream() {
         return this._audioCaptureStream
@@ -58,11 +145,13 @@ export class Context {
             this._currentNode.domElement.classList.remove("current")
         
         this._currentNode = n
-        n.domElement.classList.add("current")
+        if (this._currentNode)
+            n.domElement.classList.add("current")
     }
 
     addNode(n: DelightNode) {
         this.nodes.push(n)
+        this.modified = true
     }
 
     deleteNode(n: DelightNode) {
@@ -82,6 +171,7 @@ export class Context {
         )
 
         this.updateConnectionsCanvas(true)
+        this.modified = true
     }
 
     findConnection(
@@ -119,6 +209,7 @@ export class Context {
 
         inputSocket.connected = true
         outputSocket.connected = true
+        this.modified = true
     }
 
     disconnectNodes(conn: NodeConnection) {
@@ -133,6 +224,7 @@ export class Context {
         
         conn.inputSocket.connected = otherInputConn === null
         conn.outputSocket.connected = false
+        this.modified = true
     }
 
     async getConnectionValue(

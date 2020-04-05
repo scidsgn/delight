@@ -107,6 +107,10 @@ export class ColorType implements IDelightType {
 
         input.addEventListener("input", () => {
             this.value = Color.fromHex(input.value)
+
+            dispatchEvent(
+                new CustomEvent("contextModified")
+            )
         })
         
         div.appendChild(input)
