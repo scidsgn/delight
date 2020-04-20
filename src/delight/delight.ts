@@ -44,7 +44,7 @@ navigator.mediaDevices.getUserMedia(
 })
 
 const executor = new ChromaExecutor(
-    chromaEnviron, 30
+    chromaEnviron, 60
 )
 
 executor.startExecution(ctx)

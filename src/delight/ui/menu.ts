@@ -17,10 +17,16 @@ export function addAppMenu(...menus: TitlebarMenu[]) {
 
         button.addEventListener("click", () => {
             const rect = button.getBoundingClientRect()
+            console.log(rect)
 
             Menu.buildFromTemplate(
                 menu.menu as MenuItem[]
-            ).popup()
+            ).popup(
+                {
+                    x: Math.floor(rect.x) + 1,
+                    y: Math.floor(rect.bottom)
+                }
+            )
         })
     
         titlebarMenuContainer.appendChild(button)

@@ -30,6 +30,7 @@ import { VectorAngleNode } from "./nodes/library/vector/angle"
 import { CombineHSLNode } from "./nodes/library/color/combineHSL"
 import { VectorRotateNode } from "./nodes/library/vector/rotate"
 import { VectorMathNode } from "./nodes/library/vector/math"
+import { AudioPreviewNode } from "./nodes/library/audio/preview"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -78,6 +79,8 @@ export const availableNodes: {
     "_Sep2": [],
     "Audio": [
         AudioSourceNode,
+        null,
+        AudioPreviewNode,
         null,
         AudioPeakNode,
         AudioSampleNode

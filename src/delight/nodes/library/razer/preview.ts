@@ -2,12 +2,12 @@ import { DelightNode, NodeCategory } from "../../node"
 import { IDelightType } from "../../types/type"
 import { Socket, SocketType } from "../../socket"
 import { ChromaDevice } from "../../../chroma/device"
-
-import "../../../styles/ui/devicePreview.scss"
 import { ChromaEntity } from "../../../chroma/entities"
 import { Color } from "../../types/color"
 import { SelectType } from "../../types/select"
 import { Context } from "../../../context"
+
+import "../../../styles/ui/devicePreview.scss"
 
 export class RazerPreviewNode extends DelightNode {
     public static id = "razer.preview"

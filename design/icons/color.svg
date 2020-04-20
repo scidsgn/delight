@@ -12,13 +12,13 @@
                     <path d="M72,1C75.863,1 79,4.137 79,8C79,11.863 75.863,15 72,15C68.137,15 65,11.863 65,8C65,4.137 68.137,1 72,1ZM72,2.75C74.898,2.75 77.25,5.102 77.25,8C77.25,10.898 74.898,13.25 72,13.25C69.102,13.25 66.75,10.898 66.75,8C66.75,5.102 69.102,2.75 72,2.75Z"/>
                 </g>
                 <g transform="matrix(6.12323e-17,1,-1,6.12323e-17,16,-64)">
-                    <path d="M72,1L72,15" style="fill:none;stroke:black;stroke-width:2px;"/>
+                    <path d="M72,8L72,15" style="fill:none;stroke:black;stroke-width:2px;"/>
                 </g>
                 <g transform="matrix(0.866025,0.5,-0.5,0.866025,-50.3538,-34.9282)">
-                    <path d="M72,1L72,15" style="fill:none;stroke:black;stroke-width:2px;"/>
+                    <path d="M72,1L72,8" style="fill:none;stroke:black;stroke-width:2px;"/>
                 </g>
                 <g transform="matrix(0.866025,-0.5,0.5,0.866025,-58.3538,37.0718)">
-                    <path d="M72,1L72,15" style="fill:none;stroke:black;stroke-width:2px;"/>
+                    <path d="M72,8L72,15" style="fill:none;stroke:black;stroke-width:2px;"/>
                 </g>
             </g>
         </g>

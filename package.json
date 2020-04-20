@@ -2,7 +2,7 @@
   "name": "delight",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
     "start": "npm run build && electron ./src/main.js"
