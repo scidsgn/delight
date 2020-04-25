@@ -389,11 +389,16 @@ export class Context {
     }
 
     handleMouseUp(e: MouseEvent) {
-        const target = e.target as HTMLElement
+        let target = e.target as HTMLElement
 
-        if (target.classList.contains("plug")) {
+        while (target && !target.classList.contains("socket")) {
+            target = target.parentElement
+            if (!target) break
+        }
+
+        if (target) {
             const socket = this.findSocket(
-                s => s.domElement === target.parentElement
+                s => s.domElement === target
             )
 
             if (
