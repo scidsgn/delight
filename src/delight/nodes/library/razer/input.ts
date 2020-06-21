@@ -56,7 +56,14 @@ export class RazerInputNode extends DelightNode {
             SocketType.output,
             new VectorType(),
             false
-        )
+        ),
+        new Socket(
+            this,
+            "ratio", "Aspect ratio",
+            SocketType.output,
+            new NumberType(),
+            false
+        ),
     ]
 
     update(region: ChromaRegion, entity: ChromaEntity) {
@@ -64,15 +71,20 @@ export class RazerInputNode extends DelightNode {
         const outX = this.getOutput("x") as NumberType
         const outY = this.getOutput("y") as NumberType
         const outVec = this.getOutput("pos") as VectorType
+        const outRatio = this.getOutput("ratio") as NumberType
 
+        let bounds = region.apiBounds
         let pos = entity.getVirtualPosition(region)
 
         if (positioning.value === "physical")
+            bounds = region.physicalBounds
             pos = entity.getPhysicalPosition(region)
 
         outX.value = pos.x
         outY.value = pos.y
         outVec.value.x = pos.x
         outVec.value.y = pos.y
+
+        outRatio.value = bounds.width / bounds.height
     }
 }

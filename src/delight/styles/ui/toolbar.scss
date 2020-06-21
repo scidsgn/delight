@@ -42,65 +42,67 @@ body > header {
 
         div.context {
             position: relative;
+            
+            display: flex;
             -webkit-app-region: no-drag;
-    
-            button {
-                background: transparent;
-                color: var(--app-color);
-
-                font-family: "Inter";
-
-                border: none;
-                outline: none;
-                padding: 8px 16px;
-
-                &::after {
-                    content: " - Delight";
-
-                    opacity: 0.5;
-                }
-
-                &:hover {
-                    background: var(--app-button-hover);
-                }
-
-                &:active {
-                    background: var(--app-button-active);
-                }
-            }
         }
 
         div.wm {
             display: flex;
             -webkit-app-region: no-drag;
+        }
     
-            button {
-                width: 48px;
+        button {
+            background: transparent;
+            color: var(--app-color);
 
-                background: transparent;
+            font-family: "Inter";
 
-                border: none;
-                outline: none;
-                padding: 8px 16px;
+            border: none;
+            outline: none;
+            padding: 8px 16px;
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            &.name::after {
+                content: " - Delight";
 
-                &:hover {
-                    background: var(--app-button-hover);
-                }
+                opacity: 0.5;
+            }
 
-                &:active {
-                    background: var(--app-button-active);
-                }
+            &:hover {
+                background: var(--app-button-hover);
+            }
 
-                img {
-                    width: 12px;
-                    height: 12px;
+            &:active {
+                background: var(--app-button-active);
+            }
+        }
 
-                    filter: invert(1);
-                }
+        button.icon {
+            width: 48px;
+
+            background: transparent;
+
+            border: none;
+            outline: none;
+            padding: 8px 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background: var(--app-button-hover);
+            }
+
+            &:active {
+                background: var(--app-button-active);
+            }
+
+            img {
+                width: 12px;
+                height: 12px;
+
+                filter: invert(1);
             }
         }
     }

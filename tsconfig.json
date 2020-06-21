@@ -11,7 +11,8 @@
 
         "allowJs": false,
 
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "esModuleInterop": true
     },
     "exclude": [
         "./webpack.config.js"

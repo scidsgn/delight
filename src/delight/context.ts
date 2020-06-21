@@ -104,7 +104,7 @@ export class Context {
 
     public set fileName(value: string) {
         const btn = document.querySelector(
-            "body > header div.context > button"
+            "body > header div.context > button.name"
         ) as HTMLButtonElement
         btn.textContent = value ?? "Untitled"
 

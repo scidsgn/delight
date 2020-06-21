@@ -31,6 +31,10 @@ import { CombineHSLNode } from "./nodes/library/color/combineHSL"
 import { VectorRotateNode } from "./nodes/library/vector/rotate"
 import { VectorMathNode } from "./nodes/library/vector/math"
 import { AudioPreviewNode } from "./nodes/library/audio/preview"
+import { SeedRandomNumberNode } from "./nodes/library/number/seedrandom"
+import { RoundingNode } from "./nodes/library/number/rounding"
+import { NullType } from "./nodes/types/type"
+import { VectorAspectCorrectNode } from "./nodes/library/vector/aspectCorrect"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -45,8 +49,10 @@ export const availableNodes: {
     "Number": [
         NumberValueNode,
         RandomNumberNode,
+        SeedRandomNumberNode,
         null,
         ArithmeticNode,
+        RoundingNode,
         CompareNode,
         TrigNode,
         null,
@@ -63,7 +69,9 @@ export const availableNodes: {
         null,
         VectorMathNode,
         VectorScaleNode,
-        VectorRotateNode
+        VectorRotateNode,
+        null,
+        VectorAspectCorrectNode
     ],
     "_Sep1": [],
     "Color": [

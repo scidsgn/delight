@@ -33,6 +33,7 @@
   "dependencies": {
     "chroma-js": "^2.1.0",
     "htmlparser2": "^4.1.0",
+    "prando": "^5.1.2",
     "yargs": "^15.3.1"
   }
 }

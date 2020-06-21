@@ -8,6 +8,7 @@ import { saveContextAs, saveContext, openContext, aboutDelight } from "./ui/io"
 
 import "./styles/layout.scss"
 import "./styles/ui/toolbar.scss"
+import { prepareExecutorUI } from "./ui/toolbar"
 
 const audioContext = new AudioContext({
     sampleRate: 44100
@@ -44,17 +45,16 @@ navigator.mediaDevices.getUserMedia(
 })
 
 const executor = new ChromaExecutor(
-    chromaEnviron, 60
+    chromaEnviron, 30
 )
 
-executor.startExecution(ctx)
-
-glob.executor = executor
-glob.ctx = ctx
+prepareExecutorUI(executor)
 
 addEventListener("contextModified", () => {
     ctx.modified = true
 })
+
+executor.startExecution(ctx)
 
 // Setup menus
 addAppMenu(
