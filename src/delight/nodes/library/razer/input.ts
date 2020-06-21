@@ -85,6 +85,7 @@ export class RazerInputNode extends DelightNode {
         outVec.value.x = pos.x
         outVec.value.y = pos.y
 
-        outRatio.value = bounds.width / bounds.height
+        const ratio = bounds.width / bounds.height
+        outRatio.value = isNaN(ratio) ? 1 : ratio
     }
 }
