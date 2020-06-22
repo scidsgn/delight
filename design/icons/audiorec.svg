@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-160,0)">
+        <g id="audiorec" transform="matrix(1,0,0,1,160,1.06581e-14)">
+            <rect x="0" y="0" width="16" height="16" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="0" y="0" width="16" height="16"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1.10349,0,0,1.10349,-173.765,-0.517438)">
+                    <path d="M166.531,5C169.032,5 171.062,7.03 171.062,9.531C171.062,12.032 169.032,14.062 166.531,14.062C164.03,14.062 162,12.032 162,9.531C162,7.03 164.03,5 166.531,5ZM166.531,6.812C168.032,6.812 169.25,8.031 169.25,9.531C169.25,11.032 168.032,12.25 166.531,12.25C165.031,12.25 163.812,11.032 163.812,9.531C163.812,8.031 165.031,6.812 166.531,6.812Z"/>
+                </g>
+                <g transform="matrix(1.09382,0,0,1.5,-104.194,-4)">
+                    <rect x="96.172" y="6" width="1.828" height="4"/>
+                </g>
+                <g transform="matrix(1.09382,0,0,4,-100.194,-24)">
+                    <rect x="96.172" y="6" width="1.828" height="4"/>
+                </g>
+                <g transform="matrix(1.09382,0,0,1,-96.1939,-4)">
+                    <rect x="96.172" y="6" width="1.828" height="4"/>
+                </g>
+                <g transform="matrix(1.09382,0,0,1.5,-92.1939,-5)">
+                    <rect x="96.172" y="6" width="1.828" height="4"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

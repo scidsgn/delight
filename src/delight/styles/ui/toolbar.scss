@@ -16,38 +16,7 @@ body > header {
         justify-content: space-between;
         -webkit-app-region: drag;
 
-        div.menu {
-            display: flex;
-            -webkit-app-region: no-drag;
-    
-            button {
-                background: transparent;
-                color: var(--app-color);
-
-                font-family: "Inter";
-
-                border: none;
-                outline: none;
-                padding: 8px 16px;
-
-                &:hover {
-                    background: var(--app-button-hover);
-                }
-
-                &:active {
-                    background: var(--app-button-active);
-                }
-            }
-        }
-
-        div.context {
-            position: relative;
-            
-            display: flex;
-            -webkit-app-region: no-drag;
-        }
-
-        div.wm {
+        & > div {
             display: flex;
             -webkit-app-region: no-drag;
         }
@@ -75,28 +44,6 @@ body > header {
             &:active {
                 background: var(--app-button-active);
             }
-        }
-
-        button.icon {
-            width: 48px;
-
-            background: transparent;
-
-            border: none;
-            outline: none;
-            padding: 8px 16px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &:hover {
-                background: var(--app-button-hover);
-            }
-
-            &:active {
-                background: var(--app-button-active);
-            }
 
             img {
                 width: 12px;
@@ -105,9 +52,30 @@ body > header {
                 filter: invert(1);
             }
         }
+
+        div.controls {
+            button {
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
     }
 }
 
 body.modified > header div.context > button::before {
     content: "*";
+}
+
+body.playing > header {
+    background: var(--app-toolbar-playing);
+
+    button.play {
+        background: var(--razer);
+        
+        img {
+            filter: invert(0);
+        }
+    }
 }

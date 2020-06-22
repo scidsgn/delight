@@ -48,13 +48,11 @@ const executor = new ChromaExecutor(
     chromaEnviron, 30
 )
 
-prepareExecutorUI(executor)
+prepareExecutorUI(executor, ctx)
 
 addEventListener("contextModified", () => {
     ctx.modified = true
 })
-
-executor.startExecution(ctx)
 
 // Setup menus
 addAppMenu(
