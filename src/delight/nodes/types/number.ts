@@ -47,12 +47,17 @@ export class NumberType implements IDelightType {
         input.step = this.step.toString()
         input.value = this._value.toString()
 
-        input.addEventListener("input", () => {
+        const listener = () => {
             this.value = +input.value
 
             dispatchEvent(
                 new CustomEvent("contextModified")
             )
+        }
+
+        input.addEventListener("change", listener)
+        input.addEventListener("keyup", (e) => {
+            if (e.code == "Enter") listener()
         })
         
         div.appendChild(input)
