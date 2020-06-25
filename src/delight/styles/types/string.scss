@@ -1,3 +1,29 @@
 div.socket.string {
     --socket-color: var(--socket-string) !important;
+
+    div.type.string {
+        input {
+            width: calc(100% - 16px);
+
+            background: #222;
+            color: #fff;
+
+            font-family: "Inter";
+            font-size: 9pt;
+            
+            outline: none;
+            border: none;
+            padding: 8px 8px;
+            border-radius: 4px;
+            box-shadow: inset 0px 0px 0px 2px #0003;
+
+            &::placeholder {
+                color: #888;
+            }
+
+            &:hover {
+                box-shadow: inset 0px 0px 0px 2px var(--selected);
+            }
+        }
+    }
 }

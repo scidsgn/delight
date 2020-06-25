@@ -8,6 +8,7 @@ import { ButtonType } from "../../types/button"
 import { ColorType } from "../../types/color"
 import { FFTType } from "../../types/fft"
 import { VectorType } from "../../types/vector"
+import { StringType } from "../../types/string"
 
 export class ViewerNode extends DelightNode {
     public static id = "misc.viewer"
@@ -59,7 +60,8 @@ export class ViewerNode extends DelightNode {
             outStr = "null"
         } else if (
             value instanceof NumberType ||
-            value instanceof BoundedNumberType
+            value instanceof BoundedNumberType ||
+            value instanceof StringType
         ) {
             outStr = value.value.toString()
         } else if (

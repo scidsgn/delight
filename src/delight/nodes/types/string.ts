@@ -52,6 +52,8 @@ export class StringType implements IDelightType {
             )
         }
 
+        input.placeholder = "Text..."
+
         input.addEventListener("change", listener)
         input.addEventListener("keyup", (e) => {
             if (e.code == "Enter") listener()

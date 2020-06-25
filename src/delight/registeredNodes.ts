@@ -35,6 +35,7 @@ import { SeedRandomNumberNode } from "./nodes/library/number/seedrandom"
 import { RoundingNode } from "./nodes/library/number/rounding"
 import { NullType } from "./nodes/types/type"
 import { VectorAspectCorrectNode } from "./nodes/library/vector/aspectCorrect"
+import { StringValueNode } from "./nodes/library/string/string"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -85,6 +86,10 @@ export const availableNodes: {
         InvertNode
     ],
     "_Sep2": [],
+    "String": [
+        StringValueNode
+    ],
+    "_Sep3": [],
     "Audio": [
         AudioSourceNode,
         null,
@@ -93,12 +98,12 @@ export const availableNodes: {
         AudioPeakNode,
         AudioSampleNode
     ],
-    "_Sep3": [],
+    "_Sep4": [],
     "Time": [
         FrameNode,
         TimeNode
     ],
-    "_Sep4": [],
+    "_Sep5": [],
     "Misc.": [
         CommentNode,
         ViewerNode
