@@ -18,6 +18,9 @@ export enum NodeCategory {
     time = "time",
     audio = "audio",
 
+    string = "string",
+    font = "font",
+
     razer = "razer"
 }
 

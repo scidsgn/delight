@@ -8,7 +8,7 @@ export class StringValueNode extends DelightNode {
     public static listName = "String"
 
     public name = "String"
-    public category: NodeCategory = NodeCategory.general
+    public category: NodeCategory = NodeCategory.string
 
     public outputs: Socket<IDelightType>[] = [
         new Socket(
