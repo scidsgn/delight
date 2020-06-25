@@ -9,6 +9,7 @@ import { saveContextAs, saveContext, openContext, aboutDelight } from "./ui/io"
 import "./styles/layout.scss"
 import "./styles/ui/toolbar.scss"
 import { prepareExecutorUI } from "./ui/toolbar"
+import chromatica from "./font/fonts/chromatica"
 
 const audioContext = new AudioContext({
     sampleRate: 44100
@@ -25,6 +26,8 @@ ctx.setupEvents()
 ctx.updateConnectionsCanvas()
 
 const glob = window as any
+
+glob.chromatica = chromatica
 
 navigator.mediaDevices.getUserMedia(
     {
