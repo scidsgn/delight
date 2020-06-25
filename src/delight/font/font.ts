@@ -16,8 +16,8 @@ export class Font {
         return null
     }
 
-    constructString(text: string, width = 1, bold = false): FontGlyphColumn[] {
-        const glyphs: FontGlyphColumn[] = []
+    constructString(prevGlyphs: FontGlyphColumn[], text: string, width = 1, bold = false): FontGlyphColumn[] {
+        const glyphs: FontGlyphColumn[] = [...prevGlyphs]
 
         text.split("").forEach(chr => {
             const glyph = this.findGlyph(chr)

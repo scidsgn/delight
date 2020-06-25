@@ -9,6 +9,7 @@ import { ColorType } from "../../types/color"
 import { FFTType } from "../../types/fft"
 import { VectorType } from "../../types/vector"
 import { StringType } from "../../types/string"
+import { GlyphsType } from "../../types/glyphs"
 
 export class ViewerNode extends DelightNode {
     public static id = "misc.viewer"
@@ -76,6 +77,10 @@ export class ViewerNode extends DelightNode {
             value instanceof FFTType
         ) {
             outStr = `FFT[${value.length}]`
+        } else if (
+            value instanceof GlyphsType
+        ) {
+            outStr = value.value.toString()
         }
 
         const option = this.getOption("display") as CommentType

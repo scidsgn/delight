@@ -33,9 +33,11 @@ import { VectorMathNode } from "./nodes/library/vector/math"
 import { AudioPreviewNode } from "./nodes/library/audio/preview"
 import { SeedRandomNumberNode } from "./nodes/library/number/seedrandom"
 import { RoundingNode } from "./nodes/library/number/rounding"
-import { NullType } from "./nodes/types/type"
 import { VectorAspectCorrectNode } from "./nodes/library/vector/aspectCorrect"
 import { StringValueNode } from "./nodes/library/string/string"
+import { StringConcatNode } from "./nodes/library/string/concat"
+import { FontConstructNode } from "./nodes/library/font/construct"
+import { FontRenderNode } from "./nodes/library/font/render"
 
 export const availableNodes: {
     [prop: string]: DelightNodeConstructor[]
@@ -87,7 +89,13 @@ export const availableNodes: {
     ],
     "_Sep2": [],
     "String": [
-        StringValueNode
+        StringValueNode,
+        null,
+        StringConcatNode
+    ],
+    "Font": [
+        FontConstructNode,
+        FontRenderNode
     ],
     "_Sep3": [],
     "Audio": [
